@@ -1,0 +1,114 @@
+.outerDiv {
+    width: 800px;
+    height: 800px;
+    border: 1px solid blue;
+    border-radius: 1%;
+    margin: 5px auto;
+}
+
+header {
+    width: 95%;
+    height: 8%;
+    border: 1px solid blue;
+    border-radius: 1%;
+    margin: 10px auto;
+    text-align: center;
+}
+
+nav {
+    width: 95%;
+    height: 6%;
+    background-color: aqua;
+    border: 1px solid blue;
+    border-radius: 1%;
+    margin: 10px auto;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    float: left;
+    margin-right: 30px;
+}
+
+.aText {
+    font-weight: bold;
+    color: rgb(102, 108, 117);
+    text-decoration: none;
+}
+
+main {
+    width: 95%;
+    height: 74%;
+    border: 1px solid blue;
+    border-radius: 1%;
+    margin: 10px auto;
+}
+
+article {
+    float: left;
+    width: 63%;
+    height: 93%;
+    border: 1px solid blue;
+    border-radius: 1%;
+    margin: 20px 15px;
+
+}
+
+section {
+    width: 92%;
+    height: 45%;
+    border: 1px solid blue;
+    border-radius: 1%;
+    margin: 4% 4%;
+}
+
+aside {
+    float: left;
+    width: 28%;
+    height: 93%;
+    background-color: rgb(207, 196, 196);
+    border: 1px solid blue;
+    border-radius: 1%;
+    margin: 20px 15px;
+}
+
+footer {
+    width: 95%;
+    height: 5%;
+    color: rgb(127, 130, 135);
+    border: 1px solid blue;
+    border-radius: 1%;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.topText {
+    color: rgb(75, 119, 201);
+    border-bottom: 2.5px dotted blue;
+    padding-left: 10px;
+}
+
+.midText1 {
+    letter-spacing: 1px;
+    line-height: 1.5;
+    border-bottom: 2.5px solid blue;
+    padding: 5px;
+}
+
+.midText2 {
+    letter-spacing: 1px;
+    line-height: 2;
+    padding: 10px
+}
+
+.btmText {
+    color: rgb(102, 108, 117);
+    padding-left: 10px;
+}
+
+.s1 {
+    color: rgb(75, 119, 201);
+}

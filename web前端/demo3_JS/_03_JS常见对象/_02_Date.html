@@ -1,0 +1,142 @@
+<!-- 
+    Date对象
+
+    1.创建Date对象
+        1.var d = new Date(); 
+            注意：不写参数，默认获取当前时间的Date对象
+        2.var d = new Date(milliseconds); // 参数为毫秒
+            e.g. var d = new Date(1000);
+            注意：参数为毫秒，获取1970年1月1日00:00:00经过该毫秒后的Date对象
+        3.var d = new Date(dateString);
+            e.g. var d = new Date("October 13, 1975 11:13:00");
+            注意：获取字符串指定时间的日期对象
+        4.var d = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+            e.g.var d = new Date(2022, 1, 2, 2, 2, 2);
+            注意：1.获取对应参数的Date对象
+                 2.参数顺序如上，若实参少于形参，则没有写满的部分会被赋为默认时间
+
+    
+    2.常见方法
+    (1)get方法
+        getFullYear()	从 Date 对象以四位数字返回年份。
+        getMonth()	从 Date 对象返回月份 (0 ~ 11)。
+        getDate()	从 Date 对象返回一个月中的某一天 (1 ~ 31)。
+        getDay()	从 Date 对象返回一周中的某一天 (0 ~ 6)。
+        getHours()	返回 Date 对象的小时 (0 ~ 23)。
+        getMinutes()	返回 Date 对象的分钟 (0 ~ 59)。
+        getSeconds()	返回 Date 对象的秒数 (0 ~ 59)。
+        getMilliseconds()	返回 Date 对象的毫秒(0 ~ 999)。
+        getTime()	返回 1970 年 1 月 1 日至今的毫秒数。
+    (2)set方法
+        setFullYear()	设置 Date 对象中的年份（四位数字）。
+        setMonth()	设置 Date 对象中月份 (0 ~ 11)。
+        setDate()	设置 Date 对象中月的某一天 (1 ~ 31)。
+        setHours()	设置 Date 对象中的小时 (0 ~ 23)。
+        setMinutes()	设置 Date 对象中的分钟 (0 ~ 59)。
+        setSeconds()	设置 Date 对象中的秒钟 (0 ~ 59)。
+        setMilliseconds()	设置 Date 对象中的毫秒 (0 ~ 999)。
+        setTime() 方法以毫秒设置 Date 对象。
+
+    
+    3.两个Date对象相减
+        有Date对象d1、d2
+        d2 - d1，结果表示两日期间相差的毫秒数ms
+
+    4.各种toStrong
+        toString()// 输出日期对象
+        toTimeString()// 只输出日期对象的 时分秒
+        toDateString()// 只输出日期对象的 年月日
+        toLocaleString()// 输出当地形式的日期对象
+        toLocaleTimeString()// 输出当地形式的日期对象的 时分秒
+        toLocaleDateString()// 输出当地形式的日期对象的 年月日
+        valueOf()// 输入日期对象到1970.1.1的时间戳（毫秒）
+ -->
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 创建Date对象
+        var date1 = new Date();// Sat Dec 30 2023 20:19:04 GMT+0800 (中国标准时间)
+        console.log(date1);
+        var date2 = new Date(1000);// Thu Jan 01 1970 08:00:01 GMT+0800 (中国标准时间)
+        console.log(date2);
+        var date3 = new Date("Decemober 12, 2077 6:6:6");// Sun Dec 12 2077 06:06:06 GMT+0800 (中国标准时间)
+        console.log(date3);
+        var date4 = new Date(2022, 1, 2, 2, 2, 2);// Wed Feb 02 2022 02:02:02 GMT+0800 (中国标准时间)
+        console.log(date4);
+
+        // Date对象的方法
+        console.log("===========================");
+        var d = new Date();
+        console.log(d);
+        console.log(d.getFullYear());
+        console.log(d.getMonth());
+        console.log(d.getDate());
+        console.log(d.getDay());
+        console.log(d.getHours());
+        console.log(d.getMinutes());
+        console.log(d.getSeconds());
+        console.log(d.getMilliseconds());
+        console.log(d.getTime());
+
+        d.setFullYear(2077);
+        d.setMonth(11);
+        d.setDate(31);
+        d.setHours(23);
+        d.setMinutes(59);
+        d.setSeconds(59);
+        console.log(d);
+        console.log(d.getFullYear());
+        console.log(d.getMonth());
+        console.log(d.getDate());
+        console.log(d.getDay());
+        console.log(d.getHours());
+        console.log(d.getMinutes());
+        console.log(d.getSeconds());
+        console.log(d.getMilliseconds());
+        console.log(d.getTime());
+
+
+        // 计算现在到元旦的时间
+        console.log("===================");
+        var now = new Date();
+        var nextYearDate = new Date(2025, 0, 1);
+        console.log(now);
+        console.log(nextYearDate);
+        var ms = nextYearDate - now;// 两日期相减，获得的值是两日期相差的毫秒数
+        console.log(ms + "毫秒");
+        console.log(ms / 1000 + "秒");
+        console.log(ms / 1000 / 60 + "分钟");
+        console.log(ms / 1000 / 60 / 60 + "小时");
+        console.log(ms / 1000 / 60 / 60 / 24 + "天");
+
+
+        // 各种toString
+        console.log("===================");
+        console.log(now.toString());
+        console.log(now.toTimeString());
+        console.log(now.toDateString());
+        console.log(now.toLocaleString());
+        console.log(now.toLocaleTimeString());
+        console.log(now.toLocaleDateString());
+        console.log(now.valueOf());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

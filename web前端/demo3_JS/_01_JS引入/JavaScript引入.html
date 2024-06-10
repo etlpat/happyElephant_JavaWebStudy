@@ -1,0 +1,105 @@
+<!-- 
+    一.JavaScript语言
+        1.脚本语言：
+            JS是一种解释型的脚本语言。
+            不同于C/C++/Java等语言的先编译成二进制文件后运行，
+            JavaScript语言不会被编译，而是在程序运行时直接被浏览器逐行解释执行
+        2.基于对象
+            JS时基于对象的脚本语言，它不仅可以创建对象，而且可以使用现有的对象
+            但是，JS不完全具备面向对象的三大特征，因此JS【不是面向对象】的编程语言
+            （JS语言能够实现封装，可以模拟继承，不支持多态）
+        3.弱类型
+            JS是弱类型语言（数据有明确的类型，但变量(引用)不会区分类型）
+        4.事件驱动
+            JS是一种由事件驱动的脚本语言，它不需要经过web服务器就可以对用户的输入做出响应
+        5.跨平台性
+            跨平台性良好，不依赖操作系统，仅需要浏览器的支持
+
+
+
+    二.JavaScript引入方式
+        1.内嵌式：
+            方式：在head中通过一对script标签定义脚本代码
+            语法：<script> JS脚本语言 </script>      
+            注意：通常内嵌式JS语言都是定义在head中，但是其实只要在该文件中就不报错（无论在调用语句前后都正确）
+                （可以定义在body标签，或定义在html标签中，或直接定义在html标签外，都正确）
+
+        2.引入外部文件
+            方式：在.js中定义JS脚本代码，然后通过script标签引入该文件
+            语法：①写.js文件：按照JS的语法规则，直接写代码即可
+                 ②引入.js文件：<script src="文件路径"></script>
+                    在script标签的src属性中，定义js文件的路径
+        
+        注意事项：
+            1.一个script标签，不能同时引入外部文件和定义内嵌脚本
+                每一个script标签，只能在内嵌式或引入外部文件式中选其一
+            2.用来引入外部js文件的script标签，中间做好不要有任何文字
+
+
+
+    三.JS中函数的声明
+        方式：通过function关键字声明
+        语法1：function 函数名(参数列表) {函数体}
+        语法2：var 函数名 = function (参数列表) {函数体}
+        e.g. function func() { alert("hello world") }
+             var func = function () { alert("hello world") }
+        调用：通过"func()"在需要的位置调用该函数，注意不要丢了括号
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .MyDiv {
+            width: 400px;
+            height: 300px;
+            background-color: blanchedalmond;
+            border: 1px solid red;
+            border-radius: 5%;
+            margin: 0px auto;
+        }
+
+        .MyButton {
+            width: 100px;
+            height: 70px;
+            background-color: red;
+            font-size: 20px;
+            font-family: 楷书;
+            color: white;
+            border-radius: 30%;
+            margin: 20px 20px;
+        }
+
+        .b2 {
+            background-color: blue;
+        }
+    </style>
+
+    <!-- 1.内嵌式引入JS代码 -->
+    <script>
+        function func1() {
+            alert("hello 这里是按钮1 这是惊喜！！！")
+        }
+    </script>
+
+    <!-- 2.引入外部文件的JS代码 -->
+    <script src="./button.js"></script>
+
+</head>
+
+<body>
+    <div class="MyDiv">
+        <input type="button" class="MyButton b1" value="请点我！" onclick="func1()">
+        <input type="button" class="MyButton b2" value="请点我！" onclick="func2()">
+    </div>
+
+</body>
+
+</html>

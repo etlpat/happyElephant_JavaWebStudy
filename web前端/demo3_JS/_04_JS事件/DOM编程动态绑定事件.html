@@ -1,0 +1,68 @@
+<!-- 
+    通过DOM编程动态绑定事件
+
+    1.方法
+        先获取到元素的对象
+        之后通过为该对象的事件属性赋值，来添加事件
+        e.g. var v = document.getElementById("XXX");// 通过id获取对象（注意：这段JS代码必须定义在html创建该对象之后）
+             v.onclick = function(){...}// 为对象的单击事件赋值
+        
+    2.通过onload事件，使得JS代码仍然定义在head中
+        概述：由于获取元素对象必须在对象创建之后才能执行，因此这段JS只能定义在创建对象后面
+             但是，若想让该段JS方法放在head中定义，也可以通过onload事件来实现
+        onload事件：onload事件是body标签的事件，当执行完body标签后，程序会自动调用onload实现
+        方式：先将JS代码封装到一个函数中，然后把这个函数赋给obload事件即可
+        语法：
+            语法1：通过body标签的onload事件
+                <script> function f1(){...} </script>
+                <body onload="f1()">...</body >
+            语法2：通过window对象的onload属性
+                window.onload = function(){...}
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 【方式2：通过body的onload事件标签】
+        // 以下函数在onload事件执行时调用
+        function afterOnLoadFunc() {
+            var b = document.getElementById("b2");
+            b.onclick = function () {
+                console.log("按钮2被单击");
+            }
+        }
+
+        // // 【方式3：通过window对象的onload事件属性】
+        // window.onload = function () {
+        //     var b = document.getElementById("b3");
+        //     b.onclick = function () {
+        //         console.log("按钮3被单击");
+        //     }
+        // }
+    </script>
+</head>
+
+<body onload="afterOnLoadFunc()">
+
+    <input type="button" id="b1" value="按钮1" />
+    <input type="button" id="b2" value="按钮2" />
+    <input type="button" id="b3" value="按钮3" />
+
+    <script>
+        //【方式1：将JS代码写在对象定义后】
+        // 注意：该段JS代码必须定义在创建按钮对象的html语言后
+        var b = document.getElementById("b1");// 通过id获取对象
+        b.onclick = function () {// 为对象的事件属性赋值
+            console.log("按钮1被单击");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!-- 
+    DOM
+
+    1.概念
+        DOM是Document Object Model(document对象编程)的缩写
+        DOM编程，就是使用document对象的API，完成对document对象的修改，使得网页数据、样式动态变化
+    
+    
+    2.document对象
+        (1)概念：document对象代表整个html文档，可用来访问页面中的所有元素
+        (2)document对象的创建：
+            服务器中存放着html文件，浏览器会将该heml文件解释创建成一个document对象
+            document对象在浏览器上，用户对页面进行修改，修改的是该document对象，而非服务器中的html代码
+            浏览器最初生成的document对象，是按照html文档生成的，之后用户对其进行修改，document对象就会和html文档不完全一致
+        (3)document对象的结构：
+            document对象的逻辑结构是“树”型结构（标签的层层嵌套，对应树的层次关系）
+                补充：dom树的结点
+                    1.元素结点：enement，即标签
+                    2.属性结点：attribute，即标签的属性
+                    3.文本结点：text，即双标签中间的文字
+            若某标签看作父节点，则标签中的属性、文本、标签结点，从上到下依次均为该父标签的子节点
+            e.g. <div class="color" id="d"> 哈哈<br/> </div>
+                以上div标签中，子节点为class、id、哈哈、br标签
+            DOM编程，就是改变该document对象的树结构，从而实现网页的动态改变
+
+
+    3.DOM编程步骤
+        步骤：
+        1.获得document对象（window.document）
+        2.从document对象中获取要操作的元素（直接获取/间接获取）
+        3.对元素进行操作（操作元素的属性/样式/文本；增删改查）
+
+
+
+    4.获取元素
+        [1]直接获取document的元素：
+        (1)根据id获取元素【最常用】
+            语法：getElementById("元素id")，返回元素对象
+            var elem = document.getElementById("xxx");
+        (2)根据标签名获取多个元素
+            语法：getElementByTagName("标签名")，返回该类标签的对象数组
+            var arr = document.getElementsByTagName("input");
+        (3)根据name获取多个元素
+            语法：getElementByName("name值")，返回具有该name值的对象数组
+            var arr = document.getElementsByName("张三");
+        (4)根据class获取多个元素
+            语法：getElementByClassName("class值")，返回具有该class值的对象数组
+            var arr = document.getElementsByClassName("MyColor");
+        注意：
+            以上方法中，只有getElementById是获取一个对象，其它都是获取对象数组
+            原因：只有元素的id具有唯一性，其它这些属性都能被多个对象重复使用
+        
+        [2]间接获取document的元素：
+        (1)通过父元素获取（全部）子元素
+            语法：var arr = 父对象.children
+            功能：获取父元素的子对象数组
+        (2)通过父元素获取（首个）子元素
+            语法：var son = 父对象.firstElementChild
+            功能：获取父元素的首个子元素
+        (3)通过父元素获取（最后一个）子元素
+            语法：var son = 父对象.lastElementChild
+            功能：获取父元素的最后一个子元素
+        (4)通过子元素获取父元素
+            语法：var base = 子对象.parentElement
+            功能：通过子元素获取父元素
+        (5)通过当前元素获取兄弟元素
+            语法：var bro = 元素.preElementSibling// 获取前一个兄弟元素
+                 var bro = 元素.nextElementSibling// 获取后一个兄弟元素
+
+
+    5.修改元素
+        (1)修改元素属性
+            方式：很简单，直接通过对象即可访问到属性
+            语法：对象.属性="xxx";
+            e.g. input1.type="button";
+                 input2.style.color="red";
+            注意：若某些样式属性如border-radius，在js代码中对应的属性格式为borderRadius
+        (2)修改元素文本
+            方式：通过innerText/innerHTML来修改
+            语法：div.innerText="hello world";
+                 div.innerText="hello world";
+            注意：元素的innerText属性代表不带html结构的纯文本
+                 元素的innerHTML属性代表带html结构的纯文本
+        (3)创建元素
+            语法：
+                创建元素：var 元素1 = document.createElement("标签类型");
+                将元素添加到父元素中：父元素.appendChild(元素1);
+        (4)删除元素
+            语法：元素.remove();
+            功能：删除该元素
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        document.getElementById();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

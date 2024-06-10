@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .outerDiv {
+            width: 400px;
+            height: 300px;
+            background-color: rgb(26, 122, 239);
+            border: 10px solid blue;
+            border-radius: 5%;
+            padding: 0px 20px;
+            margin: auto;
+        }
+
+        .innerDiv {
+            text-align: center;
+            width: 330px;
+            height: 80px;
+            background-color: rgba(48, 210, 255, 0.772);
+            border: 10px solid blue;
+            border-radius: 15%;
+            padding: 10px;
+            margin: 10px auto;
+        }
+
+        .d1 {
+            height: 120px;
+            background-color: rgb(5, 48, 85);
+            color: rgb(67, 220, 67);
+            font-size: 80px;
+        }
+
+        .d2 {
+            height: 70px;
+        }
+
+        .btn {
+            width: 95px;
+            height: 60px;
+            font-size: 35px;
+            font-family: "隶书";
+            background-color: aquamarine;
+            border: 5px solid rgb(0, 82, 189);
+            border-radius: 30%;
+            margin: 5px 5px;
+        }
+    </style>
+
+    <script>
+        var d1;
+        var num = 0;
+        var MyInterval;
+        var flag = false;
+
+        window.onload = function () {
+            d1 = document.getElementById("d1");
+        }
+
+        function timeAdd() {
+            num += 1;
+            d1.innerText = num;
+        }
+
+        function timeStart() {
+            if (!flag) {
+                MyInterval = setInterval("timeAdd()", 1000);
+                flag = true;
+            }
+        }
+
+        function timeStop() {
+            if (flag) {
+                clearInterval(MyInterval);
+                flag = false;
+            }
+        }
+
+        function timeClear() {
+            if (flag) {
+                timeStop();
+            }
+            num = 0;
+            d1.innerText = 0;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="outerDiv">
+        <div class="innerDiv d1" id="d1">0</div>
+        <div class="innerDiv d2">
+            <input type="button" class="btn" id="b1" value="开始" onclick="timeStart()">
+            <input type="button" class="btn" id="b2" value="停止" onclick="timeStop()">
+            <input type="button" class="btn" id="b3" value="清零" onclick="timeClear()">
+        </div>
+    </div>
+</body>
+
+</html>

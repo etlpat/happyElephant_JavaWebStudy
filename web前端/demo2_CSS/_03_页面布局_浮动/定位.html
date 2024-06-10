@@ -1,0 +1,83 @@
+<!-- 
+    CSS定位
+        概念：CSS通过position属性用于设置元素的定位类型。
+             并且还要设置top, right, bottom, left属性用于定位
+
+        position属性的值：
+            1.static（静态）：这是元素的默认值。元素按照正常的文档流进行定位。
+            2.relative（相对）：不脱离文档流，相对于之前的位置偏移
+            3.absolute（绝对）：脱离文档流，相对于边框位置绝对不变（但相对于窗口位置可改变，下拉窗口absolute元素会被拉上去）
+            4.fixed（固定）：脱离文档流，相对于窗口位置绝对不变（就像广告，下拉网页后相对于窗口位置不变）
+
+        top/right/button/left属性：
+            语法：一般赋值666px或66%，表示定位的相对位置
+            注意：1.对于不同position类型，top/right/button/left属性的意义不一样
+                        static元素的位置是按照文本流来的，对top/right/button/left赋值没有意义
+                        relative元素赋值top/right/button/left，表示相对原来文本流的位置
+                        absolute元素赋值top/right/button/left，表示相对页面边框的位置
+                        fixed元素赋值top/right/button/left，表示相对窗口的位置
+                2.一般来说top和button二者选其一进行赋值；left和right二者选其一进行赋值即可
+ -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .Div {
+            width: 100px;
+            height: 100px;
+            font-size: 30px;
+            color: black;
+            border: 1px solid blue;
+        }
+
+        .d1 {
+            background-color: antiquewhite;
+            /* position为默认模式 */
+            position: static;
+        }
+
+        .d2 {
+            background-color: aquamarine;
+            /* position为相对模式 */
+            position: relative;
+            left: 50px;
+            top: 50px;
+        }
+
+        .d3 {
+            background-color: aqua;
+            /* position为绝对模式 */
+            position: absolute;
+            right: 200px;
+            top: 200px;
+        }
+
+        .d4 {
+            background-color: rgb(237, 255, 80);
+            /* position为固定模式 */
+            position: fixed;
+            left: 200px;
+            bottom: 200px
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="Div d1">D1</div>
+    <div class="Div d2">D2</div>
+    <div class="Div d3">D3</div>
+    <div class="Div d4">D4</div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>

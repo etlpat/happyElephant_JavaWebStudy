@@ -1,0 +1,71 @@
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>列表标签</title>
+</head>
+
+<body>
+  <!-- 
+        有序列表（ol：order list）
+        无序列表（ul：unorder list）
+        列表项（li:list item）
+
+        注意事项：
+            1.有序列表，即列表项前带有编号
+            2.无序列表，即列表项前不带编号
+            3.有序和无序列表，都需要由列表项充当其元素
+            4.有序列表和无序列表的唯一区别是列表项是否有序号，
+              二者在网页中列表项从上到下的顺序都是编译器从上到下的顺序
+    -->
+
+  <p>1.有序列表如下：</p>
+  <ol>
+    <li>有序列表项1</li>
+    <li>有序列表项2</li>
+    <li>有序列表项3</li>
+  </ol>
+  <br />
+
+  <p>2.无序列表如下：</p>
+  <ul>
+    <li>无序列表项1</li>
+    <li>无序列表项2</li>
+    <li>无序列表项3</li>
+  </ul>
+  <br /><br />
+
+  <!-- 
+        列表可以嵌套
+    -->
+  <p>3.有序列表嵌套无序列表如下：</p>
+  <ol>
+    <li>无序列表1</li>
+    <ul>
+      <li>列表项1.1</li>
+      <li>列表项1.2</li>
+      <li>列表项1.3</li>
+    </ul>
+    <li>无序列表2</li>
+    <ul>
+      <li>列表项2.1</li>
+      <li>列表项2.2</li>
+    </ul>
+    <li>无序列表3</li>
+    <ul>
+      <li>列表项3.1</li>
+      <li>列表项3.2</li>
+      <li>列表项3.3</li>
+      <li>列表项3.4</li>
+    </ul>
+  </ol>
+
+  <h3>===============</h3>
+  <ul style="list-style-type: none;">
+    <li style="float: left; margin-right: 10px;"><a href="#">列表项1</a></li>
+    <li style="float: left; margin-right: 10px;"><a href="#">列表项2</a></li>
+    <li style="float: left; margin-right: 10px;"><a href="#">列表项3</a></li>
+  </ul>
+</body>
+
+</html>

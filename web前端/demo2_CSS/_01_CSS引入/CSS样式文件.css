@@ -1,0 +1,9 @@
+input {
+    width: 200px;
+    height: 200px;
+    background-color:blue;
+    color: whitesmoke;
+    font-size: 20px;
+    border: 5% solid rgb(37, 216, 213);
+    border-radius: 20%;
+}

@@ -1,0 +1,73 @@
+<!-- 
+    流式布局
+        流式布局式html中的默认布局
+        流式布局中，元素会按照它们在HTML代码中的顺序自上而下、从左到右排列。
+        块级元素会独占一行，而行内元素则会在一行内水平排列。
+
+
+    浮动
+        概念：HTML中的浮动布局是一种技术，通过将元素设置为浮动，可以使元素在页面上移动，并且可以与其他元素重叠。
+        float浮动：可以使用CSS的float属性来实现浮动布局。float属性有三个值：left、right和none。
+                  元素的float属性默认为none，将float属性设置为left或right会使元素向左或向右浮动，而将float属性设置为none则会使元素不浮动。
+        注意：
+            1.当元素被设为浮动，会脱离文本流，即脱离原本的流式布局，变成单独的浮动布局元素
+            2.脱离文档流的浮动元素，后面的元素会无视这个元素，但依然会为这个浮动元素让出位置
+            3.浮动元素直接一般不会相互重叠，若是left浮动，则后来的元素会在上一个浮动元素的左边
+            4.浮动元素会与非浮动元素发生重叠，浮动元素会在图层的最上面（但是最好不要这么做，浮动的设计初衷就是防止重叠）
+            5.元素脱离文本流，并向left/right浮动，是相对于脱离文本流前的位置而言的，整个浮动布局是在已经生成的页面的基础上进行浮动
+ -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .outerDiv {
+            width: 800px;
+            height: 800px;
+            background-color: tomato;
+            border: 1px solid blue;
+        }
+
+        .innerDiv {
+            width: 200px;
+            height: 200px;
+            font-size: 30px;
+            color: black;
+            border: 1px solid blue;
+            /* 将内部div元素设置为浮动（left将原本的元素流按照从左到右的顺序排布） */
+            float: left;
+        }
+
+        .d1 {
+            background-color: antiquewhite;
+        }
+
+        .d2 {
+            background-color: aquamarine;
+        }
+
+        .d3 {
+            background-color: aqua;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="outerDiv">
+        <div class="innerDiv d1">D1</div>
+        <div class="innerDiv d2">D2</div>
+        <div class="innerDiv d3">D3</div>
+
+    </div>
+</body>
+
+</html>

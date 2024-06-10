@@ -1,0 +1,50 @@
+<!-- 
+    表单标签：form
+        功能：获取用户输入的信息，之后将其发送到服务器中
+        语法：<form action="XXX" method="XXX"> 表单项... </form>
+        属性：
+            1.action：数据提交的地址（完整url/相对路径/绝对路径）
+            2.method：信息的提交方式，默认值为get。常见提交方式如下：
+                ①get，将表单项数据以键值对的方式后缀到url后。以?作为参数开始的标识符，多个参数用&隔开
+                      如：http://xxxxxx/?key1=value1&key2=value2&...（这里键值对的key是表单项的name属性，value是表单项的value属性）
+                      注意事项：1.get传输数据，数据会直接暴露在地址栏上，不安全
+                               2.地址栏长度有限(一般2000字符左右)，提交的数据量不大
+                               3.地址栏上只能提交字符，不能提交文件（文件是二进制）
+                ②post，将表单项数据以键值对的方式通过【请求体】发送，不会缀到url后
+                       注意事项：1.数据通过请求体传输，安全性相对高
+                                2.请求体可容纳的数据量大，并且支持字符/字节数据，可以传输大文件
+                                3，post相较于get，效率略低
+                    
+
+    表单项标签：input
+        功能：用于收集用户信息
+        语法：<input type="XXX" name="XXX" />
+        属性：
+            1.type：表单项input的类型，种类如下：
+                ①text 文本输入框，是默认类型
+                ②password 密码输入框，输入的字符会被隐藏
+                ③submit 用于提交表单中全部表单项的数据的按钮
+                ④reset 用于清空表单中全部表单项的内容的按钮
+                ⑤button 用于创建一个可点击的按钮
+                ...
+            2.name：表单项的名称，在该表单项提交时作为“键”输出
+                    每个表单项必须都有name属性，可重复
+            3.value：表单项的值，在该表单项提交时作为“值”输出
+                    value属性默认为空；用户在表单中输入数据，相当于修改表单项的value属性
+                    若手动为value属性赋值，则input输入框中初始的值就是value的值。不过一般不为value赋初值
+ -->
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>表单标签test</title>
+  </head>
+  <body>
+    <form action="./test.html" method="get">
+      用户名： <input type="text" name="username" /><br />
+      密码： <input type="password" name="userpsd" /><br />
+      <input type="submit" name="提交" />
+      <input type="reset" name="清空" />
+    </form>
+  </body>
+</html>

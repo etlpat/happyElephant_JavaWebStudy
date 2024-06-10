@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .TdText {
+            text-align: right;
+        }
+    </style>
+
+    <script>
+        function checkNumber() {
+            var r = /^\d{11}$/;
+            var phone = document.getElementById("userphone");
+            if (!r.test(phone.value)) {
+                phone.value += "必须是11位数字";
+            }
+        }
+
+        function checkEmail() {
+            var r = /^[\w-]+(\.[\w-]+)*@(qq|163|gmail)(\.[\w-]+)*$/;
+            var email = document.getElementById("useremail");
+            if (!r.test(email.value)) {
+                email.value += "必须是用户名@域名";
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <form action="xxx" method="get">
+        <h2 style="text-align: center; text-decoration: underline;">请 留 下 个 人 资 料</h2>
+        <table style="margin: auto;">
+            <tr>
+                <td class="TdText">姓名：</td>
+                <td><input type="text" name="username"></td>
+            </tr>
+            <tr>
+                <td class="TdText">E-mail：</td>
+                <td><input type="text" name="useremail" id="useremail" onchange="checkEmail()"></td>
+            </tr>
+            <tr>
+                <td class="TdText">电话：</td>
+                <td><input type="text" name="userphone" id="userphone" onchange="checkNumber()"></td>
+            </tr>
+            <tr>
+                <td class="TdText">性别：</td>
+                <td>
+                    <input type="radio" name="usersex" value="girl" checked>女&nbsp;&nbsp;
+                    <input type="radio" name="usersex" value="boy">男
+                </td>
+            </tr>
+            <tr>
+                <td class="TdText">年龄：</td>
+                <td>
+                    <select name="userage">
+                        <option value="-1" selected>20以下</option>
+                        <option value="0">20</option>
+                        <option value="1">21</option>
+                        <option value="2">22</option>
+                        <option value="3">23</option>
+                        <option value="4">24</option>
+                        <option value="5">25</option>
+                        <option value="6">25以上</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="TdText">留言板：</td>
+                <td>
+                    <textarea name="usertext" cols="30" rows="5"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td class="TdText">您的爱好</td>
+                <td>
+                    <input type="checkbox" name="userhobby" value="sport">运动<br>
+                    <input type="checkbox" name="userhobby" value="read">阅读<br>
+                    <input type="checkbox" name="userhobby" value="listensong">听音乐<br>
+                    <input type="checkbox" name="userhobby" value="trip">旅游
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" value="提交">
+                    <input type="reset" value="全部重新">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+
+</html>

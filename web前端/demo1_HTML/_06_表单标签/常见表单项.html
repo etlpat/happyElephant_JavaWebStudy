@@ -1,0 +1,116 @@
+<!-- 
+    input表单项的常见种类：
+        1.text [文本输入框]，是默认类型
+        2.password [密码输入框]，输入的字符会被隐藏
+        3.submit [提交按钮]，点击会提交表单数据
+        4.reset [清空按钮]，点击会清空表单数据
+
+        5.radio [单选框]，每个表单项是一个单选框，多个表单项中只能选择一个输出
+                注意：【一组单选框的name属性要相同，value属性要不同】
+                    当多个单选框使用相同的name属性值时，会被认为是同一组选框，每个单选框间会有互斥效果（即只能同时选一个）
+                    提交表单数据时，只会提交被选中的单选框对应的键值对。因此，要为每个单选框赋不同的value加以区别
+        
+        6.checkbod [复选框]，每个表单项是一个复选框
+                注意：【一组复选框的name属性要相同，value属性要不同】
+                    当复选框数据提交时，提交的多个表单数据的name相同，value各不相同
+                    如：name=value1&name=value2&name=value3...
+    
+        7.hidden [隐藏域] 不显示在界面上，但是提交时会携带
+
+    
+
+    textarea表单项(文本域)
+        文本域：表单项除了常用的input，还有textarea，即文本域或叫多行文本框
+        语法：<textarea name="XXX" cols="XXX" rows="XXX"> 要提交的文本 </textarea>
+        注意：文本域是双标签，它没有value属性，textarea在提交时直接提交双标签中间的文本
+ 
+
+
+    select表单项
+        select表单项，又叫下拉框，
+        语法：<select name="XXX">
+                <option value="XXX"> 选项1 </option>
+                <option value="XXX"> 选项2 </option>
+                <option value="XXX"> 选项3 </option>
+             </select>
+        注意：该选单项返回的键值对是select标签中的name属性和option标签中的value属性
+             若option标签中不设置value属性，则默认返回option选项名
+-->
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>创建表单项test</title>
+  </head>
+  <body>
+    <form action="test.html" method="get">
+      <!-- 隐藏域，不会显示到表单中，但是会被提交 -->
+      <input type="hidden" name="隐藏域" value="这是隐藏的" />
+      <table border="1px" style="margin: 0px auto; width: 400px">
+        <tr>
+          <td>用户名：</td>
+          <td>
+            <!-- 1.文本输入框 -->
+            <input type="text" name="username" />
+          </td>
+        </tr>
+        <tr>
+          <td>用户密码：</td>
+          <td>
+            <!-- 2.密码输入框 -->
+            <input type="password" name="userpsd" />
+          </td>
+        </tr>
+        <tr>
+          <td>用户性别：</td>
+          <!-- 3.单选框 -->
+          <td>
+            <!-- 注意：多个单选框的name属性相同时，这些单选框会有互斥的效果
+                属性 checked="true"，表示当前单选框被默认勾选 -->
+            <input type="radio" name="usersex" value="man" checked="true" />男
+            <input type="radio" name="usersex" value="woman" />女
+            <input type="radio" name="usersex" value="else" />其它
+          </td>
+        </tr>
+        <tr>
+          <td>兴趣爱好：</td>
+          <!-- 4.复选框 -->
+          <td>
+            <input type="checkbox" name="userhobby" value="sing" />唱
+            <input type="checkbox" name="userhobby" value="dance" />跳
+            <input type="checkbox" name="userhobby" value="rap" />rap
+            <input type="checkbox" name="userhobby" value="basketball" />篮球
+          </td>
+        </tr>
+        <tr>
+          <td>个人简介：</td>
+          <!-- 5.textarea表单项--多行文本框 
+            注意：多行文本框不是input表单，而是textarea文本域表单 -->
+          <td>
+            <textarea name="userprofile" cols="40" rows="5"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>籍贯</td>
+          <!-- 6.select表单项--下拉框 -->
+          <td>
+            <select name="usernativeplace">
+              <option value="1">京</option>
+              <option value="2">津</option>
+              <option value="3">冀</option>
+              <!-- selected="true"，该下拉框默认显示该选项 -->
+              <option value="0" selected="true">--请选择--</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <!-- 7.提交和清空按钮 -->
+            <input type="submit" name="提交" />
+            <input type="reset" name="清空" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

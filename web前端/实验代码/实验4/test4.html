@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        var t;
+        window.onload = function () {
+            t = document.getElementById("urlText");
+        }
+
+        function setTextValur(MyUrl) {
+            t.value = MyUrl;
+        }
+
+        function goToUrl() {
+            if (t.value) {
+                location = t.value;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <p>选择要去的网址：</p>
+    <select name="urlSelect" onchange="setTextValur(this.value)">
+        <option value="" selected>请选择</option>
+        <option value="https://www.baidu.com/">百度</option>
+        <option value="https://www.163.com/">网易</option>
+        <option value="https://im.qq.com/">qq</option>
+        <option value="https://www.sina.com.cn/">新浪</option>
+    </select>
+    <input type="text" id="urlText">
+    <input type="button" value="确认跳转" onclick="goToUrl()">
+</body>
+
+</html>

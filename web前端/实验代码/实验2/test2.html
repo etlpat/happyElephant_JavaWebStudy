@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./test2.css">
+
+    <script>
+        var myNav;
+        var defColor;
+        onload = function () {
+            myNav = document.getElementById("MyNav");
+            defColor = myNav.style.backgroundColor;
+        }
+
+        function afterMouseClickNav() { myNav.style.backgroundColor = defColor; }
+
+        function mouseClickNav() {
+            myNav.style.backgroundColor = "orange";
+            setTimeout("afterMouseClickNav()", 200);
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <div class="outerDiv">
+        <header>
+            <h2>某 某 的 博 客</h2>
+        </header>
+        <nav id="MyNav">
+            <ul>
+                <li><a class="aText" href="#" target="_self" onclick="mouseClickNav()">首页</a></li>
+                <li><a class="aText" href="#" target="_self" onclick="mouseClickNav()">博文</a></li>
+                <li><a class="aText" href="#" target="_self" onclick="mouseClickNav()">相册</a></li>
+                <li><a class="aText" href="#" target="_self" onclick="mouseClickNav()">个人档案</a></li>
+            </ul>
+        </nav>
+        <main>
+            <article>
+                <section>
+                    <h2 class="topText">html5</h2>
+                    <P class="midText1">
+                        HTML5是构建Web内容的一种语言描述方式，是互联网的新一代标准。
+                        它被设计为简化Web应用程序的搭建，提供新的语义、图形以及多媒体元素，
+                        并且能在不同类型的硬件之上运行。HTML5具有新的元素、属性和行为，
+                        以及更强大的API，比如用本地存储取代cookie。
+                    </P>
+                    <P class="btmText">编辑于2024.01.01</P>
+                </section>
+                <section>
+                    <h2 class="topText">CSS3</h2>
+                    <p class="midText1">
+                        CSS3是CSS（层叠样式表）技术的升级版本，于1999年开始制订，
+                        2001年5月23日W3C完成了CSS3的工作草案。主要包括盒子模型、列表模块、
+                        超链接方式、语言模块、背景和边框、文字特效、多栏布局等模块。
+                    </p>
+                    <P class="btmText">编辑于2024.01.01</P>
+                </section>
+            </article>
+            <aside>
+                <h2 class="topText">简介</h2>
+                <p class="midText2">
+                    <span class="s1">HTML5和CSS3</span>
+                    都是Web开发中的重要技术，它们分别负责网页的内容和外观。
+                    通过使用HTML5和CSS3，可以创建更丰富、更美观的网页，提升用户体验。
+                </p>
+            </aside>
+        </main>
+        <footer>版本所有2024</footer>
+    </div>
+
+</body>
+
+</html>

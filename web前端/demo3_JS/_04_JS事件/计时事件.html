@@ -1,0 +1,71 @@
+<!-- 
+    计时事件
+    
+    (1)概念
+        计时事件：我们有能力做到在一个设定的时间间隔之后来执行代码，而不是在函数被调用后立即执行。
+        两种计时事件：
+            1.setTimeout() - 在指定的毫秒数后执行指定代码。
+            2.setInterval() - 间隔指定的毫秒数不停地执行指定的代码。
+
+
+    (2)setTimeout
+        语法：var 计时器对象 = setTimeout("指定函数", XX毫秒);
+        功能：在XX毫秒后执行指定函数
+        返回值：返回计时器对象，可用通过该计算器对象停止计时器的执行
+        停止执行：clearTimeout(计时器对象);
+
+    (3)setInterval
+        语法：var 计时器对象 = setInterval("指定函数", XX毫秒);
+        功能：按照指定间隔（XX毫秒）不停的执行指定函数
+        返回值：返回计时器对象，可用通过该计算器对象停止计时器的执行
+        停止执行：clearInterval(计时器对象);
+
+
+    (3)注意事项
+        1.setTimeout、clearTimeout、setInterval、clearInterval
+            以上四个方法，都是window对象的方法
+        2.setTimeout，是在指定毫秒后，执行【一次】指定方法
+          setInterval，是以毫秒为间隔，【无限次】执行指定方法
+        3.函数作为参数
+            setTimeout和setInterval，这两个函数的首个实参，必须是以【字符串】的形式传入的函数
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 测试setTimeout
+        var v1;
+        function f1() {
+            // 注意：传参必须传字符串
+            v1 = setTimeout("console.log('f1执行')", 1000);
+        }
+        function stopF1() {
+            clearTimeout(v1);
+        }
+
+        // 测试setInterval
+        var v2;
+        function f2() {
+            v2 = setInterval("console.log('f2执行')", 500);
+        }
+        function stopF2() {
+            clearInterval(v2);
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="f1执行" onclick="f1()">
+    <input type="button" value="f1停止" onclick="stopF1()">
+    <br>
+    <input type="button" value="f2执行" onclick="f2()">
+    <input type="button" value="f2停止" onclick="stopF2()">
+</body>
+
+</html>

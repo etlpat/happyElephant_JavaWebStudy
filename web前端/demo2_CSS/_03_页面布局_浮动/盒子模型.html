@@ -1,0 +1,101 @@
+<!-- 
+    盒子模型
+        1.概念：CSS盒子模型是Web页面布局的基础，它影响着元素之间的布局和元素自身的布局属性。
+               盒子模型由四部分组成：内容（Content）、内边距（Padding）、边框（Border）和外边距（Margin）。
+
+        2.组成部分：
+            1.内容（Content）：这是盒子模型的中心部分，它包含了元素的实际内容，如文本、图片等。
+                内容的宽度和高度可以通过CSS的width和height属性来设置。
+            2.内边距（Padding）：内边距位于内容和边框之间，是内容区域周围的空白区域。
+                内边距的大小可以通过CSS的padding属性来设置，它可以影响元素的总大小。
+            3.边框（Border）：边框是围绕在内边距和内容周围的线条。
+                边框的样式、宽度和颜色可以通过CSS的border-style、border-width和border-color属性来设置。
+            4.外边距（Margin）：外边距是元素的外部空间，它位于元素的边框和其他元素之间。
+                外边距的大小可以通过CSS的margin属性来设置，它可以创建元素之间的空白空间。
+        
+        3.注意事项：
+            1.默认设置中，盒子模型的width和height设置的是“内容”区域的大小
+                内容区域的大小是恒定不变的，设置内边距或边框会使盒子模型变大，但是内容区域不会变大
+            2.在CSS中，可以使用box-sizing属性来改变盒子模型的计算方式。
+                默认值是content-box，这意味着元素的宽度和高度只包括内容区域，不包括内边距和边框。
+                如果设置为border-box，则元素的宽度和高度会包括内容、内边距和边框。
+            3.此外，CSS还提供了一些用于控制元素内外边距的属性，如下：
+                内边距：padding-top、padding-right、padding-bottom、padding-left
+                为边界：margin-top、margin-right、margin-bottom、margin-left
+                还可以通过直接赋值方式设置内外边距： padding/margin:数字;
+                    若是4个数字，分别顺时针代表“上、右、下、左”
+                    若是2个数字，分别代表“上下、左右”
+                    若是1个数字，直接代表“上下左右”
+            4.外边距可以设为auto自动距离
+                外边距：左右auto为居中，上下auto为0
+                内边距：上下左右auto为0
+                
+ -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .outerDiv {
+            /* 设置“内容”区域 */
+            width: 600px;
+            height: 300px;
+            background-color: tomato;
+            /* 设置边框 */
+            border: 20px solid blue;
+            border-radius: 5%;
+            /* 设置内边距 */
+            padding-top: 50px;
+            padding-bottom: 50px;
+            padding-left: 50px;
+            padding-right: 50px;
+            /* 设置外边距 */
+            margin: 120px auto;
+        }
+
+        .innerDiv {
+            float: left;
+            font-size: 30px;
+            color: black;
+            /* 设置“内容”区域 */
+            width: 100px;
+            height: 100px;
+            /* 设置边框 */
+            border: 10px solid blue;
+            /* 设置内边距 */
+            padding: 20px;
+            /* 设置外边距 */
+            margin: 10px 20px;
+        }
+
+        .d1 {
+            background-color: antiquewhite;
+        }
+
+        .d2 {
+            background-color: aquamarine;
+        }
+
+        .d3 {
+            background-color: aqua;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="outerDiv">
+        <div class="innerDiv d1">D1</div>
+        <div class="innerDiv d2">D2</div>
+        <div class="innerDiv d3">D3</div>
+    </div>
+</body>
+
+</html>

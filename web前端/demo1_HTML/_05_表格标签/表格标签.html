@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        表格标签
+        层级关系：
+        table 整张表格
+            thead 表头
+            tbody 表体
+            tfoot 表尾
+                tr 表格中的一行(table row)
+                    td 行中的一个单元格(table data cell -- 数据单元格)
+                    th 自带加粗和居中效果的td(table header cell -- 表头单元格)
+        注意事项：
+            1.表格内不是必须定义表头、表体、表尾。可以只定义其中的一两个；或者都不定义，直接tr
+            2.若表格中不定义表头、表体、表尾，table标签中直接为tr，则浏览器在解析时，会为表格中所有行都添加上tbody标签
+     -->
+
+    <!-- 1.如下为表格的写法 -->
+    <h3 style="text-align: center">员工技能竞赛评分表</h3>
+    <table border="1px" style="margin: 0px auto; width: 300px">
+      <thead>
+        <tr>
+          <th>排名</th>
+          <th>名称</th>
+          <th>分数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>李四</td>
+          <td>97</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>张三</td>
+          <td>82</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>王五</td>
+          <td>69</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+  <br /><br /><br />
+
+  <!-- 2.表格可以省略定义表头、表体、表尾，浏览器会将其自带解析为tbody -->
+  <h3 style="text-align: center">某饭店菜单</h3>
+  <table border="1px" style="margin: 0px auto; width: 300px">
+    <tr>
+      <th>序号</th>
+      <th>菜名</th>
+      <th>口味</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>红烧肉</td>
+      <td>咸甜</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>麻辣香锅</td>
+      <td>咸辣</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>番茄炒蛋</td>
+      <td>酸甜</td>
+    </tr>
+  </table>
+</html>

@@ -1,0 +1,100 @@
+<!-- 
+    div标签（块结构）
+        div = division:：分割、区域
+        语法：<div style="XXX"> 块内结构 </div> 
+        功能：为页面划分区块，适合做页面布局
+        注意事项：dev标签时块元素，自己独占一行（块元素的CSS样式的宽、高往往是生效的）
+
+    span标签（行内结构）
+        span：小区域、小跨度
+        语法：<span style="XXX"> 行内文本 </span>
+        功能：为某段文本进行修饰，适合对文本进行处理
+        注意事项：span标签是内联元素，不会自己独占一行（内联元素的CSS样式的宽、高大多不生效）
+
+
+
+    注意事项：
+        1.块元素和内联元素
+            ①块元素
+                概念：在浏览器中显示时，通常会从新行来开始和结束
+                （若上一行尾未换行，会从新的一行开始；本行结束自动换行）
+                注意：块元素的CSS样式的宽、高往往是生效的
+                e.g.<h1>,<p>,<ul>,<table>
+            ②内联元素
+                概念：通常不会以新行开始(和结束)（开始和结束不会自动换行）
+                注意：内联元素的CSS样式的宽、高大多不生效
+                e.g.<a>,<td>,<img>
+
+        2.css设置样式：通过style属性进行设置
+            语法：style="样式名:样式值;样式名:样式值;..."
+ -->
+
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 用块div标签划分结构 -->
+    <div style="
+        border: 10px solid red;/* 边线 : 10像素 实线 红色*/
+        width: 90%; /* 宽度为窗口的90% */
+        height: 90%;
+        margin: 5% auto; /* 上下外边距为5%，左右为自动（居中） */
+        background-color:blue;
+      ">
+        <div style="
+        border: 5px solid red;
+        width: 30%; /* 宽度为上一层div的90% */
+        height: 20%;
+        margin: 15px auto;
+        background-color: cyan;
+      ">
+            <!-- 用span标签修饰文本 -->
+            <span style="font-size: 20; color: blueviolet; font-weight: bold;">
+                网易手机讯</span>，iQOO于今日晚间带来全新Neo9系列新机，
+            新机不仅在机身优化结构实现轻薄体验
+        </div>
+        <div style="
+        border: 5px solid red;
+        width: 50%;
+        height: 20%;
+        margin: 15px auto;
+        background-color: aquamarine;
+      ">
+            <span style="font-size: 20; color: rgba(226, 43, 177, 0.815); font-weight: bold;">外观设计</span>
+            方面，iQOO Neo9系列的两款产品在外观三围尺寸、
+            厚度以及配色方面完全保持一致。有双色素皮材质拼接而成的红白魂、
+            圆润瓷釉手感的航海蓝以及萤石AG玻璃工艺的经典格斗黑可选。
+
+        </div>
+        <div style="
+        border: 5px solid red;
+        width: 70%;
+        height: 20%;
+        margin: 15px auto;
+        background-color: chartreuse;
+      ">
+            当然，iQOONeo9系列拿在手里最直观的感觉是，轻薄且舒适。机身厚度控制在7.99mm，整机重量仅为190g
+            ，在搭载6.78英寸20:9屏幕后，左右边框收窄至1.54mm，机身宽度同步收窄至75.7mm。
+
+        </div>
+        <div style="
+        border: 5px solid red;
+        width: 90%;
+        height: 20%;
+        margin: 15px auto;
+        background-color:darkturquoise;
+      ">
+            要说<span style="font-size: 20; color: rgb(226, 43, 165); font-weight: bold;">iQOO Neo9</span>
+            系列最大卖点那当然是强悍的性能，其中Neo9 Pro搭载vivo
+            X100系列同款联发科最强天玑9300芯片；而Neo9标准版则搭载高通骁龙8
+            Gen2芯片。两款新机均标配12/16GB增强版LPDDR5X运存以及UFS
+            4.0规格闪存，组合旗舰性能铁三角。散热方面，Neo9系列还搭载6K天幕VC液冷散热系统，
+        </div>
+    </div>
+</body>
+
+</html>

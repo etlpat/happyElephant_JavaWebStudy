@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .outerDiv {
+            width: 90%;
+            height: 700px;
+            background-color: rgb(97, 156, 228);
+            border: 10px solid blue;
+            border-radius: 5%;
+            margin: 20px auto;
+        }
+
+        .innerDiv {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(206, 23, 215, 0.772);
+            border: 1px solid rgb(159, 5, 56);
+            border-radius: 50%;
+        }
+    </style>
+
+    <script>
+        var myTop = 400;
+        var myLeft = 350;
+        var flag = false;
+        var keyEvent;
+        var inputText;
+        var clock;
+        var innerDiv;
+        var outerDiv;
+        onload = function () {
+            innerDiv = document.getElementById("innerDiv1");
+            outerDiv = document.getElementById("outerDiv1");
+            inputText = document.getElementById("it")
+            innerDiv.style.marginTop = myTop + "px";
+            innerDiv.style.marginLeft = myLeft + "px";
+        }
+
+        function toW() {
+            myTop -= 10;
+            innerDiv.style.marginTop = myTop + "px";
+        }
+        function toS() {
+            myTop += 10;
+            innerDiv.style.marginTop = myTop + "px";
+        }
+        function toA() {
+            myLeft -= 10;
+            innerDiv.style.marginLeft = myLeft + "px";
+        }
+        function toD() {
+            myLeft += 10;
+            innerDiv.style.marginLeft = myLeft + "px";
+        }
+
+        function eventKey(keySelect, func) {
+            if (flag) {
+                if (keyEvent == keySelect) {
+                    return;
+                }
+                clearInterval(clock);
+            }
+            clock = setInterval(func, 20);
+            keyEvent = myLeft;
+            flag = true;
+        }
+
+        function eventKeyEvent() {
+            if (inputText.value[inputText.value.length - 1] === "W" ||
+                inputText.value[inputText.value.length - 1] === "w") {
+                eventKey("W", "toW()");
+            }
+            if (inputText.value[inputText.value.length - 1] === "S" ||
+                inputText.value[inputText.value.length - 1] === "s") {
+                eventKey("S", "toS()");
+            }
+            if (inputText.value[inputText.value.length - 1] === "A" ||
+                inputText.value[inputText.value.length - 1] === "a") {
+                eventKey("A", "toA()");
+            }
+            if (inputText.value[inputText.value.length - 1] === "D" ||
+                inputText.value[inputText.value.length - 1] === "d") {
+                eventKey("D", "toD()");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="outerDiv" id="outerDiv1">
+        <div class="innerDiv" id="innerDiv1"></div>
+    </div>
+    <input type="text" id="it" onchange="eventKeyEvent()">
+</body>
+
+</html>

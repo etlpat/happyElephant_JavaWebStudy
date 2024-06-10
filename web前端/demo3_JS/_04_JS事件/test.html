@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .btn {
+            /* 内容 */
+            width: 400px;
+            height: 300px;
+            font-family: "微软雅黑";
+            font-size: 40px;
+            /* 边框 */
+            border: 10px solid;
+            border-radius: 10%;
+        }
+
+        .b1Color {
+            color: white;
+            background-color: rgb(171, 104, 204);
+            border-color: purple;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var b = document.getElementById("b1");
+            b.onclick = function () {
+                if (b.style.color == "white") {
+                    b.style.color = "black";
+                    b.style.backgroundColor = "rgb(249, 130, 61)";
+                    b.style.borderColor = "red";
+                } else {
+                    b.style.color = "white";
+                    b.style.backgroundColor = "rgb(171, 104, 204)";
+                    b.style.borderColor = "purple";
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" id="b1" class="btn b1Color" value="按钮">
+
+</body>
+
+</html>

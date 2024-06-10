@@ -1,0 +1,82 @@
+<!-- 
+    JS数组
+        1.创建数组
+            方式1：var arr = new Array(数组长度);
+                    注意：1.若数组长度不填，则默认长度为0；
+                         2.若填写了长度，未赋值时则元素默认为空
+                         3.想表示长度，只能在括号中填写一个整数；若填写多个数会被识别为元素
+            方式2：var arr = new Array(元素1, 元素2, 元素3,...);
+                    注意：若Array的括号中有多个值，则这些值会被认为是数组的元素
+            方式3：var arr = [元素1, 元素2, 元素3,...];
+                    注意：这种创建方式等价于方式2，和python创建列表类似
+                    
+
+        2.数组特点
+            JS数组，类似于Python列表，具有很多相同特征
+            ·长度可变：可以在任何时候增删元素，增删元素时数组长度可动态改变
+            ·稀疏数组：数组的索引位置可以没有任何元素，为undefined
+            ·元素是若类型：数组的元素可以放任何类型
+
+
+        3.常见方法
+            1.concat()	连接两个或更多的数组，并返回结果。
+            2.find()	返回符合传入测试（函数）条件的数组元素。
+            3.findIndex()	返回符合传入测试（函数）条件的数组元素索引。
+            4.indexOf()	搜索数组中的元素，并返回它所在的位置。
+            5.join()	把数组的所有元素放入一个字符串。
+            6.pop()	删除数组的最后一个元素并返回删除的元素。
+            7.push()	向数组的末尾添加一个或更多元素，并返回新的长度。
+            8.reverse()	反转数组的元素顺序。
+            9.shift()	删除并返回数组的第一个元素。
+            10.unshift()	向数组的开头添加一个或更多元素，并返回新的长度。
+            11.slice()	选取数组的一部分，并返回一个新数组。（包前不包后）
+            12.toString()	把数组转换为字符串，并返回结果。
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 创建数组1
+        var arr1 = new Array();
+        console.log(arr1);// []
+        console.log(arr1.length);// 0
+
+        // 为数组1添加元素
+        arr1[0] = 123;
+        arr1[1] = "hello";
+        arr1[4] = true;
+        arr1.length = 6;
+        console.log(arr1);// [123, 'hello', 空, 空, true, 空]
+        console.log(arr1.length);// 6
+
+        // 创建数组2
+        var arr2 = new Array("张三", 25, "男");
+        console.log(arr2);// ['张三', 25, '男']
+
+        // 创建数组3
+        var arr3 = ["李四", 36, "女"];
+        console.log(arr3);// ['李四', 36, '女']
+
+        // 数组常见方法
+        console.log(arr2.concat(arr3));// ['张三', 25, '男', '李四', 36, '女']
+        console.log(arr2.indexOf("张三"));// 0
+        console.log(arr2.join("--"));// 张三--25--男
+        console.log(arr2.reverse());// ['男', 25, '张三']
+        console.log(arr1.slice(1,5));// ['hello', 空 ×2, true]
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

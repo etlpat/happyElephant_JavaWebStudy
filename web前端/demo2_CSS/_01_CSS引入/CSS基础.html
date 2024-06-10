@@ -1,0 +1,100 @@
+<!-- 
+    CSS
+    
+    1.概念
+        CSS(cascading style sheet)即层叠样式表
+        CSS能够对网页中元素位置的排版进行像素级精确控制，支持几乎所有的字体字号样式，
+        拥有对网页对象和模板样式的编辑能力，简单来说，就是美化页面
+    
+    
+    2.CSS的三种引入方式
+        方式1.行内式
+            方式：通过元素标签的style属性引入CSS
+            语法：style="样式名:样式值;样式名:样式值;..."
+            缺点：
+                1.代码复用性低，不利于维护
+                2.CSS样式代码和html代码交织在一起，可读性低，且会导致html文件过大
+
+        方式2.内嵌式
+            方式：通过在head标签中用style标签定义公共的样式
+                 并用选择器确定样式作用的标签
+            语法：
+            <style>
+                input {
+                    样式名1: 样式值1;
+                    样式名2: 样式值2;
+                    ...
+                }
+            </style>
+
+        方式3.外部样式表
+            方式：将CSS代码单独放入一个.css文件中；当html文件需要时，在head中通过link标签引入
+            语法：
+                1.css文件中语法（只写选择器）
+                    input {
+                        样式名1: 样式值1;
+                        样式名2: 样式值2;
+                        ...
+                    }
+                2.link标签引入css文件
+                    <link rel="stylesheet" href="XXX">
+                    rel属性：文件的种类，stylesheet（样式表）表示引入css文件
+                    href属性：文件的路径
+
+    
+    3.注意事项
+        1.三种CSS引入方式的优先级
+            内嵌式和外部引入式的优先级相同，优先选择后定义的样式
+            行内式优先级最高，在三种定义方式都有的情况下，优先选择行内式的样式
+
+
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 2.内嵌式：在head标签中定义样式表 -->
+    <style>
+        input {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(202, 16, 115);
+            color: cornsilk;
+            font-size: 20px;
+            border: 5% solid palevioletred;
+            border-radius: 20%;
+        }
+
+        div {
+            border: 5px solid red;
+            width: 50%;
+            height: 600px;
+            margin: 15px auto;
+            background-color: yellow;
+        }
+    </style>
+
+    <!-- 3.通过link引入外部样式表 -->
+    <link rel="stylesheet" href="./CSS样式文件.css">
+</head>
+
+<body>
+    <div>
+        <h3 style="color: red;">内嵌式块</h3><br><br><br>
+        <!-- 1.行内式定义样式 -->
+        <input type="button" name="button1" value="行内式CSS按钮" style="width: 200px; height: 200px; background-color: rgb(28, 163, 89);
+        font-size: 30px; color:rgb(255, 255, 255); font-family: '隶书';
+        border: 2px solid rgb(4, 95, 4); border-radius: 5px;" />
+        <br><br><br>
+
+        <input type="button" name="button2" value="外部引入式CSS按钮">
+    </div>
+</body>
+
+</html>

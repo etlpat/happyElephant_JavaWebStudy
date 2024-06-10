@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>超链接标签test</title>
+  </head>
+
+  <body>
+    <!-- 
+        超链接标签 a
+        a = anchor，中文：锚、超链接
+        语法：<a href="XXX" target="XXX">成为超链接的文本</a>
+        常见属性：
+            1.href：用于定义要跳转的目标资源的地址
+                    href，即超文本引用(hypertext reference)
+                    该属性可赋的值为：
+                        ①完整的url，如：https://www.baidu.com/
+                        ②相对路径（相对于当前html文件所在的目录）
+                        ③绝对路径
+            2.target：用于定义目标资源的打开方式
+                    该属性可赋的值为：
+                        ①_self：在当前窗口打开目标资源
+                        ②_blank：开启新窗口打开目标资源
+        注意事项：
+            1.若不设置href属性，则默认不会打开任何资源
+            2.若不设置target属性，则该属性默认为_self，即在当前窗口打开资源
+    -->
+
+    <!-- 1.用指定的url设定href属性 -->
+    <a href="https://www.baidu.com/" target="_blank">百度的超链接</a>
+    <br />
+
+    <!-- 2.用相对路径设定href属性 -->
+    <a href="../_02_列表标签/有序和无序列表.html">相对路径超链接test</a>
+    <br />
+
+    <!-- 3.用绝对路径设定href属性 -->
+    <a
+      href="D:\VSCode\ProjectForVsCode\JavaWeb\JavaWeb_UniversityCourse\StudyCode\demo1_HTML\_01_文本控制标签\标题_段落_换行.html"
+      target="_blank"
+      >绝对路径test超链接</a
+    >
+    <br />
+  </body>
+</html>

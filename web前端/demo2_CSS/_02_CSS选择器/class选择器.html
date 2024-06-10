@@ -1,0 +1,60 @@
+<!-- 
+    CSS的选择器，一般都使用class选择器
+    由于元素的class属性比较灵活，因此类选择器的应用也非常灵活
+
+    类选择器的一大好处：
+        由于元素的class属性可以有多个，
+        我们可以将元素的样式分成好几类，每一类对应一个class属性
+        为每个class属性按排对应的类选择器，该选择器只做该类需要的部分样式即可
+    以上思想，可以将样式划分，使用起来更加灵活
+
+    注意：为一个元素的class属性赋多个值，需要将多个值写到一对""中，多个值间用空格划分
+        <标签名 class="值1 值2 值3..." />
+ -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 内嵌式CSS样式引入，使用class选择器 -->
+    <style>
+        /* 修改文字样式 */
+        .MyFont {
+            color: white;
+            font-size: 20px;
+            font-family: "楷书";
+        }
+
+        /* 修改形状样式 */
+        .MyShrap {
+            width: 200px;
+            height: 80px;
+            background-color: rgb(32, 198, 107);
+        }
+
+        /* 修改边框样式 */
+        .MyBorder {
+            border: 5% solid rgba(40, 137, 255, 0.836);
+            border-radius: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 类选择器会修饰对应class属性值的元素 -->
+    <input type="button" class="MyFont" value="只修改字体" /><br><br>
+    <input type="button" class="MyShrap" value="只修改形状" /><br><br>
+    <input type="button" class="MyBorder" value="只修改边框" /><br><br>
+    <!-- 为元素赋多个class属性值 -->
+    <input type="button" class="MyFont MyShrap MyBorder" value="修改全部样式" />
+
+
+</body>
+
+</html>
