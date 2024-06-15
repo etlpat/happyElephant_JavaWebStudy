@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+
+<!--
+    【名称空间的引入】（xml文件引入xsd文件约束）
+    语法： <根标签
+            xmlns="名称空间名"
+            xmlns:xsi="schema对应的协议（如：w3c）"
+            xsi:schemaLocation="名称空间名
+                              xsd文件路径（绝对/相对/uri）"
+          >
+
+    注意事项：
+        以下语法，x表示xml，s表示schema，i表示instance（实例）
+                ns表示namespace
+-->
+
+<书架 xmlns="https://www._04_test.com"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://www._04_test.com
+                            ./_04_test.xsd">
+    <书>
+        <书名>水浒传</书名>
+        <作者>施耐庵</作者>
+        <售价>114.514</售价>
+    </书>
+</书架>

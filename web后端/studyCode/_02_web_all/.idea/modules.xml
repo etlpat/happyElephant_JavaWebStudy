@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/_02_web_all.iml" filepath="$PROJECT_DIR$/.idea/_02_web_all.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo01_servlet01/demo01_servlet01.iml" filepath="$PROJECT_DIR$/demo01_servlet01/demo01_servlet01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo02_servlet02/demo02_servlet02.iml" filepath="$PROJECT_DIR$/demo02_servlet02/demo02_servlet02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo03_servletConfig01/demo03_servletConfig01.iml" filepath="$PROJECT_DIR$/demo03_servletConfig01/demo03_servletConfig01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo04_servletContext01/demo04_servletContext01.iml" filepath="$PROJECT_DIR$/demo04_servletContext01/demo04_servletContext01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo05_httpServletRequest01/demo05_httpServletRequest01.iml" filepath="$PROJECT_DIR$/demo05_httpServletRequest01/demo05_httpServletRequest01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo06_httpServletResponse01/demo06_httpServletResponse01.iml" filepath="$PROJECT_DIR$/demo06_httpServletResponse01/demo06_httpServletResponse01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo07_forward_redirect/demo07_forward_redirect.iml" filepath="$PROJECT_DIR$/demo07_forward_redirect/demo07_forward_redirect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo08_cookie01/demo08_cookie01.iml" filepath="$PROJECT_DIR$/demo08_cookie01/demo08_cookie01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo09_session01/demo09_session01.iml" filepath="$PROJECT_DIR$/demo09_session01/demo09_session01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo10_filter01/demo10_filter01.iml" filepath="$PROJECT_DIR$/demo10_filter01/demo10_filter01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo11_filter02/demo11_filter02.iml" filepath="$PROJECT_DIR$/demo11_filter02/demo11_filter02.iml" />
+    </modules>
+  </component>
+</project>

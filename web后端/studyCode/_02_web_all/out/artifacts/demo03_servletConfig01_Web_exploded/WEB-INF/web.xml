@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <servlet>
+        <!--配置servlet1的类和别名-->
+        <servlet-name>myServlet1</servlet-name>
+        <servlet-class>com.servlet.myServlet1</servlet-class>
+
+        <!--
+            配置Servlet的初始参数
+                以下这些参数会被添加到父类GenericServlet的config对象中，
+                可以通过getServletConfig()方法获取ServletConfig对象，从而获得这些初始化参数。
+            注意：
+                每个Servlet对象都有它独立的ServletConfig对象
+                （每个Servlet都有独立的初始化参数）
+        -->
+        <init-param>
+            <param-name>key1A</param-name>
+            <param-value>value1A</param-value>
+        </init-param>
+        <init-param>
+            <param-name>key1B</param-name>
+            <param-value>value1B</param-value>
+        </init-param>
+        <init-param>
+            <param-name>key1C</param-name>
+            <param-value>value1C</param-value>
+        </init-param>
+    </servlet>
+
+
+    <servlet-mapping>
+        <!--配置servlet的映射路径-->
+        <servlet-name>myServlet1</servlet-name>
+        <url-pattern>/myServlet1</url-pattern>
+    </servlet-mapping>
+
+</web-app>

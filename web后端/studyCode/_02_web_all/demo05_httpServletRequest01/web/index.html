@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="./myServlet1" method="get">
+    <table border="1px" style="margin: 0px auto; width: 400px">
+        <tr>
+            <td>用户名：</td>
+            <td>
+                <input type="text" name="username" />
+            </td>
+        </tr>
+        <tr>
+            <td>用户密码：</td>
+            <td>
+                <input type="password" name="password" />
+            </td>
+        </tr>
+        <tr>
+            <td>用户性别：</td>
+            <!-- 单选框 -->
+            <td>
+                <input type="radio" name="sex" value="man" checked="true" />男
+                <input type="radio" name="sex" value="woman" />女
+                <input type="radio" name="sex" value="else" />其它
+            </td>
+        </tr>
+        <tr>
+            <td>兴趣爱好：</td>
+            <!-- 复选框 -->
+            <td>
+                <input type="checkbox" name="hobby" value="sing" />唱
+                <input type="checkbox" name="hobby" value="dance" />跳
+                <input type="checkbox" name="hobby" value="rap" />rap
+                <input type="checkbox" name="hobby" value="basketball" />篮球
+            </td>
+        </tr>
+        <tr>
+            <td>籍贯</td>
+            <!-- 下拉框 -->
+            <td>
+                <select name="nativeplace">
+                    <option value="1">京</option>
+                    <option value="2">津</option>
+                    <option value="3">冀</option>
+                    <!-- selected="true"，该下拉框默认显示该选项 -->
+                    <option value="0" selected="true">--请选择--</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <!-- 7.提交和清空按钮 -->
+                <input type="submit" name="提交" />
+                <input type="reset" name="清空" />
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

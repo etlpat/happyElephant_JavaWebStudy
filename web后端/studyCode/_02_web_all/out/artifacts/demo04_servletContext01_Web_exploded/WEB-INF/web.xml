@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+
+    <!--
+        定义全局初始化参数
+
+        直接在web.xml的根标签下定义context-param参数即可（全局参数不能定义在servlet标签中）
+        这些全局初始化参数由Tomcat创建，被所有servlet对象所共享。
+    -->
+    <context-param>
+        <param-name>contextKey1</param-name>
+        <param-value>contextValue1</param-value>
+    </context-param>
+    <context-param>
+        <param-name>contextKey2</param-name>
+        <param-value>contextValue2</param-value>
+    </context-param>
+    <context-param>
+        <param-name>contextKey3</param-name>
+        <param-value>contextValue3</param-value>
+    </context-param>
+
+</web-app>
