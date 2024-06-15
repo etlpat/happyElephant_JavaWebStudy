@@ -33,6 +33,7 @@ public class myFilter1 implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         // 拦截请求
+        System.out.println("----------------------------------");
         System.out.println("Filter before myFilter1 处理请求");
 
         // 放行代码
@@ -40,5 +41,6 @@ public class myFilter1 implements Filter {
 
         // 处理响应
         System.out.println("Filter after myFilter1 处理响应");
+        System.out.println("----------------------------------");
     }
 }
