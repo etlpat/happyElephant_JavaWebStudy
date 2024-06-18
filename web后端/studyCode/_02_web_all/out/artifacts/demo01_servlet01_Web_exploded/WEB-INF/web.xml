@@ -22,8 +22,6 @@
     <servlet-mapping>
         <servlet-name>myServlet</servlet-name>
         <url-pattern>/myServlet</url-pattern>
-        <url-pattern>/aaa</url-pattern>
-        <!--注意，一个servlet别名可以对应多个url-pattern，此时myServlet和aaa都可以访问到该servlet-->
     </servlet-mapping>
 
 </web-app>

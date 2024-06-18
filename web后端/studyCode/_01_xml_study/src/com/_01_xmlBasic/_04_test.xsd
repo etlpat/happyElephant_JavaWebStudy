@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+    Schema文件的后缀是.xsd
+    .xsd文件的语法格式遵照xml的格式，二者语法相同
+    xsd文件的根标签，标签名固定为xs:schema
+-->
+
+
+<!--
+    xsd根标签（schema）中语法：
+        xmlns:名称空间简称="协议";  表示该schema遵循w3c协议
+        targetNamespace="名称空间名";    为设定该schema的名称空间（该名称是自定义的）
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="https://www._04_test.com"
+            elementFormDefault="qualified"
+>
+    <xs:element name="书架">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="书">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="书名" type="xs:string"></xs:element>
+                            <xs:element name="作者" type="xs:string"></xs:element>
+                            <xs:element name="售价" type="xs:double"></xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

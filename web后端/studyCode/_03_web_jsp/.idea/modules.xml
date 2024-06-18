@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/_03_web_jsp.iml" filepath="$PROJECT_DIR$/.idea/_03_web_jsp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo01_jSPBase01/demo01_jSPBase01.iml" filepath="$PROJECT_DIR$/demo01_jSPBase01/demo01_jSPBase01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo02_JSPImplicitObject01/demo02_JSPImplicitObject01.iml" filepath="$PROJECT_DIR$/demo02_JSPImplicitObject01/demo02_JSPImplicitObject01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo03_JSPInstruction01/demo03_JSPInstruction01.iml" filepath="$PROJECT_DIR$/demo03_JSPInstruction01/demo03_JSPInstruction01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo04_JSPTest01/demo04_JSPTest01.iml" filepath="$PROJECT_DIR$/demo04_JSPTest01/demo04_JSPTest01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo05_JSP_EL01/demo05_JSP_EL01.iml" filepath="$PROJECT_DIR$/demo05_JSP_EL01/demo05_JSP_EL01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo06_JSP_JavaBean01/demo06_JSP_JavaBean01.iml" filepath="$PROJECT_DIR$/demo06_JSP_JavaBean01/demo06_JSP_JavaBean01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo07_JSP_JavaBean02/demo07_JSP_JavaBean02.iml" filepath="$PROJECT_DIR$/demo07_JSP_JavaBean02/demo07_JSP_JavaBean02.iml" />
+    </modules>
+  </component>
+</project>

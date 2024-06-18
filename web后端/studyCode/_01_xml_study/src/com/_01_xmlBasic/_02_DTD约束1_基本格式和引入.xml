@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+    将DTD文件引入xml文件
+        方式1：引入本地dtd文件
+            语法：<!DOCTYPE 根标签名称 SYSTEM "dtd文件的绝对/相对路径">
+        方式2：引入公共的dtd文件
+            语法：<!DOCTYPE 根标签名称 PUBLIC "dtd文件名" "dtd的URL地址">
+        方式3：内嵌式引入dtd约束
+            语法：<!DOCTYPE 根标签名称 [
+                <!ELEMENT 书架 (书+)>
+                    <!ELEMENT 书 (书名, 作者, 售价)>
+                    <!ELEMENT 书名 (#PCDATA)>
+                    <!ELEMENT 作者 (#PCDATA)>
+                    <!ELEMENT 售价 (#PCDATA)>
+            ]>
+-->
+
+<!DOCTYPE 书架 SYSTEM "./_02_test.dtd">
+<!--注意：引入本地dtd文件，system后面的相对路径是相对该xml文件的相对路径-->
+
+<书架>
+    <书>
+        <书名>西游记</书名>
+        <作者>吴承恩</作者>
+        <售价>114.51</售价>
+    </书>
+
+    <书>
+        <书名>水浒传</书名>
+        <作者>施耐庵</作者>
+        <售价>191.98</售价>
+    </书>
+</书架>
+<!--引入dtd约束后，xml中标签必须按照dtd文件定义的格式来写-->

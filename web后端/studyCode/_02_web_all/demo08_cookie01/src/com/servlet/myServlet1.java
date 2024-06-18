@@ -21,9 +21,14 @@ import java.io.IOException;
 // (2)Cookie相关语法
 //  ①创建Cookie对象
 //      语法：Cookie cookie = new Cookie(String name, String value);
-//      注意：Cookie是键值对形式的信息
+//      注意：Cookie是键值对形式的信息（键和值都是字符串）
 //
-//  ②设置Cookie属性
+//  ②获取Cookie的键和值
+//      语法：cookie.getName();
+//           cookie.getValue();
+//      功能：获取Cookie对象的键和值
+//
+//  ③设置Cookie属性
 //      语法1：cookie.setMaxAge(int seconds);
 //      功能：设置cookie对象在浏览器中存在的秒数（浏览器关闭时cookie对象仍会存在）
 //      注意：若不设置秒数，关闭浏览器时cookie对象自动销毁
@@ -32,12 +37,12 @@ import java.io.IOException;
 //      功能：设置提交路径，使得该cookie对象仅在请求指定的资源路径时才提交
 //      注意：若不设置路径，cookie对象会提交到任意路径的请求头中
 //
-//  ③将Cookie对象通过HttpServletResponse传给浏览器
+//  ④将Cookie对象通过HttpServletResponse传给浏览器
 //      语法：resp.addCookie(Cookie cookie);
 //      功能：该方法将Cookie对象添加到响应头中传送给浏览器
 //      （Cookie在响应头中的形式为：Set-Cookie: key1=value1 [有多组该信息]）
 //
-//  ④通过HttpServletRequest获取浏览器传来的Cookie信息
+//  ⑤通过HttpServletRequest获取浏览器传来的Cookie信息
 //      语法：Cookie[] cookies = req.getCookies();
 //      功能：该方法获取请求头中传来的所有Cookie对象，存放到数组中（若无对象，则数组为null）
 //      （Cookie在请求头中的形式为：Cookie: key1=value1; key2=value2;...）

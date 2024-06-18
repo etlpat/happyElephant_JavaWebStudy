@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/_04_web_jdbc.iml" filepath="$PROJECT_DIR$/.idea/_04_web_jdbc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo01_JDBC01/demo01_JDBC01.iml" filepath="$PROJECT_DIR$/demo01_JDBC01/demo01_JDBC01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo02_JBDC02/demo02_JBDC02.iml" filepath="$PROJECT_DIR$/demo02_JBDC02/demo02_JBDC02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo03_MVC01/demo03_MVC01.iml" filepath="$PROJECT_DIR$/demo03_MVC01/demo03_MVC01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo04_MVC02/demo04_MVC02.iml" filepath="$PROJECT_DIR$/demo04_MVC02/demo04_MVC02.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,74 @@
+package com.jdbc;
+
+import com.JavaBean.Student;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+public class StuDAO {
+
+    // 为数据库增加对象
+    public boolean insert(Student stu) {
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            // 连接DB
+            conn = JDBCUtil.myGetConnection();
+            // 获取通道对象
+            stmt = conn.createStatement();
+            // 运行sql语句
+            String sql = "insert into students1 values(null,'"
+                    + stu.getName() + "','"
+                    + stu.getEmail() + "');";
+            int num = stmt.executeUpdate(sql);
+            // 处理结果
+            if (num > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            // 关闭资源
+            JDBCUtil.myClose(conn, stmt, null);
+        }
+        return false;
+    }
+
+
+    // 获取students1表全部行
+    public ArrayList<Student> getAll() {
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+            // 连接DB
+            conn = JDBCUtil.myGetConnection();
+            // 获取通道对象
+            stmt = conn.createStatement();
+            // 运行sql语句
+            String sql = "select * from students1";
+            stmt.execute(sql);
+            // 处理结果
+            rs = stmt.getResultSet();
+            ArrayList<Student> arrayList = new ArrayList<>();
+            while (rs.next()) {
+                arrayList.add(new Student(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("email")
+                ));
+            }
+            return arrayList;
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            // 关闭资源
+            JDBCUtil.myClose(conn, stmt, null);
+        }
+        return null;
+    }
+}
