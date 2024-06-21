@@ -57,3 +57,16 @@ DESC students1;
 SELECT * FROM students1;
 
 
+-- =====================================================
+
+
+CREATE TABLE users1(
+	`username` VARCHAR(32) PRIMARY KEY,
+	`password` VARCHAR(32)
+);
+
+DROP TABLE users;
+
+DESC users;
+SELECT * FROM users;
+

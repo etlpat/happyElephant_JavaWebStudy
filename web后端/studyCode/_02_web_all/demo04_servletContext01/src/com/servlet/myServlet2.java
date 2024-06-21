@@ -2,6 +2,7 @@ package com.servlet;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +11,9 @@ import java.io.IOException;
 import java.util.Enumeration;
 
 
-@WebServlet("/myServlet2")
+@WebServlet(urlPatterns = "/myServlet2",
+        initParams = {@WebInitParam(name = "configKey1", value = "configValue1"),
+                @WebInitParam(name = "configKey2", value = "configValue2")})
 
 public class myServlet2 extends HttpServlet {
     @Override

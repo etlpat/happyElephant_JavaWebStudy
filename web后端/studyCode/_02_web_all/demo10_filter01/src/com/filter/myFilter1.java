@@ -31,7 +31,7 @@ import java.io.PrintWriter;
 //
 // (4)Filter接口的方法
 //  ①init()
-//  ②doFilter(ServletRequest request, response servletResponse, FilterChain filterChain)
+//  ②doFilter(ServletRequest request,servletResponse response, FilterChain filterChain)
 //  ③destroy()
 //  Filter接口与Servlet接口非常相似，我们只需要重写Filter的doFilter方法即可（对应Servlet的service方法）
 //

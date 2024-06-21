@@ -14,6 +14,8 @@
       <module fileurl="file://$PROJECT_DIR$/demo09_session01/demo09_session01.iml" filepath="$PROJECT_DIR$/demo09_session01/demo09_session01.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo10_filter01/demo10_filter01.iml" filepath="$PROJECT_DIR$/demo10_filter01/demo10_filter01.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo11_filter02/demo11_filter02.iml" filepath="$PROJECT_DIR$/demo11_filter02/demo11_filter02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo12_test01/demo12_test01.iml" filepath="$PROJECT_DIR$/demo12_test01/demo12_test01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo13_test02/demo13_test02.iml" filepath="$PROJECT_DIR$/demo13_test02/demo13_test02.iml" />
     </modules>
   </component>
 </project>
