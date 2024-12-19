@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- spring的xml配置文件，自带spring所需的相关约束 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--
+        1.使用【无参构造器】，实例化组件
+            <bean标签 - 每个bean标签，对应一个组件对象（默认是单例的）
+                id - 组件的标识，唯一标识一个对象
+                class - 组件对应的类的全限定符（class必须是类的全称，因为ioc容器利用反射机制创建对象）
+
+            无参构造器方式：ioc容器利用[类名]new对象。
+    -->
+    <bean id="user1" class="com.etlpat.javaBean.User"/>
+
+
+    <!--
+        2.使用【静态工厂】，实例化组件
+            P.S.静态工厂，即工厂方法为static的工厂类。
+            <bean
+                id - 组件的标识
+                class - 工厂类的全限定符（类名全称）
+                factory-method - 工厂方法名
+
+            静态工厂方式：ioc容器利用[工厂类名.方法名]创建对象。
+    -->
+    <bean id="user2" class="com.etlpat.factory.StaticUserFactory" factory-method="createUser"/>
+
+
+    <!--
+        3.使用【非静态工厂】，实例化组件
+            P.S.非静态工厂，即工厂方法不是static的工厂类。
+            非静态工厂实例化组件步骤：
+                ①创建工厂对象（配置工厂组件）
+                ②通过[工厂对象.方法名]创建对象。
+                    <bean
+                        id - 组件的标识
+                        factory-bean - 工厂对象的id
+                        factory-method - 工厂方法名
+
+            非静态工厂方式：ioc容器利用[工厂对象.方法名]创建对象。
+    -->
+    <bean id="nonstaticUserFactory1" class="com.etlpat.factory.NonstaticUserFactory"/>
+    <bean id="user3" factory-bean="nonstaticUserFactory1" factory-method="createUser"/>
+
+</beans>

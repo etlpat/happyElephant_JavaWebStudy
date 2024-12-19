@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        三种创建对象的方式：
+            ①通过构造器创建对象（有参/无参）
+                <bean id class="指定类名"/>
+            ②使用工厂类创建对象（静态/非静态）
+                <bean id class="工厂类名" factory-method="工厂方法名">
+            ③【使用标准工厂FactoryBean创建对象】
+                <bean id class="标准工厂类名">
+                注意：由于FactoryBean标准工厂中，工厂方法统一叫做getObject()，因此不需要特地指定factory-method方法名。
+    -->
+
+    <!--
+        【使用标准工厂FactoryBean创建对象】
+        <bean
+            id = 被创建对象的id
+            class = 标准工厂类的全限定符
+
+        注意：
+            ①由于FactoryBean标准工厂中，工厂方法统一叫做getObject()，因此不需要特地指定factory-method方法名。
+            ②
+    -->
+    <bean id="user1" class="com.etlpat.factoryBean.UserFactoryBean"/>
+
+</beans>

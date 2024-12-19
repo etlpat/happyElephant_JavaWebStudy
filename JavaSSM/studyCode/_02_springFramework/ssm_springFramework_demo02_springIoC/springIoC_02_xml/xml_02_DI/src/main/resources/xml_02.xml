@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 创建userDao对象 -->
+    <bean id="userDao" class="com.etlpat.javaBean.UserDao"/>
+
+
+    <!-- 1.基于【构造器方法】的依赖注入 -->
+    <!--
+        1.1 构造参数的顺序填写
+            即：按照构造器的传参顺序，配置constructor-arg标签
+
+            <constructor-arg - 构造器传值的DI配置标签
+                （注意：value/ref属性二选一，表示参数的值）
+                value - 直接属性值，如：张三/18/3.14
+                ref - 引用其它的bean的id
+    -->
+    <bean id="userService1" class="com.etlpat.javaBean.UserService">
+        <constructor-arg value="18"/>
+        <constructor-arg value="张三"/>
+        <constructor-arg ref="userDao"/>
+    </bean>
+
+
+    <!--
+        1.2 通过构造器参数的name填写[推荐]（不用考虑顺序）
+            <constructor-arg
+                name - 构造器参数的名字
+                value/ref
+    -->
+    <bean id="userService2" class="com.etlpat.javaBean.UserService">
+        <constructor-arg name="name" value="李四"/>
+        <constructor-arg name="age" value="28"/>
+        <constructor-arg name="userDao" ref="userDao"/>
+    </bean>
+
+
+    <!--
+        1.3 通过构造器参数的index填写[不推荐]（不用考虑顺序）
+            <constructor-arg
+                index - 构造器参数的下标（从0开始）
+                value/ref
+    -->
+    <bean id="userService3" class="com.etlpat.javaBean.UserService">
+        <constructor-arg index="1" value="王五"/>
+        <constructor-arg index="0" value="38"/>
+        <constructor-arg index="2" ref="userDao"/>
+    </bean>
+
+
+    <!-- 2.基于【Setter方法】的依赖注入 -->
+    <!--
+        <property - Setter方法传值的DI配置标签
+            name - Setter方法名的简写（Setter方法名，去掉set字段，并将首字母小写后的值）   e.g：setAge->age
+            value/ref - 属性值/bean对象的id
+    -->
+    <bean id="userService4" class="com.etlpat.javaBean.UserService">
+        <property name="name" value="赵六"/>
+        <property name="age" value="48"/>
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+
+</beans>

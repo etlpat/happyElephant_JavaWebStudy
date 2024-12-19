@@ -1,0 +1,83 @@
+<2>使用xml配置ioc容器
+
+
+0.基础概述
+
+    (1)对象的创建方式
+        四种不同的对象创建方式：
+            ①无参构造器
+            ②有参构造器
+            ③静态工厂（工厂方法为static）
+            ④非静态工厂（工厂方法不为static）
+        不同的实例化对象方式，对应的ioc配置方式也不同。
+
+
+    (2)依赖注入的方式
+        两种依赖注入的方式：
+            ①构造器注入
+            ②Setter方法注入
+
+
+    (3)springIoC的代码实现步骤
+       ① 编写配置信息（xml/注解/java配置类）。
+       ② 实例化ioc容器对象，并指定配置信息。
+       ③ 在java代码中，通过ioc容器获取对应的组件（对象）。
+
+
+
+
+
+1.基于xml配置方式管理Bean
+
+    (1)组件（Bean）信息声明配置（IoC）
+        目标：
+            ①基于无参数构造函数
+            ②基于静态工厂方法实例化
+            ③基于非静态工厂方法实例化
+        【详情见xml_01_IoC子工程的src/main/resources/xml_01.xml】
+
+
+    (2)组件（Bean）依赖注入配置（DI）
+        目标：
+            ①基于构造函数的依赖注入
+                Ⅰ按照相应构造函数的顺序注入数据
+                Ⅱ按照相应构造函数的名称注入数据
+                Ⅲ按照相应构造函数的下标注入数据
+            ②基于Setter方法依赖注入
+        【见xml_02_DI子工程的src/main/resources/xml_02.xml】
+
+
+    (3)IoC容器的创建和使用
+        目标：
+            ①创建IoC容器
+                Ⅰ实例化同时，通过构造器指定配置文件
+                Ⅱ先实例化，再通过Setter指定配置文件，最后刷新
+            ②通过IoC容器，获取Bean对象
+                Ⅰ根据id获取
+                Ⅱ根据id和类型获取
+                Ⅲ根据类型获取
+        【见xml_03_IoCContainerCreationAndUse子工程的src/main/java/com/etlpat/Main.java】
+
+
+    (4)bean组件的生命周期和作用域
+        目标：
+            ①配置bean的生命周期
+                属性：init-method / destroy-method
+            ②配置bean的作用域
+                属性：scope = singleton/prototype/request/session
+        【见xml_04_BeanLifecycleAndScope子工程的src/main/resources/xml_04.xml】
+
+
+    (5)FactoryBean标准工厂的特性和使用
+        目标：
+            ①FactoryBean接口的实现方式
+            ②FactoryBean标准化工厂创建对象的xml配置
+        【①见xml_05_FactoryBean子工程的src/main/java/com/etlpat/factoryBean/UserFactoryBean.java】
+        【②见xml_05_FactoryBean子工程的src/main/resources/xml_05.xml】
+
+
+    (6)项目作业--基于xml方式整合三层架构组件
+        需求分析：
+            搭建一个三层架构案例，模拟查询全部学生（学生表）信息，持久层使用JdbcTemplate和Druid技术，使用XML方式进行组件管理！
+            项目具体要求请见：https://www.wolai.com/oacbJpH1wPzGNoMAVnoELR
+            项目源码见：xml_06_homework项目

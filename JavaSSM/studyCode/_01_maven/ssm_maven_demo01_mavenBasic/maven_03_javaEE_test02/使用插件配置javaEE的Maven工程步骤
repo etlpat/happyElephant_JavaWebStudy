@@ -1,0 +1,4 @@
+使用插件配置javaEE的Maven工程步骤：
+    1.下载JBL插件（JBLJavaToWeb）
+    2.创建javaSE的Maven工程
+    3.右键项目，选择JBLJavaToWeb即可

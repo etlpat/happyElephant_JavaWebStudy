@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 创建User对象 -->
+    <!--
+        注意：xml文件只是用于配置组件信息，
+            只有在IoC容器读取xml文件后，才能由容器真正地创建组件对象。
+    -->
+    <bean id="user1" class="com.etlpat.javaBean.User">
+        <property name="name" value="张三"/>
+        <property name="age" value="18"/>
+    </bean>
+
+    <bean id="user2" class="com.etlpat.javaBean.User">
+        <property name="name" value="李四"/>
+        <property name="age" value="28"/>
+    </bean>
+
+    <bean id="user3" class="com.etlpat.javaBean.User">
+        <property name="name" value="王五"/>
+        <property name="age" value="38"/>
+    </bean>
+
+    <bean id="str" class="java.lang.String">
+        <constructor-arg value="hello world!"/>
+    </bean>
+
+</beans>

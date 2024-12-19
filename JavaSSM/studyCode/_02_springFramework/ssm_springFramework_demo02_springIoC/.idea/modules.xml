@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/springIoC_02_xml.iml" filepath="$PROJECT_DIR$/springIoC_02_xml.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_springFramework_demo02_springIoC.iml" filepath="$PROJECT_DIR$/ssm_springFramework_demo02_springIoC.iml" />
+    </modules>
+  </component>
+</project>

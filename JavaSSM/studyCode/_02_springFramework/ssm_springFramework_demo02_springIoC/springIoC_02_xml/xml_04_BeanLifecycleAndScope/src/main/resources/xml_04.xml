@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- 1.组件的生命周期 -->
+    <!--
+        <bean - bean标签中，还可以包含用于管理对象生命周期的属性
+            init-method = 初始化方法名
+            destroy-method = 销毁方法名
+
+        组件的生命周期：
+            IoC容器管理组件的生命周期，它会在对应的时间节点，自动调用组件的init/destroy方法。
+            组件init/destroy方法的调用时期：
+                init：当组件被添加到ioc容器中时（调用refresh方法时），调用组件的init()方法。
+                destroy：当ioc容器被正常销毁时，调用组件的destroy()方法。
+
+        P.S. Bean组件在IoC容器中的生命周期，与Servlet对象在Tomcat容器中的生命周期类似。
+    -->
+    <bean id="user1" class="com.etlpat.javaBean.User"
+          init-method="init" destroy-method="destroy"/>
+
+
+    <!-- 2.组件的作用域 -->
+    <!--
+        <bean
+            scope = 组件作用域（默认是单例singleton）
+
+        注意事项：
+            ①单例与多例
+                单例：IoC容器中，【scope的默认值为singleton单例】，表示一个bean标签对应唯一一个javaBean对象。
+                多例：prototype多例，每次获取bean时，都会创建一个新的对象。一个bean标签对应多个javaBean对象。
+            ②不同容器的scope值可选项
+                    ClassPathXmlApplicationContext容器：scope的值只能为①/②
+                    WebApplicationContext：scope的值可以是①/②/③/④
+
+        _____________________________________________________________________________
+        |   取值      |含义                                 |创建对象的时机     | 默认值 |
+        | ①singleton |在IOC容器中，这个bean的对象始终为单实例   |仅IOC容器初始化时  |【是】  |
+        | ②prototype |这个bean在IOC容器中可有多个实例          |每次获取bean时    | 否    |
+        | ③request   |请求范围内有效的实例                    |每次请求          | 否    |
+        | ④session   |会话范围内有效的实例                    |每次会话          | 否    |
+    -->
+
+    <bean id="user2" class="com.etlpat.javaBean.User"
+          init-method="init" destroy-method="destroy"
+          scope="singleton"/><!-- 作用域为单例 -->
+
+    <bean id="user3" class="com.etlpat.javaBean.User"
+          init-method="init" destroy-method="destroy"
+          scope="prototype"/><!-- 作用域为多例 -->
+
+
+</beans>

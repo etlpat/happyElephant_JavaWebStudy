@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--
+        读取外部配置文件jdbc.properties
+        （注意：当读取到.properties文件后，就可以在xml文件内部使用 ${变量名} 来获取.properties文件中对应的值）
+        （     .properties配置文件的使用方式，与<properties>标签类似）
+    -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+
+    <!-- 创建Druid德鲁伊数据库连接池对象 -->
+    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <!-- 使用set方法配置数据库驱动/连接信息
+            P.S. 下面用 ${变量名} 的方式，导入jdbc.properties文件中的值 -->
+        <property name="url" value="${etlpat.url}"/> <!--url地址-->
+        <property name="driverClassName" value="${etlpat.deiver}"/> <!--jdbc驱动-->
+        <property name="username" value="${etlpat.username}"/> <!--用户名-->
+        <property name="password" value="${etlpat.password}"/> <!--密码-->
+    </bean>
+
+    <!-- 创建jdbcTemplate对象，并将数据库连接池对象赋给它 -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="druidDataSource"/> <!--上面的德鲁伊数据库连接池对象-->
+    </bean>
+
+    <!-- 创建dao层对象，为其注入jdbcTemplate组件 -->
+    <bean id="studentDao" class="com.etlpat.dao.StudentDao">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <!-- 创建service层对象，为其注入dao层组件 -->
+    <bean id="studentService" class="com.etlpat.service.StudentService">
+        <property name="studentDao" ref="studentDao"/>
+    </bean>
+
+    <!-- 创建controller层对象，为其注入service层组件 -->
+    <bean id="studentController" class="com.etlpat.controller.StudentController">
+        <property name="studentService" ref="studentService"/>
+    </bean>
+
+</beans>

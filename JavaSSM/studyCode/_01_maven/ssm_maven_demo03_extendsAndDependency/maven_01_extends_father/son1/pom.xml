@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- parent标签，包含gav属性，用于指定对应的父工程 -->
+    <parent>
+        <groupId>com.etlpat</groupId>
+        <artifactId>maven_01_extends_father</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <!-- 子工程无gv属性，默认继承父工程（若自定义，则子类属性覆盖父类） -->
+    <artifactId>son1</artifactId>
+
+
+    <!--
+        若父类中使用dependencyManagement声明了依赖信息，
+        则子工程在引入jar包时，【无需声明版本号，该jar包的版本会自动同步为父类中声明的版本号】。
+
+        注意：若子工程中手动写入版本号，则子类版本覆盖父类版本
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

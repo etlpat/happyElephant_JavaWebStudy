@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!-- pom.xml是Maven工程整体的配置信息 -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 1.Maven工程的GAVP属性 -->
+    <!-- 其中，GAV用于唯一标识一个Maven工程 -->
+    <groupId>com.etlpat</groupId> <!-- 不会改变 -->
+    <artifactId>maven_01_dependencyManagement</artifactId>  <!-- 不会改变 -->
+    <version>1.0-SNAPSHOT</version> <!-- 部署时可改变 -->
+    <packaging>war</packaging>
+
+
+    <!-- 2.声明版本号 -->
+    <!--
+        properties标签用于声明多个变量，声明完变量后，可以在其它位置使用 ${变量名} 的形式来引用。
+        注意：声明的标签（变量名）建议两层以上来命名。（推荐：技术名.version）
+    -->
+    <properties>
+        <jackson.version>2.18.2</jackson.version>   <!-- 这是变量 -->
+    </properties>
+
+
+    <!-- 3.第三方依赖信息声明（用于导入jar包） -->
+    <!--
+        (1)导入jar包语法：
+            dependencies标签 - 项目依赖信息(jar包)的集合
+                dependency - 每个依赖项(jar包)
+                    [GAV] - 每个依赖项的gav属性
+
+            注意：依赖项即jar包，属于Maven工程，因此依赖项具有GAV属性。
+                一组GAV属性唯一标识一个Maven工程，因此可以通过GAV属性，表示要导入的对应的jar包。
+
+
+        (2)如何得知第三方依赖(jar包)的信息(GAV属性)？
+            ①去maven提供的官网查询：https://mvnrepository.com/
+            ②通过maven的插件：maven-search
+                使用方式：安装插件 -> Tools -> maven-search -> 输入信息即可
+
+
+        (3)知识点补充
+            ①可以使用properties变量(${变量名}})，统一表示多个jar包的版本号。
+            ②<dependency>标签的可选属性：scope
+                scope标签表示引入依赖的作用域（默认对全部作用域生效）。
+                scope的值为：compile - main、test、打包、运行时，均可使用【默认】
+                            test - 仅在test内可用            （e.g.junit依赖常使用此范围）
+                            provide - 仅在main、test内使用    （e.g.servlet依赖常使用此范围）
+                            runtime - 仅在打包、运行时使用     （e.g.mysql驱动依赖常使用此范围）
+     -->
+    <dependencies>
+        <!-- 如下，为依赖项输入对应的GAV属性，Maven就会自动从jar包库中导入对应的jar包 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>   <!--使用properties变量表示版本号-->
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>   <!--使用properties变量表示版本号-->
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope> <!--scope属性，表示作用域-->
+        </dependency>
+    </dependencies>
+
+
+</project>

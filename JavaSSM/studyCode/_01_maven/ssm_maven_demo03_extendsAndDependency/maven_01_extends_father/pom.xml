@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.etlpat</groupId>
+    <artifactId>maven_01_extends_father</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!-- 注意：父工程中不写代码/不打包，因此将打包方式变为pom，并删除src目录 -->
+    <packaging>pom</packaging>
+
+
+    <!-- 聚合信息modules，用于统一管理子工程的artifactId -->
+    <modules>
+        <module>son1</module>
+        <module>son2</module>
+    </modules>
+
+
+    <!--
+      dependencies用于导入依赖
+      若在此处导入，所有子工程均有此依赖
+    -->
+    <dependencies></dependencies>
+
+
+    <!--
+      dependencyManagement用于声明依赖信息
+      【在此处声明的依赖，不会被父/子工程导入，但是子工程会默认使用此处声明的版本号！】
+    -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.18.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.33</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

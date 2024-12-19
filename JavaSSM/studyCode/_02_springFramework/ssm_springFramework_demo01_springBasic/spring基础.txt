@@ -1,0 +1,59 @@
+<1>spring基础
+
+
+1.技术体系
+    (1)MVC架构对应框架
+        V -> View视图层（HTML、JS）
+        C -> Controller控制层（Servlet）-----> SpringMVC
+        S -> Service服务层（JavaSE业务逻辑）---> SpringFramework （SpringFramework包含CSM三层，偏爱S层）
+        M -> Model持久层（JDBC）-------------> Mybatis
+
+    (2)分布式架构对应框架
+        ①SpringBoot(SSM)，用于快速构建SSM三框架。
+        ②SpringCloud，统一管理分布式服务间的调用。
+        ③中间件，如Redis，进行服务间的数据缓存/传递。
+
+    (3)框架概念
+        框架(Framework)是一个集成了基本结构、规范、设计模式、编程语言和程序库等基础组件的软件系统，
+        它可以用来构建更高级别的应用程序。框架的设计和实现旨在解决特定领域中的常见问题，帮助开发人员更高效、更稳定地实现软件开发目标。
+        站在文件结构的角度理解框架，可以将框架总结：【框架 = jar包 + 配置文件】
+
+
+
+
+2.SpringFramework介绍
+
+    (1)Spring和SpringFramework概念
+        ①广义的Spring -- Spring技术栈（全家桶）
+            广义上的 Spring 泛指以 SpringFramework 为基础的 Spring 技术栈。
+            经过十多年的发展，Spring 已经不再是一个单纯的应用框架，而是逐渐发展成为一个由多个不同子项目（模块）组成的成熟技术，
+                例如 SpringFramework、SpringMVC、SpringBoot、SpringCloud、SpringData、SpringSecurity 等，
+                其中 SpringFramework 是其他子项目的基础。
+
+        ②狭义的Spring -- SpringFramework（Spring基础框架）
+            狭义的 Spring 特指 SpringFramework，通常我们将它称为 Spring 框架。
+            SpringFramework（Spring框架）是一个开源的应用程序框架，由SpringSource公司开发，最初是为了解决企业级开发中各种常见问题而创建的。
+                它提供了很多功能，例如：依赖注入（Dependency Injection）、面向切面编程（AOP）、声明式事务管理（TX）等。
+                其主要目标是使企业级应用程序的开发变得更加简单和快速，并且Spring框架被广泛应用于Java企业开发领域。
+            Spring全家桶的其他框架都是以SpringFramework框架为基础！
+
+
+    (2)SpringFramework主要功能模块
+        _______________________________________________________________________
+        |   功能模块          | 功能介绍
+        |① Core Container   | 核心容器，在 Spring 环境下使用任何功能都必须基于 IOC 容器
+        |② AOP & Aspects    | 面向切面编程
+        |③ TX               | 声明式事务管理
+        |④ Spring MVC       | 提供了面向Web应用程序的集成功能
+
+
+    (3)SpringFramework主要优势
+        ①丰富的生态系统：Spring 生态系统非常丰富，支持许多模块和库，如 SpringBoot、SpringSecurity、SpringCloud 等等，可以帮助开发人员快速构建高可靠性的企业应用程序。
+        ②模块化的设计：框架组件之间的松散耦合和模块化设计使得 SpringFramework 具有良好的可重用性、可扩展性和可维护性。开发人员可以轻松地选择自己需要的模块，根据自己的需求进行开发。
+        ③简化Java开发：SpringFramework 简化了 Java 开发，提供了各种工具和 API，可以降低开发复杂度和学习成本。同时，Spring Framework 支持各种应用场景，包括 Web 应用程序、RESTful API、消息传递、批处理等等。
+        ④不断创新和发展：SpringFramework 开发团队一直在不断创新和发展，保持与最新技术的接轨，为开发人员提供更加先进和优秀的工具和框架。
+        因此，这些优点使得 SpringFramework 成为了一个稳定、可靠、且创新的框架，为企业级 Java 开发提供了一站式的解决方案。
+
+
+
+

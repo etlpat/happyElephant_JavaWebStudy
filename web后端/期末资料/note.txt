@@ -1,0 +1,540 @@
+链接：https://pan.baidu.com/s/1QHQBFfiIkyW-fPtrkDRoNw 
+提取码：tyut
+
+
+chapter 1: HTML, CSS, JS
+1. HTML
+	1. HTML文档结构
+	2. 单标签，双标签，注释
+	3. HTML常用标签
+
+2. CSS
+	1. CSS语法规则
+	2. CSS样式表的引用方式
+	3. CSS选择器
+
+3. JavaScript
+	1. JS的组成
+	2. JS的引入方式
+	3. JS基本语法（数据类型、变量的声明、函数的定义）
+	4. DOM（document对象）
+	5. BOM（window对象）
+	6. JS事件处理（表单事件、页面事件）
+
+
+chapter 2: XML, Tomcat
+1. XML
+	1. XML与HTML的区别
+	2. XML语法 （声明，元素定义，属性定义，注释）
+		<?xml version="" encoding="" standalone="" ?>
+	3. XML约束
+		1. DTD约束（引入，语法）  .dtd
+		2. Schema约束（引入，语法） .xsd 
+
+2. B/S架构
+
+3. 开发环境搭建
+	1. JDK
+	2. Tomcat (http://localhost:8080)
+	3. Idea
+
+
+chapter 3: HTTP
+1. HTTP概述
+	1. HTTP协议的特点
+	2. HTTP的版本发展
+
+2. HTTP请求消息
+	1. 请求行
+		1. 请求行格式  
+		2. 3种路径
+		3. GET和POST
+	2. 请求头
+		1. 请求头格式
+		2. 常见请求头字段（Accept、Accept-Encoding、Host、If-Modified-Since、Referer、User-Agent）
+
+	3. 请求消息体
+
+3. HTTP响应消息
+	1. 状态行
+		1. 状态行格式 
+		2. 常见状态码（200, 302, 304, 404, 500）  
+	2. 响应头
+		1. 响应头格式
+		2. 常见响应头字段（Location, Content-Type, Server, Refresh, Content-Disposition, Content-Encoding）
+
+	3. 响应消息体
+
+
+chapter 4: Servlet API
+1. Servlet概述
+	1. 实现Servlet接口的类都称为Servlet。
+	2. Servlet封装了对用户请求的处理。
+	3. Servlet由容器管理，包括创建、调用和销毁。
+
+2. Servlet接口方法
+	void init()
+	void service(ServletRequest request，ServletResponse response)
+	void destroy()
+	ServletConfig getServletConfig()
+	String getServletInfo()
+
+3. Servlet继承关系
+	Servlet -> GenericServlet -> HttpServlet -> 自定义Servlet
+
+
+4. Servlet访问路径配置
+	<servlet>
+		<servlet-name>
+		<servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>
+		<url-pattern>/path</url-pattern>
+		<url-pattern>/path2</url-pattern>
+	</servlet-mapping>
+
+@WebServlet(urlPatterns={"/path", "/path2"}, initParams={@WebInitParam(name="", value=""), @WebInitParam(name="", value="")})
+
+5. Servlet生命周期
+
+6. ServletConfig对象
+	String getInitParameter(String name)
+	Enumeration getInitParameterNames()
+	ServletContext getServletContext()
+	String getServletName()
+
+7. ServletContext对象
+	String getInitParameter(String name)
+	Enumeration getInitParameterNames()
+
+	Enumeration getAttributeNames()
+	Object getAttibute(String name)
+	void removeAttribute(String name)
+	void setAttribute(String name,Object obj)
+
+	Set getResourcePaths(String path)
+	String getRealPath(String path)
+	URL getResource(String path)
+	InputStream getResourceAsStream(String path)
+
+8. HttpServletResponse对象
+	setStatus(int status)
+	sendError(int code, String message(可选))
+
+	void addHeader(String name, String value)	
+	void setHeader(String name, String value)	
+	void addIntHeader(String name, int value)	
+	void setIntHeader(String name, int value)		
+	void setContentType(String type)
+	void setCharacterEncoding(String charset)	
+	
+	ServletOutputStream getOutputStream()	
+	PrintWriter getWriter()			
+	
+9. HttpServletResponse对象的应用
+	1. 实现请求重定向
+		void sendRedirect(String location)	//用于生成302响应码和Location响应头
+	2. 解决中文输出乱码问题
+		方法1：
+		response.setCharacterEncoding("utf-8"); 
+		response.setHeader("Content-Type","text/html;charset=utf-8"); 
+		方法2：
+		response.setContentType("text/html;charset=utf-8"); 
+
+10. HttpServletRequest对象
+	//获取请求行的相关方法
+	String getMethod( )
+	String getProtocol( )
+	String getScheme( )
+	String getQueryString( )
+
+	String getRequestURI( )
+	StringBuffer getRequestURL()
+	String getContextPath( )
+	String getServletPath( )
+
+	String getRemoteAddr( )
+	String getRemoteHost( )
+	int getRemotePort( )
+	String getLocalAddr( )
+	String getLocalName( )
+	int getLocalPort( )
+	String getServerName( )
+	int getServerPort( )
+	
+	//获取HTTP请求头字段的方法
+	String getHeader(String name)
+	Enumeration getHeaders(String name)
+	Enumeration getHeaderNames()
+	int getIntHeader(String name)
+	long getDateHeader(String name)
+	String getContentType()	//用于获取Content-Type头字段的值
+	int getContentLength()	//用于获取Content-Length头字段的值
+	String getCharacterEncoding()	//用于返回请求消息的实体部分的字符集编码，通常是从Content-Type头字段中进行提取
+
+11. 请求转发
+	RequestDispatcher dispatcher = request.getRequestDispatcher("/ResultServlet");
+       	dispatcher.forward(request,response);
+
+12. 获取请求参数
+	String getParameter(String name)
+	String[] getParameterValues(String name)
+	Enumeration getParameterNames()
+	Map getParameterMap()
+
+13. Request对象共享数据
+	void setAttribute(String name,Object o);	
+	Object getAttribute(String name);
+	public void removeAttribute(String name);
+	public Enumeration getAttributeNames();
+
+14. 解决请求参数的中文乱码问题
+	request.setCharacterEncoding("utf-8");
+
+应用1：页面跳转
+应用2：共享数据
+应用3：中文乱码
+
+
+chapter 5: Cookie, Session
+1. 会话的概念
+
+2. Cookie的工作原理
+
+3. Cookie API
+	Cookie(String name, String value)
+	String getName()
+	void setValue(String newValue)
+	String getValue()
+	void setMaxAge(int expiry)
+	int getMaxAge()
+	void setPath(String uri)
+	String getPath()
+
+4. Cookie的使用
+	//发送Cookie
+	Cookie cookie = new Cookie(String name, String value);
+	cookie.setMaxAge(int second);
+	cookie.setPath("/");
+	response.addCookie(cookie);
+	
+	//获取所需Cookie
+	Cookie[] cookies = request.getCookies();
+	for(Cookie cookie : cookies){
+		String name = cookie.getName();
+		if(name.equals("xxx"))}
+			String value = cookie.getValue();
+			
+			//修改Cookie
+			cookie.setValue(String newValue);
+			cookie.setMaxAge(int second);
+			cookie.setPath("/");
+			response.addCookie(cookie);
+
+			//删除Cookie
+			cookie.setMaxAge(0);
+			response.addCookie(cookie);
+		}
+	}
+
+5. Session的工作原理
+	
+6. Session的生命周期
+	1. Session失效的3种情况
+	2. 设置超时时间的3种方式
+
+7. Session API
+	String getId()
+	long getCreationTime()
+	long getLastAccessedTime()
+	ServletContext getServletContext()
+	
+	void setAttribite(String name,Object value)
+	Object getAttribute(String name)
+	void removeAttribute(String name)
+	Enumeration getAttributeNames()
+
+	void setMaxInactiveInterval(int interval)
+	int getMaxInactiveInterval()
+	boolean isNew()
+	void invalidate()
+
+8. Session的使用
+	//获取Session
+	HttpSession session = request.getSession();
+
+	//操作Session，主要用于在Session范围内共享数据。
+
+9. 域对象总结：在Java Web中一共四个域对象，其中Servlet中可以使用的有3个。
+
+对象			生命期				有效范围			
+PageContext（JSP）	访问页面-离开页面			1次请求的一个页面
+HttpServletRequest		发送请求-返回响应			1个用户的1次请求
+HttpSession		第一次访问服务器-超时/关闭浏览器	1个用户的所有请求
+ServletContext		服务器启动-服务器关闭		所有用户的所有请求
+
+例1：显示上次访问时间
+例2：模拟购物车
+例3：模拟用户登录
+
+
+chapter 6: JSP
+1. JSP的作用及特点
+
+2. JSP运行原理
+	JSP文件(.jsp) -> Servlet文件(.java) -> Class文件(.class) -> Servlet实例
+
+3. JSP页面构成（3-3-3）
+	jsp = HTML + java code + jsp tags
+
+	java code：
+	1. 代码片段	<% int a=1, b=2;	%>
+	2. 声明		<%! int a=1, b=2;	%>
+	3. 表达式		<%= a+b %>
+
+	隐式对象：9个。
+	config		-    ServletConfig
+	application 	-    ServletContext
+	response		-    HttpServletResponse
+	request		-    HttpServletRequest
+	session		-    HttpSession
+	
+	page		-    Object
+	exception 	-    Throwable
+	out		-    JspWriter(PrintWriter)
+	pageContext 	-    PageContext
+				（1）获取其它隐式对象
+				（2）操作任意范围Attribute
+
+		隐式对象		类型
+page范围		pageContext	PageContext
+request范围	request		HttpServletRequest
+session范围	session		HttpSession
+application范围	application	ServletContext
+
+
+	jsp tags：
+	1. 注释		<%--	--%>
+	2. 指令标签
+			<%@ page ...... %> 2点
+			<%@ include file="" %> 4点		静态包含
+			<%@ taglib prefix="" uri="" %>
+	3. 动作标签
+			<jsp:include page="" flush="" />	动态包含
+			<jsp:forward page="" />
+
+
+chapter 7: EL, JSTL
+1. EL的语法：
+	${EL code}
+
+2. EL中的标识符、关键字、变量（Attribute）、常量
+
+3. EL运算符1：. []
+
+4. EL运算符2：算术运算符、比较运算符、逻辑运算符、empty运算符、条件运算符、（）运算符
+
+5. EL隐式对象：
+	1. EL提供了11个隐式对象，除pageContext外（和JSP共享），其他都是Map类型。
+	2. EL可以通过pageContext获取JSP的其它8个隐式对象，相当于是19个隐式对象。
+	
+	pageContext	-PageContext
+
+	pageScope	-Map<String, Object>	
+	requestScope	-Map<String, Object>
+	sessionScope	-Map<String, Object>
+	applicationScope	-Map<String, Object>
+
+	param		-Map<String, String>
+	paramValues	-Map<String, String[]>
+	
+	header		-Map<String, String>
+	headerValues	-Map<String, String[]>
+
+	cookie		-Map<String, Cookie>
+	initParam		-Map<String, String>
+
+6. JSTL的构成：
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix "fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+	<%@ taglib prefx="xml" uri="http://java.sun.com/jsp/jstl/xml" %> 
+	<%@ taglib prefix= "fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+7. JSTL使用前的准备
+	1. 添加jstl.jar和standard.jar到项目中。
+	2. 使用taglib指令导入标签库。
+
+8. Core标签库
+	（1）
+	<c:out value="value" [default="defaultValue"] [escapeXml="{true|false}"]/>	
+	<c:out value="value" [escapeXml="{true|false}"]>
+       		defaultValue 
+	</c:out>
+	
+	（2）
+	<c:set value="value" var="name" [scope="{ page|request|session|application }"]/>
+	<c:remove var="name" [scope="{ page|request|session|application }"] />
+	
+	（3）
+	<c:if test="testCondition">
+		body content
+	</c:if>
+
+	（4）
+	<c:choose>
+		<c:when test="testCondition1">
+			Body content
+		</c:when>
+		<c:when test="testCondition2">
+			Body content
+		</c:when>
+		......
+		<c:otherwise>
+			conditional block
+		</c:otherwise>
+	</c:choose>
+	
+	（5）
+	<c:forEach [var="varName"] items="collection" [varStatus="varStatusName"]
+		[begin="begin"] [end="end"] [step="step"]>
+		body content
+	</c:forEach>
+	
+	（6）
+	<c:url value="value" [var="varName"] [scope="{page|request|session|application}"]>
+		<c:param name="name" value="value">
+	</c:url>
+
+
+chapter 8: JavaBean, MVC
+1. 创建JavaBean
+	1. JavaBean就是一个POJO，不需要实现任何接口或继承任何类。
+	2. JavaBean是用于封装实体对象和业务逻辑的可复用组件。
+	3. JavaBean规范
+		（1）必须具有一个无参的构造函数。
+		（2）属性必须私有化。
+		（3）私有化的属性必须通过public类型的setter和getter方法暴露给其他程序。	
+
+2. JSP访问JavaBean
+	1. <jsp:useBean id="student" class="cn.itcast.Student" scope=""/>
+	2. <jsp:getProperty name=“student”property="name"/>
+	3. <jsp:setProperty name="student" property="name" value="小明"/>
+
+3. JSP开发模型
+	早期：JSP
+	JSP Model1：JSP + JavaBean
+	JSP Model2：MVC(JavaBean + JSP + Servlet)
+
+4. MVC设计模式
+	Model: JavaBean	负责业务逻辑
+	View: JSP		负责页面显示
+	Controller: Servlet	负责流程控制
+
+
+chapter 10: JDBC 
+1. JDBC访问数据库的方式（驱动的作用）
+
+2. JDBC API：java.sql.*
+	1. Driver：提供给数据库厂商开发数据库驱动的
+	2. DriverManager类：通过它获取数据库连接对象
+	3. Connection：代表与数据库的连接，通过它获取Statement对象
+	4. Satement：用于执行sql语句
+	5. PreparedStatement：是Statement的子接口，可执行带参数的sql语句
+	6. ResultSet：用于接收查询结果集，是表结构
+
+3. JDBC访问数据库步骤：
+	//1.加载驱动
+	Class.forName("com.mysql.jdbc.Driver");
+
+	//2.获得数据库连接对象
+	String username = "root";
+	String password = "123";
+	String url = "jdbc:mysql://localhost:3306/databaseName";
+	Connection con = DriverManager.getConnection(url, username,password);
+
+	//3.获得Statement/PreparedStatement对象
+	//3.1	
+	Statement stat = con.createStatement();
+	
+	//3.2
+	String sql = "insert/update/delete/select...?,?";
+	PreparedStatement ps = con.prepareStatement(sql);
+
+	//4.执行sql语句
+	//4.1
+	int rows = stat.executeUpdate("insert/update/delete...");
+	ResultSet rs = stat.executeQuery("select...");
+
+	//4.2
+	ps.setInt(1, 12);
+	ps.setString(2, "abc");
+	int rows = ps.executeUpdate();
+	ResultSet rs = ps.executeQuery();
+	
+
+	//5.分析结果
+	while(rs.next()){
+		rs.getInt(1); 
+		rs.getString("Username");
+	}
+
+	//6.释放资源
+	rs.close();
+	stat.close();
+	con.close();
+
+4. 数据访问层（DAO层）的实现
+	1. 创建UserDao
+	2. 实现用户登录
+
+
+
+课程内容：
+chapter 2: XML, Tomcat
+chapter 3: HTTP
+chapter 4: Servlet API
+chapter 5: Cookie, Session
+chapter 6: JSP
+chapter 7: EL
+chapter 8: JavaBean, MVC
+chapter 9: Filter 
+chapter 10: JDBC
+
+
+考试范围：
+第2章~第6章全部；
+第7章只考7.1  7.2节；
+第8章全部；
+第9章只考9.1节（过滤器）；
+第10章全部；
+第11章只考察一道小题（在11.1小节）
+
+题目大多来源于题库、书本、实验内容。
+
+考试时间：2024年06月19日上午10:00-12:00（17周三第3-4节）
+
+考试题型：
+选择	30
+填空	10
+判断	10
+程序阅读	10
+程序填空	10
+写程序	30
+
+实验：
+2209-2212
+16周周日上午	行逸楼	A106		
+17周周二上午	行知楼	A106
+
+2213-2216
+16周周日下午	行逸楼	A106		
+17周周二下午	行知楼	A106
+
+
+
+
+
+
+

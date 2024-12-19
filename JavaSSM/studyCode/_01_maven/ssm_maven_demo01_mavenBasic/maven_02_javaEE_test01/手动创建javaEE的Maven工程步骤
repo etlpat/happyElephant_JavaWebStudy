@@ -1,0 +1,11 @@
+手动创建javaEE项目的Maven工程：
+    1.创建一个javaSE的Maven工程
+    2.补全文件结构
+        main
+            webapp
+                WEB-INF
+                    web.xml
+    3.在pom.xml配置文件中
+        设置packaging属性为war，表示web项目（原本默认是jar，表示java项目）
+        <packaging>war</packaging>
+    4.刷新
