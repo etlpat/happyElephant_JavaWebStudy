@@ -11,6 +11,8 @@
     <title>注册用户信息</title>
 </head>
 <body>
+<%--静态包含页眉--%>
+<%@ include file="./pageHeader.jsp" %>
 <form method="post" action="./RegisterServlet">
     <table align="center" border="1px">
         <thead>
@@ -39,5 +41,7 @@
         </tbody>
     </table>
 </form>
+<%--静态包含页脚--%>
+<%@ include file="./pageFooter.jsp" %>
 </body>
 </html>

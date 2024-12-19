@@ -65,8 +65,11 @@ CREATE TABLE users1(
 	`password` VARCHAR(32)
 );
 
-DROP TABLE users;
+DROP TABLE users1;
 
-DESC users;
-SELECT * FROM users;
+DESC users1;
+SELECT * FROM users1;
+delete from users1;
+
+INSERT INTO users1 VALUES('user.getUsername()','user.getPassword()');
 

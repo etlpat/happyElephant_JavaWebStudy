@@ -2,7 +2,7 @@ package com.dao;
 
 import com.bean.RequestParamUser;
 import com.bean.User;
-import com.util.JBDCUtil;
+import com.util.JDBCUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -25,7 +25,7 @@ public class DAO {
         String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         try {
             // 获取连接对象
-            conn = JBDCUtil.myGetConnection();
+            conn = JDBCUtil.myGetConnection();
             // 获取通道对象
             stmt = conn.createStatement();
             // 执行sql语言
@@ -46,7 +46,7 @@ public class DAO {
             System.out.println(e);
         } finally {
             // 关闭资源
-            JBDCUtil.myClose(conn, stmt, null);
+            JDBCUtil.myClose(conn, stmt, null);
         }
         return false;
     }
@@ -58,7 +58,7 @@ public class DAO {
         Statement stmt = null;
         try {
             // 获取连接对象
-            conn = JBDCUtil.myGetConnection();
+            conn = JDBCUtil.myGetConnection();
             // 获取通路对象
             stmt = conn.createStatement();
             // 执行sql语句
@@ -74,7 +74,7 @@ public class DAO {
             System.out.println(e);
         } finally {
             // 关闭资源
-            JBDCUtil.myClose(conn, stmt, null);
+            JDBCUtil.myClose(conn, stmt, null);
         }
         return false;
     }
@@ -88,7 +88,7 @@ public class DAO {
         String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         try {
             // 获取连接对象
-            conn = JBDCUtil.myGetConnection();
+            conn = JDBCUtil.myGetConnection();
             // 获取通道对象
             stmt = conn.createStatement();
             // 执行sql语言
@@ -109,7 +109,7 @@ public class DAO {
             System.out.println(e);
         } finally {
             // 关闭资源
-            JBDCUtil.myClose(conn, stmt, null);
+            JDBCUtil.myClose(conn, stmt, null);
         }
         return false;
     }
@@ -122,7 +122,7 @@ public class DAO {
         ResultSet rs = null;
         try {
             // 获取连接对象
-            conn = JBDCUtil.myGetConnection();
+            conn = JDBCUtil.myGetConnection();
             // 获取通道对象
             stmt = conn.createStatement();
             // 执行sql语言
@@ -142,7 +142,7 @@ public class DAO {
             System.out.println(e);
         } finally {
             // 关闭资源
-            JBDCUtil.myClose(conn, stmt, rs);
+            JDBCUtil.myClose(conn, stmt, rs);
         }
         return null;
     }
@@ -155,7 +155,7 @@ public class DAO {
         ResultSet rs = null;
         try {
             // 获取连接对象
-            conn = JBDCUtil.myGetConnection();
+            conn = JDBCUtil.myGetConnection();
             // 获取通道对象
             stmt = conn.createStatement();
             // 执行sql语言
@@ -176,7 +176,7 @@ public class DAO {
             System.out.println(e);
         } finally {
             // 关闭资源
-            JBDCUtil.myClose(conn, stmt, rs);
+            JDBCUtil.myClose(conn, stmt, rs);
         }
         return null;
     }

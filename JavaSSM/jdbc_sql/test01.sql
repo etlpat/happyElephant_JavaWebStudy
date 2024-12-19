@@ -12,6 +12,10 @@ CREATE TABLE students (
 );
 
 SELECT * FROM students;
+SELECT * FROM students WHERE id = 1;
+INSERT INTO students (id, NAME, gender, age, class) VALUES(9,'1','1',1,'1');
+DELETE FROM students WHERE id = 11;
+SELECT id,NAME,gender,age,class AS classes FROM students;
 
 INSERT INTO students (id, NAME, gender, age, class)
 VALUES
