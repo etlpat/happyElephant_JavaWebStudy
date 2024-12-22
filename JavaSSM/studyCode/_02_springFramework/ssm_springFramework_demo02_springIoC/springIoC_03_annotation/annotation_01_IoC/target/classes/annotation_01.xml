@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!-- 通过xml配置文件，指定@注解所在的包 -->
+    <!--
+        1.普通注解包扫描
+        <context:component-scan - 该标签指定IoC容器所需扫描的注解所在的包。
+            base-package="包1, 包2,..." - 一个或多个包名
+
+        注意：指定父包，会嵌套扫描所有子包中的注解。
+    -->
+    <context:component-scan base-package="com.etlpat.javaBean"/>
+
+
+    <!--
+        2.指定包，并排除某些注解
+        语法如下：
+        <context:component-scan base-package="包名1, 包名2,...">
+            <context:exclude-filter - 子标签，用于指定排除规则
+                -type属性：指定根据什么来进行排除，annotation取值表示根据注解来排除
+                -expression属性：指定排除规则的表达式，对于注解来说指定全类名即可
+        </context:component-scan>
+    -->
+    <context:component-scan base-package="com.etlpat.javaBean">
+        <!-- 排除包下的某些注解 -->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+
+    <!--
+        3.指定包中要包含的注解
+        语法如下：
+        <context:component-scan base-package="包名1, 包名2,..."
+            use-default-filters="false" - 属性：默认为true，会自动扫描包中所有注解；取值false时，不扫描包中注解。>
+            <context:include-filter - 子标签，指定在原有扫描规则的基础上追加的规则
+                type=... expression=...
+        </context:component-scan>
+    -->
+    <context:component-scan base-package="com.etlpat.javaBean" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+
+</beans>

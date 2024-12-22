@@ -7,12 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="xml_03_IoCContainerCreationAndUse" />
+        <module name="annotation_03_DI" />
         <module name="xml_01_IoC" />
         <module name="xml_02_DI" />
         <module name="xml_06_homework" />
         <module name="springIoC_01_basic" />
         <module name="xml_05_FactoryBean" />
         <module name="xml_04_BeanLifecycleAndScope" />
+        <module name="annotation_02_BeanLifecycleAndScope" />
+        <module name="annotation_01_IoC" />
       </profile>
     </annotationProcessing>
   </component>

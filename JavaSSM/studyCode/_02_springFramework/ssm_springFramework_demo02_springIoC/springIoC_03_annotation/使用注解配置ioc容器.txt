@@ -1,0 +1,26 @@
+<3>使用注解配置ioc容器
+
+
+0.基础概述
+    通过注解配置ioc容器的步骤：
+        ①在组件类上添加ioc注解
+        ②配置注解所生效的包的xml信息
+        ③创建ioc容器对象，并指定配置信息；通过ioc容器获取组件对象。
+
+
+
+1.基于注解方式管理Bean
+
+    (1)Bean注解的标记和扫描（基础IoC功能）
+        目标：
+            ①为组件类添加注解
+            ②使用xml文件配置注解所在的包（确定扫描范围）
+        【①见annotation_01_IoC子工程的src/main/java/com/etlpat/javaBean/User.java】
+        【②见annotation_01_IoC子工程的src/main/resources/annotation_01.xml】
+
+
+    (2)bean组件的生命周期和作用域
+        目标：
+            ①配置bean的生命周期
+            ②配置bean的作用域
+        【见annotation_02_BeanLifecycleAndScope子工程的src/main/java/com/etlpat/javaBean/User.java】
