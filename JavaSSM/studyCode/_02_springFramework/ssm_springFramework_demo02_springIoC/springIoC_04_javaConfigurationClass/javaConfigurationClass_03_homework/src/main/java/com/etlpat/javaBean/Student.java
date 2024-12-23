@@ -1,4 +1,4 @@
-package com.etlpat.bean.javaBean;
+package com.etlpat.javaBean;
 
 public class Student {
 

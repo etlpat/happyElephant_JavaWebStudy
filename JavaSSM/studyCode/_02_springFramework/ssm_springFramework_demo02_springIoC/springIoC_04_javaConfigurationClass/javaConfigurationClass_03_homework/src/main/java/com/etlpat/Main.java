@@ -1,6 +1,6 @@
 package com.etlpat;
 
-import com.etlpat.bean.controller.Control;
+import com.etlpat.controller.Control;
 import com.etlpat.config.Config;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
