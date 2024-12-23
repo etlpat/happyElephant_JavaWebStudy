@@ -3,15 +3,44 @@ package com.etlpat.javaBean;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+
+// 使用注解，进行依赖注入DI
+//
+// (1)使用注解对【基本类型】进行DI
+//  注解：@Value
+//  语法：
+//      ①@Value("常量")：直接赋值
+//      ②@Value("${key}")：引入properties变量
+//      ③@Value("${key:defaultValue}")：引入properties变量，并赋默认值
+//
+//
+// (2)使用注解对【引用类型】进行DI
+//  注解：@Autowired \ @Qualifier \ @Resource
+//  语法：
+//      ①@Autowired：直接进行自动装配
+//      ②@Autowired+@Qualifier(value="IoC中组件id")：自动装配，并指定要装配组件的id
+//      ③@Resource(name="IoC中组件id")：自动装配，并指定要装配组件的id（等价于②）
+//
+
 
 @Component
 public class User {
     //TODO: 1【使用@注解对基本类型进行DI】
+
+    //TODO:1.1 使用@Value("常量")，直接赋值
+    @Value("18")
     private int age;
 
+    //TODO:1.2 使用@Value("${key}")，引入properties变量
+    @Value("${jdbc.username}")
     private String username;
 
+    //TODO:1.3 使用@Value("${key:defaultValue}")，引入properties变量，并赋默认值
+    //注意：当properties文件中不包含该key，则该变量值为defaultValue默认值
+    @Value("${jdbc.password:000000}")
     private String password;
 
 
@@ -46,7 +75,7 @@ public class User {
     //      Qualifier：限定符
     //
     //  (1)使用规则
-    //      当属性对应IoC容器中多个组件时，可以通过@Qualifier指定要装配的组件的id。
+    //      当一个属性对应IoC容器中多个组件时，可以通过@Qualifier指定要装配的组件的id。
     //      语法：
     //          @Autowired
     //          @Qualifier(value="容器中指定组件的id")
