@@ -1,0 +1,53 @@
+<4>使用java配置类来配置ioc容器
+
+
+0.基础概述
+
+    (1)java配置类概念
+        java配置类，是使用java文件和注解，来【替代原本的XML配置文件】。
+        相对于XML配置，java配置类具有更强的类型安全性和更好的可读性，以及更高的效率。
+
+
+    (2)xml文件到java配置类的转化
+        （旧）xml文件：
+            1.使用<bean>标签进行第三方类的ioc/di的配置
+            2.使用<context:component-scan>标签配置注解的扫描范围
+            3.使用<context:property-placeholder>标签引入properties文件
+
+        （新）java配置类：(@Configuration)
+            1.@Bean注解来标注方法，用来引入第三方类组件
+            2.@ComponentScan注解，用于配置注解的扫描范围
+            3.@PropertySource注解，用来引入properties文件
+
+
+    (3)引入java配置类后，配置ioc容器的步骤
+        ①在组件类上添加ioc注解
+        ②创建java配置类，填写配置信息
+        ③创建ioc容器对象，并通过容器获取组件对象
+
+
+
+
+1.基于java配置类方式管理Bean
+    (1)java配置类的基础使用
+        目标：
+            ①为类添加@Configuration注解 -- 代表该类为配置类
+            ②为类添加@ComponentScan注解 -- 设置注解的扫描范围
+            ③为类添加@PropertySource注解 -- 引入properties文件
+            ④为方法添加@Bean注解 -- 配置第三方类的bean组件
+        【见javaConfigurationClass_01_Basic子工程的src/main/java/com/etlpat/config/JavaConfiguration.java】
+
+
+    (2)java配置类的细节
+        目标：
+            ①java配置类中，bean组件的生命周期/作用域
+            ②java配置类中，bean组件的Getter方法，形参自带@Autowired注解
+            ③@Import注解，用于在本配置类中引入（整合）其它配置类
+        【见javaConfigurationClass_02_Detail子工程的src/main/java/com/etlpat/config/JavaConfiguration.java】
+
+
+    (3)项目作业--基于java配置类方式整合三层架构组件
+        需求分析：
+            搭建一个三层架构案例，模拟查询全部学生（学生表）信息，持久层使用JdbcTemplate和Druid技术，使用java配置类方式进行组件管理！
+            项目具体要求请见：https://www.wolai.com/oacbJpH1wPzGNoMAVnoELR
+            项目源码见：javaConfigurationClass_03_homework项目
