@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- (1)读取properties文件 -->
+    <context:property-placeholder location="jdbc.properties"/>
+
+
+    <!-- (2)指定注解扫描范围 -->
+    <context:component-scan base-package="com.etlpat"/>
+
+
+    <!--
+        (3)引入第三方类的组件
+        注意：由于第三方类不能通过注解放入ioc容器，因此只能在xml中引入。
+    -->
+    <!-- 创建德鲁伊数据库连接池组件（配置驱动信息，并设置url、用户名、密码） -->
+    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${etlpat.deiver}"/>
+        <property name="url" value="${etlpat.url}"/>
+        <property name="username" value="${etlpat.username}"/>
+        <property name="password" value="${etlpat.password}"/>
+    </bean>
+
+    <!-- 创建jdbcTemplate对象（将数据库连接池对象赋给它） -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="druidDataSource"/>
+    </bean>
+
+</beans>
