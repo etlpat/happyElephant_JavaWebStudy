@@ -12,6 +12,7 @@
         <module>annotation_01_IoC</module>
         <module>annotation_02_BeanLifecycleAndScope</module>
         <module>annotation_03_DI</module>
+        <module>annotation_04_homework</module>
     </modules>
 
 

@@ -11,7 +11,7 @@
 
 1.基于注解方式管理Bean
 
-    (1)Bean注解的标记和扫描（基础IoC功能）
+    (1)bean的注解的标记和扫描（基础IoC功能）
         目标：
             ①为组件类添加注解
             ②使用xml文件配置注解所在的包（确定扫描范围）
@@ -24,3 +24,19 @@
             ①配置bean的生命周期
             ②配置bean的作用域
         【见annotation_02_BeanLifecycleAndScope子工程的src/main/java/com/etlpat/javaBean/User.java】
+
+
+    (3)组件bean的依赖注入配置（DI）
+        目标：
+            ①使用注解对 基本类型 进行DI
+                注解：@Value
+            ②使用注解对 引用类型 进行DI
+                注解：@Autowired \ @Qualifier \ @Resource
+        【见annotation_03_DI子工程的src/main/java/com/etlpat/javaBean/User.java】
+
+
+    (4)项目作业--基于注解方式整合三层架构组件
+            需求分析：
+                搭建一个三层架构案例，模拟查询全部学生（学生表）信息，持久层使用JdbcTemplate和Druid技术，使用注解方式进行组件管理！
+                项目具体要求请见：https://www.wolai.com/oacbJpH1wPzGNoMAVnoELR
+                项目源码见：annotation_04_homework项目
