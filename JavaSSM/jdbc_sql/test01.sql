@@ -11,12 +11,6 @@ CREATE TABLE students (
   class VARCHAR(50)
 );
 
-SELECT * FROM students;
-SELECT * FROM students WHERE id = 1;
-INSERT INTO students (id, NAME, gender, age, class) VALUES(9,'1','1',1,'1');
-DELETE FROM students WHERE id = 11;
-SELECT id,NAME,gender,age,class AS classes FROM students;
-
 INSERT INTO students (id, NAME, gender, age, class)
 VALUES
   (1, '张三', '男', 20, '高中一班'),
@@ -27,3 +21,11 @@ VALUES
   (6, '陈八', '女', 18, '高中一班'),
   (7, '杨九', '男', 20, '高中三班'),
   (8, '吴十', '男', 19, '高中二班');
+
+
+
+SELECT * FROM students;
+SELECT * FROM students WHERE id = 1;
+INSERT INTO students (id, NAME, gender, age, class) VALUES(9,'1','1',1,'1');
+DELETE FROM students WHERE id = 11;
+SELECT id,NAME,gender,age,class AS classes FROM students;
