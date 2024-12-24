@@ -6,6 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="aop_02_homework" />
+        <module name="aop_01_basicTest" />
         <module name="springAOP_01_basic" />
       </profile>
     </annotationProcessing>
