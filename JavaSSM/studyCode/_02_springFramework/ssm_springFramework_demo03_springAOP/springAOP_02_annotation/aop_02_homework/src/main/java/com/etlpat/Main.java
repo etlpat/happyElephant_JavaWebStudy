@@ -13,8 +13,14 @@ public class Main {
         MyService service = context.getBean(MyService.class);
 
         // 测试组件方法
+        System.out.println("======================================");
         service.func1();
-        service.func2();
+        System.out.println("======================================");
+        try {
+            service.func2();
+        } catch (Exception e) {
+        }
+        System.out.println("======================================");
 
         // 关闭容器
         context.close();
