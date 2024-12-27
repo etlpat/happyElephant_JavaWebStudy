@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    iBatis方式进行数据库操纵
+    (1)不要求写mapper接口。
+    (2)直接创建mapperXML文件，在其中编写sql语句。
+    (3)namespace没有任何要求，随意声明一个字符串即可。
+    (4)CRUD标签的id属性没有任何要求，随意声明一个字符串即可。
+-->
+<mapper namespace="myNamespace">
+
+    <select id="id1" resultType="com.etlpat.pojo.Employee">
+        SELECT emp_id AS empId, emp_name AS empName, emp_salary AS empSalary
+        FROM t_emp WHERE emp_id = #{id};
+    </select>
+
+
+</mapper>

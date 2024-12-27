@@ -1,0 +1,94 @@
+<1>myBatis基础使用
+
+ssm教案：https://www.wolai.com/v5Kuct5ZtPeVBk4NBUGBWF
+myBatis官方文档：https://mybatis.org/mybatis-3/zh_CN/index.html
+
+
+
+1.MyBatis简介
+    (1)什么是 MyBatis？
+       MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。
+       MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。
+       MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 JavaPOJO 为数据库中的记录。
+
+    (2)MyBatis 发展历史
+       MyBatis最初是Apache的一个开源项目iBatis, 2010年6月这个项目由Apache Software Foundation迁移到了Google Code。
+       随着开发团队转投Google Code旗下， iBatis3.x正式更名为MyBatis。代码于2013年11月迁移到Github。
+       P.S. 本课程使用：3.5.11版本
+
+    (3)不同的持久层框架对比
+        ①JDBC
+            SQL 夹杂在Java代码中耦合度高，导致硬编码内伤。
+            维护不易且实际开发需求中 SQL 有变化，频繁修改的情况多见。代码冗长，开发效率低。
+        ②Hibernate 和 JPA
+            操作简便，开发效率高。
+            程序中的长难复杂 SQL 需要绕过框架。内部自动生成的 SQL，不容易做特殊优化。
+            基于全映射的全自动框架，大量字段的 POJO 进行部分映射时比较困难。
+            反射操作太多，导致数据库性能下降。
+        ③MyBatis
+            轻量级，性能出色。
+            SQL 和 Java 编码分开，功能边界清晰。Java代码专注业务、SQL语句专注数据。
+            开发效率稍逊于 Hibernate，但是完全能够接收。
+
+        开发效率：Hibernate > Mybatis > JDBC
+        运行效率：JDBC > Mybatis > Hibernate
+
+
+
+
+
+2.MyBatis的使用步骤
+    (1)定义Mapper接口和MapperXML文件
+        ①Mapper接口：用于声明对数据库进行操作的方法。
+        ②MapperXML文件：用于定义与接口方法相对应的SQL语句。
+        （P.S.Mapper层和Dao层一样，都是对于持久层的实现）
+
+    (2)定义MyBatis的配置文件（一般命名为：mybatis-config.xml）
+        MyBatis的配置文件：用于配置MyBatis框架所需的信息。
+        配置文件包含标签：
+            ①settings -> MyBatis功能的设置（可选）
+            ②typeAliases -> 类型的别名（可选）
+            ③environments -> MyBatis环境配置，包含数据库连接信息（driver、url、username、password）
+            ④mappers -> 配置MyBatis所包含的MapperXML文件
+            ...
+
+    (3)通过MyBatis提供的API，进行Mapper层方法的调用
+        ①将MyBatis配置文件转化为输入流对象
+        ②创建SqlSessionFactory对象（并将MyBatis配置文件设置给它）
+        ③根据SqlSessionFactory工厂获取SqlSession对象
+        ④使用SqlSession对象，获取Mapper接口的代理对象（JDK动态代理技术）
+        ⑤使用Mapper代理对象，操纵数据库
+        ⑥提交事务(DML语句)，并释放资源
+
+
+
+
+
+3.MyBatis的基本使用
+
+    (1)MyBatis的快速入门
+        目标：
+            ①定义Mapper接口和MapperXML文件。
+            ②定义MyBatis的配置文件
+            ③通过MyBatis提供的API，进行Mapper层方法的调用
+        【详情见basic_01_basicCode子工程】
+            【①：见EmployeeMapper.java 和 EmployeeMapper.xml】
+            【②：见mybatis-config.xml】
+            【③：见Main.java】
+
+
+    (2)iBatis框架的使用
+        目标：
+            ①创建MapperXML文件，存放sql语句（不创建mapper接口）
+            ②创建MyBatis配置文件（与MyBatis方式完全一致）
+            ③获取SqlSession对象，使用该对象，直接调用CRUD方法，操纵数据库（不创建mapper代理对象）
+        iBatis如何封装成MyBatis？：
+            MyBatis，本质上只是对iBatis的一层封装。
+            MyBatis通过创建mapper代理对象，将iBatis方式下的CRUD方法封装进了mapper代理对象的方法中。
+            mapper代理对象调用接口方法，底层仍是调用iBatis的CRUD方法。iBatis的(namespace.id, sql参数)，前者通过反射获取[类全名.方法名]即可自动填充。
+            因此，使用MyBatis后，我们只需调用简单的代理对象，即可代替iBat5is中对CRUD方法的复杂调用过程。
+        【详情见basic_02_iBatis子工程】
+        【说明文档见basic_02_iBatis子工程src/main/java/com/etlpat/Main.java文件】
+
+
+    (3)

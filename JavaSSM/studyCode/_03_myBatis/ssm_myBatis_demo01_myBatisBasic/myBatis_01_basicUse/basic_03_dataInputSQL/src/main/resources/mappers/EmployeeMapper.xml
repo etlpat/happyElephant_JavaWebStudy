@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    MapperXML文件，与Mapper接口相对应，用于存放sql语句
+    一个CRUD标签 -> 存放一条sql语句 -> 与Mapper接口的一个方法相对应
+-->
+<mapper namespace="com.etlpat.mapper.EmployeeMapper">
+
+    <!--
+        (1)区分 #{key} 和 ${key}
+            ① #{key}：先变为占位符"?"，最后赋值。（安全）
+                注意：Ⅰ 推荐使用#{key}占位符，因为可以防止注入攻击！
+                     Ⅱ 占位符【只能替代值】！  e.g.允许(id=?)，不允许(?=3)
+
+            ② ${key}：直接将字符串拼接。（不安全）
+                注意：优先使用#{key}，若前者不能使用时（如key代表sql语句中的关键字），再使用${key}！
+    -->
+    <select id="queryByID" resultType="com.etlpat.pojo.Employee">
+        SELECT emp_id AS empId, emp_name AS empName, emp_salary AS empSalary
+        FROM t_emp WHERE emp_id = #{id};
+    </select>
+
+
+    <!--
+        (2)数据输入
+            ①数据输入的概念
+                数据输入：把mapper接口中方法的参数，传给mapperXML中定义的sql语句。
+                e.g. 接口中定义方法 Employee queryByID(int id) -> sql语句中使用 #{id} 接收方法参数。
+
+            ②输入数据的分类
+                输入的数据分为：简单类型 / 复杂类型
+                Ⅰ简单类型：只包含一个值的数据类型
+                    -基本类型：int、byte、short、double、……
+                    -包装类型：Integer、Character、Double、……
+                    -字符串：String
+                Ⅱ复杂类型：包含多个值的数据类型
+                    -实体类：Employee、Department、……
+                    -集合类型：List、Set、Map、……
+                    -数组类型：int[]、String[]、……
+                    -复合类型：List<Employee>、实体类中包含集合……
+    -->
+
+
+</mapper>

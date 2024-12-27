@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    【一个mapperXML文件，对应一个mapper接口。】
+    【在mapperXML文件中，需要定义与之对应的mapper接口中，全部方法所对应的sql语句。】
+
+    总结：
+        mapperXML文件，与mapper接口一一对应。
+        mapperXML文件中的sql语句，与mapper接口中的方法一一对应。
+-->
+
+<!-- namespace名称空间的值，需要填写对应的mapper接口的全限定符（类名全称） -->
+<mapper namespace="com.etlpat.mapper.EmployeeMapper">
+
+    <!--
+        通过CRUD标签，定义sql语句
+        CRUD标签种类：insert、delete、select、update
+        注意：每个CRUD标签 -> 对应一条sql语句 -> 对应mapper接口中的一个方法
+
+        CRUD标签的属性：
+        <select id="mapper接口中对应的方法名" resultType="返回类型的全限定符">
+            SQL语句...
+        </select>
+        注意：mapper接口中方法不能重载！（原因：CRUD标签只通过方法名识别对应方法）
+    -->
+    <select id="queryById" resultType="com.etlpat.pojo.Employee">
+        SELECT emp_id AS empId, emp_name AS empName, emp_salary AS empSalary
+        FROM t_emp WHERE emp_id = #{id};
+    </select>
+
+    <delete id="deleteById">
+        DELETE FROM t_emp WHERE emp_id = #{id};
+    </delete>
+
+</mapper>
