@@ -12,6 +12,7 @@
         <module>basic_01_basicCode</module>
         <module>basic_02_iBatis</module>
         <module>basic_03_dataInputSQL</module>
+        <module>basic_04_dataOutputSQL</module>
     </modules>
 
 

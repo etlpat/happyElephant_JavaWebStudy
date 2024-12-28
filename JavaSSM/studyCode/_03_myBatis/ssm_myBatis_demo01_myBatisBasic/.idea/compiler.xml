@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="basic_01_basicCode" />
+        <module name="basic_04_dataOutputSQL" />
         <module name="basic_02_iBatis" />
         <module name="basic_03_dataInputSQL" />
       </profile>

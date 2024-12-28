@@ -91,4 +91,12 @@ myBatis官方文档：https://mybatis.org/mybatis-3/zh_CN/index.html
         【说明文档见basic_02_iBatis子工程src/main/java/com/etlpat/Main.java文件】
 
 
-    (3)
+    (3)数据输入
+        目标：
+            ①区分#{key}和${key}
+            ②数据的输入：把mapper接口中方法的参数，传给mapperXML中对应的sql语句。
+                Ⅰ单个简单类型传参
+                Ⅱ单个实体对象传参
+                Ⅲ多个简单类型传参
+                Ⅳ单个Map类型传参
+        【详情见basic_03_dataInputSQL子工程的src/main/resources/mappers/EmployeeMapper.xml文件】

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    MapperXML文件，与Mapper接口相对应，用于存放sql语句
+    一个CRUD标签 -> 存放一条sql语句 -> 与Mapper接口的一个方法相对应
+-->
+<mapper namespace="com.etlpat.mapper.EmployeeMapper">
+    <!--
+        (1)类型别名（typeAliases）
+            英文讲解：alias - n.别名
+            ①类型别名概念
+                可以在MyBatis配置文件中，使用typeAliases标签，为Java类取别名。
+                [类的全限定符->别名]，别名仅可用于XML文件中，意在降低冗余的全限定类名书写。
+                注意：别名可用在XML文件中的任意位置！
+
+
+            ②手动设置类型别名
+                语法：（在MyBatis配置文件中）
+                <typeAliases>
+                    // 1.为单个类取别名
+                    <typeAlias type="类的全限定符" alias="别名"/>
+
+                    // 2.为包下的全部类取别名
+                    //  注意：为包下的全部类取别名，别名默认是【类名首字母小写后的值】
+                    <package name="包名"/>
+                </typeAliases>
+
+
+            ③MyBatis自带的Java类别名
+                对于一些常用的Java类，MyBatis自动为它们设置了别名。
+                【java类别名 = 类名首字母小写后的值】
+                    Ⅰ基本类型：int double -> _int _double
+                    Ⅱ包装类型：Integer Double -> int/integer double
+                    Ⅲ集合类型：Map List HashMap -> map list hashMap
+                【详情请见MyBatis官方文档：https://mybatis.org/mybatis-3/zh_CN/configuration.html#typeAliases】
+    -->
+
+
+    <!--
+        (2)数据输出
+            ①数据输出的概念
+                数据输出：将sql语句的执行结果，封装成对象，返回给mapper接口中对应的方法。
+
+            ②不同语句的数据输出
+                不同语句的数据输出形式是不同的：
+                Ⅰ.【DML语句】 - insert / delete / update 标签
+                    DML语句的返回结果均是int类型，表示table受影响的行数。
+                    因此，DML语句对应的标签，默认返回int，【不需要设置resultType属性的值】。
+
+                Ⅱ.【DQL语句】 - select 标签
+                    DQL语句可能返回：简单类型/实体对象/List集合/Map类型
+                    因此，我们需要通过resultType属性指定DQL语句的返回类型。
+    -->
+    <!--
+        (2.0) DML语句的数据输出
+            DML语句：默认返回int（表示影响行数），不需要设置resultType属性。
+    -->
+    <delete id="deleteById">
+        DELETE FROM t_emp WHERE emp_id = #{id};
+    </delete>
+
+
+    <!--
+        (2.1) DQL语句，返回单个简单类型
+            若返回单个简单类型：resultType = 简单类的全限定符 / 别名（类名首字母小写后的值）
+    -->
+    <select id="queryNameById" resultType="string"><!-- 注意：string为java.lang.String的别名 -->
+        SELECT emp_name FROM t_emp WHERE emp_id = #{id};
+    </select>
+
+
+</mapper>

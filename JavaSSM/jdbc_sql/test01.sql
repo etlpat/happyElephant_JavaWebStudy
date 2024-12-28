@@ -26,6 +26,6 @@ VALUES
 
 SELECT * FROM students;
 SELECT * FROM students WHERE id = 1;
-INSERT INTO students (id, NAME, gender, age, class) VALUES(9,'1','1',1,'1');
+INSERT INTO students (id, NAME, gender, age, class) VALUES(10,'驴蛋子','男',32,'二年三班');
 DELETE FROM students WHERE id = 11;
 SELECT id,NAME,gender,age,class AS classes FROM students;

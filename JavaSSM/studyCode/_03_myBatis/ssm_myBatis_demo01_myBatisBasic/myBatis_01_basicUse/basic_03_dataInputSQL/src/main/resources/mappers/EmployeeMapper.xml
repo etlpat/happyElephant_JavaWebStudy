@@ -27,7 +27,8 @@
     <!--
         (2)数据输入
             ①数据输入的概念
-                数据输入：把mapper接口中方法的参数，传给mapperXML中定义的sql语句。
+                已知：一个mapper接口中的方法，唯一对应一条mapperXML文件中的sql语句。
+                数据输入：把mapper接口中方法的参数，传给mapperXML中对应的sql语句。
                 e.g. 接口中定义方法 Employee queryByID(int id) -> sql语句中使用 #{id} 接收方法参数。
 
             ②输入数据的分类
@@ -42,6 +43,51 @@
                     -数组类型：int[]、String[]、……
                     -复合类型：List<Employee>、实体类中包含集合……
     -->
+    <!--
+        (2.1)单个简单类型传参
+            传入单个简单类型，#{}中的key可以随意命名！
+            注意：虽然无论key取什么名，都可以接收参数；但是key的取名建议和参数名相同！
+    -->
+    <select id="queryBySalary" resultType="com.etlpat.pojo.Employee">
+        SELECT emp_id AS empId, emp_name AS empName, emp_salary AS empSalary
+        FROM t_emp WHERE emp_salary = #{salary};
+    </select>
 
+
+    <!--
+        (2.2)单个实体对象传参
+            传入单个实体对象，#{}中的key = 实体对象的属性名！
+    -->
+    <insert id="insertEmployee">
+        INSERT INTO t_emp(emp_name,emp_salary)
+        VALUES(#{empName}, #{empSalary});
+    </insert>
+
+
+    <!--
+        (2.3)多个简单类型传参
+            当传入多个简单类型：
+                方案1：@Param注解【推荐】
+                    首先 在方法的参数列表中，使用 @Param("keyName") 注解指定参数名。
+                    之后 在sql语句中：#{}中的key = @Param指定的keyName！
+
+                方案2：MyBatis的参数默认值
+                    ①形参从左到右依次对应：arg0, arg1,...
+                    ②形参从左到右依次对应：param1, param2,...
+    -->
+    <select id="queryByNameAndSalary" resultType="com.etlpat.pojo.Employee">
+        SELECT emp_id AS empId, emp_name AS empName, emp_salary AS empSalary
+        FROM t_emp WHERE emp_name = #{pName} AND emp_salary = #{pSalary};
+    </select>
+
+
+    <!--
+        (2.4)单个Map类型传参
+            传入单个Map类型：#{map的Key} = map的Value
+    -->
+    <insert id="insertMapEmp">
+        INSERT INTO t_emp(emp_name,emp_salary)
+        VALUES(#{name}, #{salary});
+    </insert>
 
 </mapper>
