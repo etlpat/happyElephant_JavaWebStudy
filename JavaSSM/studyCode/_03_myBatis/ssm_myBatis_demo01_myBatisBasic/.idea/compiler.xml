@@ -7,8 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="basic_01_basicCode" />
+        <module name="myBatis_02_multiListMapping" />
         <module name="basic_04_dataOutputSQL" />
         <module name="basic_02_iBatis" />
+        <module name="basic_05_homework" />
         <module name="basic_03_dataInputSQL" />
       </profile>
     </annotationProcessing>

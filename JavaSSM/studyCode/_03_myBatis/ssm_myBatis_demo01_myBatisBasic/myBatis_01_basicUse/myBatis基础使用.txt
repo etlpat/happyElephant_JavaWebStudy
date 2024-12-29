@@ -100,3 +100,24 @@ myBatis官方文档：https://mybatis.org/mybatis-3/zh_CN/index.html
                 Ⅲ多个简单类型传参
                 Ⅳ单个Map类型传参
         【详情见basic_03_dataInputSQL子工程的src/main/resources/mappers/EmployeeMapper.xml文件】
+
+
+    (4)数据输出
+        目标：
+            ①类型别名（typeAliases）
+                Ⅰ手动设置类型别名
+                ⅡMyBatis自带的Java类别名
+            ②数据输出：将sql语句的执行结果，封装成对象，返回给mapper接口中对应的方法。
+                〇DML语句的数据输出
+                ⅠDQL语句，返回单个简单类型
+                ⅡDQL语句，返回单个实体类型
+                ⅢDQL语句，返回Map类型
+                ⅣDQL语句，返回List集合
+            ③主键回显
+                自增长类型的主键回显：insert插入数据时，将mysql维护的自增长的主键，回显给employee对象的id属性。
+            【详情见basic_04_dataOutputSQL子工程的src/main/resources/mappers/EmployeeMapper.xml文件】
+
+
+    (5)项目作业--基于MyBatis框架的CRUD练习
+        详细需求见：https://www.wolai.com/oLP8DUTzo2JRX1DfZNZn6c
+        项目源码见：basic_05_homework项目

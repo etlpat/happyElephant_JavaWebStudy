@@ -9,5 +9,9 @@
     <file url="file://$PROJECT_DIR$/myBatis_01_basicUse/basic_03_dataInputSQL/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myBatis_01_basicUse/basic_04_dataOutputSQL/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myBatis_01_basicUse/basic_04_dataOutputSQL/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myBatis_01_basicUse/basic_05_homework/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myBatis_01_basicUse/basic_05_homework/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myBatis_02_multiListMapping/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myBatis_02_multiListMapping/src/main/resources" charset="UTF-8" />
   </component>
 </project>

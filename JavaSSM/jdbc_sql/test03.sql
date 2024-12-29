@@ -1,0 +1,21 @@
+USE `mybatis_example`;
+
+DROP TABLE `user`;
+
+CREATE TABLE `user` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+DESC USER;
+
+SELECT * FROM USER;
+
+
+INSERT INTO `user`(username,PASSWORD) VALUES('张三','123456');
+DELETE FROM `user` WHERE id = 1;
+UPDATE `user` SET username = '李四', PASSWORD = '233445' WHERE id = 2;
+SELECT * FROM USER WHERE id = 2;
+SELECT * FROM USER;

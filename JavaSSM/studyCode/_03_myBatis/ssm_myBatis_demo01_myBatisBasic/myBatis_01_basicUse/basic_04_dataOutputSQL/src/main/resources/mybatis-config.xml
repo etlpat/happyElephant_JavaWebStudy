@@ -10,13 +10,16 @@
     <settings>
         <!-- logImpl用于在输出结果时，附带日志一并输出 -->
         <setting name="logImpl" value="STDOUT_LOGGING"/>
+
+        <!-- mapUnderscoreToCamelCase：用于在sql语句中，开启下划线命名到驼峰式命名的自动映射 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 
 
     <!-- <typeAliases>标签，用于为Java类取别名 -->
     <typeAliases>
         <!-- 1.为单个类取别名 -->
-        <typeAlias type="com.etlpat.pojo.Employee" alias="employee"/>
+        <!--<typeAlias type="com.etlpat.pojo.Employee" alias="employee"/>-->
 
         <!-- 2.为包下的全部类取别名（别名默认是：类名首字母小写后的值） -->
         <package name="com.etlpat"/>

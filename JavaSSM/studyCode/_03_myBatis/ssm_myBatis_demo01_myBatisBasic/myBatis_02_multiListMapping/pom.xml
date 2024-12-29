@@ -5,16 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.etlpat</groupId>
-    <artifactId>myBatis_01_basicUse</artifactId>
+    <artifactId>myBatis_02_multiListMapping</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <modules>
-        <module>basic_01_basicCode</module>
-        <module>basic_02_iBatis</module>
-        <module>basic_03_dataInputSQL</module>
-        <module>basic_04_dataOutputSQL</module>
-        <module>basic_05_homework</module>
-    </modules>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
 
     <!-- 在父工程中导入依赖，子工程中也会自动导入 -->

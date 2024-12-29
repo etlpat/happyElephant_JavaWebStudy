@@ -46,7 +46,7 @@
 
     <!-- mappers标签：用于配置MyBatis框架中包含的mapperXML文件 -->
     <mappers>
-        <mapper resource="mappers/EmployeeMapper.xml"/>
+        <mapper resource="mappers/UserMapper.xml"/>
     </mappers>
 
 </configuration>

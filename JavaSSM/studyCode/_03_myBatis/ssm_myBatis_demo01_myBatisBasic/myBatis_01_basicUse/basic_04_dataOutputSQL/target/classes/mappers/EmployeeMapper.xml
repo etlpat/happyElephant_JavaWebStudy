@@ -16,8 +16,9 @@
                 [类的全限定符->别名]，别名仅可用于XML文件中，意在降低冗余的全限定类名书写。
                 注意：别名可用在XML文件中的任意位置！
 
+
             ②手动设置类型别名
-                语法：
+                语法：（在MyBatis配置文件中）
                 <typeAliases>
                     // 1.为单个类取别名
                     <typeAlias type="类的全限定符" alias="别名"/>
@@ -27,9 +28,14 @@
                     <package name="包名"/>
                 </typeAliases>
 
+
             ③MyBatis自带的Java类别名
                 对于一些常用的Java类，MyBatis自动为它们设置了别名。
                 【java类别名 = 类名首字母小写后的值】
+                    Ⅰ基本类型：int double -> _int _double
+                    Ⅱ包装类型：Integer Double -> int/integer double
+                    Ⅲ集合类型：Map List HashMap -> map list hashMap
+                【详情请见MyBatis官方文档：https://mybatis.org/mybatis-3/zh_CN/configuration.html#typeAliases】
     -->
 
 
@@ -45,7 +51,7 @@
                     因此，DML语句对应的标签，默认返回int，【不需要设置resultType属性的值】。
 
                 Ⅱ.【DQL语句】 - select 标签
-                    DQL语句可能返回：简单类型/实体对象/List集合/Map类型
+                    DQL语句可能返回：简单类型/实体对象/Map类型/List集合
                     因此，我们需要通过resultType属性指定DQL语句的返回类型。
     -->
     <!--
@@ -64,6 +70,58 @@
     <select id="queryNameById" resultType="string"><!-- 注意：string为java.lang.String的别名 -->
         SELECT emp_name FROM t_emp WHERE emp_id = #{id};
     </select>
+
+
+    <!--
+        (2.2) DQL语句，返回单个实体类型
+            若返回单个实体类型：resultType = 实体类的全限定符 / 别名
+
+        注意：
+            当返回实体类型，要求【table的列名与实体类的属性名一致】！
+                方案1：在sql语句中，使用 AS 为列名取别名。
+                方案2：在MyBatis配置文件中，开启【下划线命名到驼峰命名的自动映射】！
+                      e.g. emp_id -> empId
+                      语法：<settings> <setting name="mapUnderscoreToCamelCase" value="true"/> </settings>
+    -->
+    <select id="queryById" resultType="employee">
+        SELECT * <!-- 在MyBatis配置文件中，开启了下划线命名到驼峰命名的自动映射 -->
+        FROM t_emp WHERE emp_id = #{id};
+    </select>
+
+
+    <!--
+        (2.3) DQL语句，返回Map类型
+            若返回Map类型：resultType = Map全限定符 / map（别名）
+            注意：返回值为 map(列名1:值1, 列名2:值2,...)
+    -->
+    <select id="queryMapById" resultType="map">
+        SELECT * FROM t_emp WHERE emp_id = #{id};
+    </select>
+
+
+    <!--
+        (2.4) DQL语句，返回List集合
+            若返回List集合：resultType = List泛型（Employee）的全限定符 / 别名
+            注意：当返回集合，resultType不需要指定集合类型，只需指定【泛型】即可！
+                （P.S.返回实体类型和返回List集合，resultType的语法一致！）
+    -->
+    <select id="queryAll" resultType="employee">
+        SELECT * FROM t_emp;
+    </select>
+
+
+    <!--
+        (3)主键回显
+            自增长类型的主键回显：insert插入数据时，将mysql维护的自增长的主键，回显给employee对象的id属性。
+            设置主键回显语法：
+                在insert标签中，添加以下属性：
+                    ①useGeneratedKeys="true" - 表示开启主键回显
+                    ②keyColumn="主键列名"
+                    ③keyProperty="主键对应的实体属性名"
+    -->
+    <insert id="insertEmployee" useGeneratedKeys="true" keyColumn="emp_id" keyProperty="empId">
+        INSERT INTO `t_emp`(emp_name,emp_salary) VALUES(#{empName}, #{empSalary});
+    </insert>
 
 
 </mapper>

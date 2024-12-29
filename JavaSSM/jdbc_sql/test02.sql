@@ -21,6 +21,8 @@ SELECT * FROM t_emp;
 
 SELECT emp_id AS empId, emp_name AS empName, emp_salary AS empSalary
 	FROM t_emp WHERE emp_id = 1;
+
+SELECT * FROM t_emp WHERE emp_id = 1;
 	
 SELECT emp_name FROM t_emp WHERE emp_id = 1;
 	
@@ -30,4 +32,4 @@ SELECT emp_id AS empId, emp_name AS empName, emp_salary AS empSalary
 	FROM t_emp WHERE emp_salary = 777.77;
 	
 SELECT emp_id AS empId, emp_name AS empName, emp_salary AS empSalary
-	FROM t_emp WHERE emp_name = '张三' and emp_salary = 114.5;
+	FROM t_emp WHERE emp_name = '张三' AND emp_salary = 114.5;
