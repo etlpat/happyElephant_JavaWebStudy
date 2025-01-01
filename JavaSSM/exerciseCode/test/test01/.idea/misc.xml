@@ -5,10 +5,14 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/demo01/pom.xml" />
+        <option value="$PROJECT_DIR$/demo01_springMVC/mvc_02_request/pom.xml" />
+        <option value="$PROJECT_DIR$/demo01_springMVC/mvc_01_basic/pom.xml" />
+        <option value="$PROJECT_DIR$/demo01_springMVC/pom.xml" />
+        <option value="$PROJECT_DIR$/demo02_integrationSSM/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

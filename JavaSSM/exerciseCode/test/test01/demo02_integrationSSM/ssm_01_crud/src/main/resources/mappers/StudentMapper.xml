@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    MapperXML文件，与Mapper接口相对应，用于存放sql语句
+    一个CRUD标签 -> 存放一条sql语句 -> 与Mapper接口的一个方法相对应
+-->
+<mapper namespace="com.etlpat.mapper.StudentMapper">
+
+    <insert id="insertStudent">
+        INSERT INTO students(NAME,age,gender,NUMBER,address,STATUS)
+        VALUES(#{name},#{age},#{gender},#{number},#{address},#{status});
+    </insert>
+
+    <delete id="deleteStudent">
+        DELETE FROM students WHERE id = #{id};
+    </delete>
+
+    <update id="updateStudent">
+        UPDATE students
+        SET NAME=#{name},age=#{age},gender=#{gender},NUMBER=#{number},address=#{address},STATUS=#{status}
+        WHERE id = #{id};
+    </update>
+
+    <select id="selectAllStudent" resultType="student">
+        SELECT * FROM students;
+    </select>
+
+</mapper>
