@@ -17,11 +17,24 @@ CREATE TABLE students (
 	PRIMARY KEY (id)
 );
 
+INSERT INTO students(NAME,age,gender,NUMBER,address,STATUS)
+	VALUES('张三',18,'男','1234567','山西',1),
+	('李四',19,'女','3334444','北京',2),
+	('王五',20,'男','0351000','上海',1),
+	('赵六',22,'女','0351222','山西',1),
+	('孙七',19,'女','7777777','深圳',2),
+	('张三风',28,'男','1234321','山西',3),
+	('陈哥',30,'男','0351444','陕西',2),
+	('三明治',15,'女','1515151','山西',1),
+	('鲁树人',88,'男','8888888','浙江',1),
+	('顶侦',22,'男','7654321','麻麻',2);
+
+
 SELECT * FROM students;
 
-
-INSERT INTO students(NAME,age,gender,NUMBER,address,STATUS)
-	VALUES('张三',18,'男','03512333','北京周口店龙骨山',233);
+SELECT * FROM students WHERE NAME LIKE '%三%';
+	
+SELECT * FROM students WHERE NAME='张三' AND address='山西';
 
 DELETE FROM students WHERE id = 1;
 

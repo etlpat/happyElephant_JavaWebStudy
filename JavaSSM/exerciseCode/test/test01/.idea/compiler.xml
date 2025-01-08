@@ -7,8 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="mvc_02_request" />
+        <module name="_01_myBatis" />
         <module name="ssm_01_crud" />
         <module name="mvc_03_response" />
+        <module name="_02_spring" />
         <module name="mvc_01_basic" />
       </profile>
     </annotationProcessing>
