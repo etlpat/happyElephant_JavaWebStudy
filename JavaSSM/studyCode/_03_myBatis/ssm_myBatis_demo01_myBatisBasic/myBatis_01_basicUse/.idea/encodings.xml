@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/basic_01_basicCode/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/basic_01_basicCode/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/basic_02_iBatis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/basic_02_iBatis/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/basic_03_dataInputSQL/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/basic_03_dataInputSQL/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/basic_04_dataOutputSQL/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/basic_04_dataOutputSQL/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/basic_05_homework/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/basic_05_homework/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

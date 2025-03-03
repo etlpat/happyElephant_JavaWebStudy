@@ -82,6 +82,7 @@
                 方案2：在MyBatis配置文件中，开启【下划线命名到驼峰命名的自动映射】！
                       e.g. emp_id -> empId
                       语法：<settings> <setting name="mapUnderscoreToCamelCase" value="true"/> </settings>
+                方案3：使用resultMap自定义映射！
     -->
     <select id="queryById" resultType="employee">
         SELECT * <!-- 在MyBatis配置文件中，开启了下划线命名到驼峰命名的自动映射 -->
