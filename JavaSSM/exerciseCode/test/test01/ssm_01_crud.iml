@@ -9,6 +9,11 @@
         <webroots>
           <root url="file://$MODULE_DIR$/demo02_integrationSSM/ssm_01_crud/src/main/webapp" relative="/" />
         </webroots>
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/demo02_integrationSSM/ssm_01_crud/src/main/java" />
+          <root url="file://$MODULE_DIR$/demo02_integrationSSM/ssm_01_crud/src/main/resources" />
+          <root url="file://$MODULE_DIR$/demo02_integrationSSM/ssm_01_crud/target/generated-sources/annotations" />
+        </sourceRoots>
       </configuration>
     </facet>
   </component>
