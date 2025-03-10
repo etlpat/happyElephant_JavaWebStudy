@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- MyBatis框架的配置文件，用于设置框架的配置信息 -->
+<configuration>
+
+    <!-- <settings>标签，用于设置开启MyBatis框架的一些功能 -->
+    <settings>
+        <!-- logImpl用于在输出结果时，附带日志一并输出 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+
+        <!-- mapUnderscoreToCamelCase：用于在sql语句中，开启下划线命名到驼峰式命名的自动映射 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+
+    <!-- <typeAliases>标签，用于为Java类取别名 -->
+    <typeAliases>
+        <!-- 1.为单个类取别名 -->
+        <!--<typeAlias type="com.etlpat.pojo.Employee" alias="employee"/>-->
+
+        <!-- 2.为包下的全部类取别名（别名默认是：类名首字母小写后的值） -->
+        <package name="com.etlpat"/>
+    </typeAliases>
+
+
+    <!-- <environments>标签表示配置Mybatis的开发环境 -->
+    <environments default="development">
+        <!-- environment表示配置Mybatis的一个具体的环境 -->
+        <environment id="development">
+            <!-- Mybatis的内置的事务管理器 -->
+            <transactionManager type="JDBC"/><!-- type=JDBC，则MyBatis框架会自动开启事务 -->
+            <!-- 配置数据源 -->
+            <dataSource type="POOLED"><!-- type=POOLED，会使用MyBatis提供的数据库连接池 -->
+                <!-- 建立数据库连接的具体信息 -->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis_example"/>
+                <property name="username" value="root"/>
+                <property name="password" value="JMGMKSZ1919810"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+
+    <!-- mappers标签：用于配置MyBatis框架中包含的mapperXML文件 -->
+    <mappers>
+        <mapper resource="mapper/EmpMapper.xml"/>
+    </mappers>
+
+</configuration>

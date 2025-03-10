@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    MapperXML文件，与Mapper接口相对应，用于存放sql语句
+    一个CRUD标签 -> 存放一条sql语句 -> 与Mapper接口的一个方法相对应
+-->
+<mapper namespace="com.etlpat.mapper.EmpMapper">
+    <insert id="insert" useGeneratedKeys="true" keyColumn="emp_id" keyProperty="empId">
+        INSERT INTO `t_emp`(emp_name,emp_salary) VALUES(#{empName},#{empSalary});
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM t_emp WHERE emp_id = #{empId};
+    </delete>
+
+    <update id="update">
+        UPDATE t_emp SET emp_name=#{empName},emp_salary=#{empSalary} WHERE emp_id = #{empId};
+    </update>
+
+    <select id="selectById" resultType="employee">
+        SELECT * FROM t_emp WHERE emp_id = #{empId};
+    </select>
+
+    <select id="selectAll" resultType="employee">
+        SELECT * FROM t_emp;
+    </select>
+</mapper>

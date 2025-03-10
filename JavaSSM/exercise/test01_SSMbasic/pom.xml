@@ -10,7 +10,10 @@
     <packaging>pom</packaging>
     <modules>
         <module>_01_springFramework</module>
+        <module>_02_myBatis</module>
+        <module>_03_SSMcombination</module>
     </modules>
+
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

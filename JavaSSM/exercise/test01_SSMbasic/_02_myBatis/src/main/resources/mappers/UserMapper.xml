@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    MapperXML文件，与Mapper接口相对应，用于存放sql语句
+    一个CRUD标签 -> 存放一条sql语句 -> 与Mapper接口的一个方法相对应
+-->
+<mapper namespace="com.etlpat.mapper.UserMapper">
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO USER(username, PASSWORD) VALUES(#{username}, #{password});
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM USER WHERE id = #{id};
+    </delete>
+
+    <update id="update">
+        UPDATE USER SET username = #{username}, PASSWORD = #{password} WHERE id = #{id};
+    </update>
+
+    <select id="selectById" resultType="user">
+        SELECT * FROM USER WHERE id = #{id};
+    </select>
+
+    <select id="selectAll" resultType="user">
+        SELECT * FROM USER;
+    </select>
+
+</mapper>
