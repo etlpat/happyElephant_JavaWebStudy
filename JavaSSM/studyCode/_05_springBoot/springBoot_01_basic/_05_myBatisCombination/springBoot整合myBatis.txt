@@ -1,0 +1,9 @@
+springBoot整合myBatis步骤：
+(0)导入myBatis启动器与druid的相关依赖。
+(1)创建mapper接口以及对应的mapperXml文件。
+    mapper接口用于声明数据库操纵方法；mapperXml文件用于存储对应的sql语句。
+(2)在application.yml配置文件中，对druid连接池和myBatis进行配置。
+    配置详情见application.yml...
+(3)为springBoot启动的类Main，添加@MapperScan注解。
+    @MapperScan：扫描mapper接口所在的包（用于创建mapper接口的代理对象）。
+以上步骤结束后，myBatis相关的组件（如mapper接口的代理对象）会被springBoot自动添加到ioc容器中！

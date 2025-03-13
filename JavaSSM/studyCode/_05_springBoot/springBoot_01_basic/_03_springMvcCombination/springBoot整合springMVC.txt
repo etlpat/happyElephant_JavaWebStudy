@@ -1,0 +1,2 @@
+springMVC的整合方式与springBoot快速入门案例相同！
+springMVC中包含的常见配置，见application.yml

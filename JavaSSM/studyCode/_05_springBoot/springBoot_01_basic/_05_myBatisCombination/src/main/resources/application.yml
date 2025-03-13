@@ -1,0 +1,20 @@
+# (1)配置druid数据库连接池
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource # 使用druid连接池
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/mybatis_example
+      username: root
+      password: JMGMKSZ1919810
+
+
+# (2)进行myBatis的配置
+# （用于代替mybatis-config.xml配置文件）
+mybatis:
+  configuration: # ①settings配置
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl # 开启输出日志信息
+    map-underscore-to-camel-case: true # 开启下划线到驼峰式自动映射
+    auto-mapping-behavior: full # 开启属性自动映射
+  type-aliases-package: com.etlpat # ②配置类型别名（别名默认是：类名首字母小写后的值）
+  mapper-locations: classpath:/mappers/*.xml # ③配置myBatis框架包含的mapperXml文件的位置

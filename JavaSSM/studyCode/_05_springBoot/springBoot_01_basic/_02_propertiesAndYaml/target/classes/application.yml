@@ -1,0 +1,45 @@
+# application.yml 等价于 application.yaml（文件名是固定的）
+# yml为有层次、可继承的配置文件格式
+# （yml和properties配置文件，实现的功能是相同的）
+#
+# yml语法说明：
+#   1.数据结构用树形结构呈现，通过[缩进]来表示层级。
+#   2.连续的项目（集合）通过减号"-"来表示
+#   3.键值结构里面的key/value对用冒号": "来分隔。
+#   4.YAML配置文件的扩展名是yaml或yml
+#
+# yml参数的读取：
+#   yml的读取方式和properties文件相同，二者均通过 @Value("${key}") 进行依赖注入
+#   注意：@Value注解不能读取集合
+
+
+#（1）修改已有参数
+server:
+  port: 8080
+  servlet:
+    context-path: /
+# 以上yml参数，等价于properties中的：
+# server.port=8080
+# server.servlet.context-path=/
+
+
+#（2）自定义参数
+etlpat:
+  info:
+    yname: lisi # 注意：值之前必须添加空格
+    yage: 19
+  root:
+    username: root
+    password: 123456
+  list: # 注意：yml的参数，支持集合类型参数
+    - e1 # 集合元素前，必须添加"-"
+    - e2
+    - e3
+
+
+#（3）激活其它yml配置文件（多环境配置）
+# 使得其它后缀的 application-xxx.yml 也生效
+# 注意：若内部外部参数重名，外部值覆盖内部
+spring:
+  profiles:
+    active: tmp1,tmp2 # 激活配置文件 application-tmp1.yml、application-tmp2.yml

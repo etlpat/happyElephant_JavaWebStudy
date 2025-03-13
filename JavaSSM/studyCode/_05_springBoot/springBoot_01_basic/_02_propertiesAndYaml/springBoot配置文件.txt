@@ -1,0 +1,45 @@
+
+（1）springBoot配置文件概述
+    ①SpringBoot工程下，对配置文件进行统一的管理，你想设置的任何参数（端口号、项目根路径、数据库连接信息等等），
+        都集中到一个固定位置和命名的配置文件（`application.properties`或`application.yml`）中！
+    ②配置文件应该放置在SpringBoot工程的`src/main/resources`目录下。
+        这是因为`src/main/resources`目录是Spring Boot默认的类路径（classpath），配置文件会被自动加载并可供应用程序访问。
+
+    细节总结：
+        - 集中式管理配置。统一在一个文件完成程序功能参数设置和自定义参数声明。
+        - 位置：resources文件夹下，必须命名application 后缀.properties/.yaml/.yml。
+        - 如果同时存在application.properties|application.yml(.yaml),则properties的优先级更高。
+        - 配置基本都有默认值。
+
+
+（2）yaml配置文件
+    ①yaml格式介绍
+        YAML（YAML Ain’t Markup Language）是一种基于层次结构的数据序列化格式，旨在提供一种易读、人类友好的数据表示方式。
+        YAML格式相对于`.properties`文件具有更好的层次结构表示、自我描述性、注释支持、多行文本表示、复杂数据类型支持和更好的可读性。
+        选择使用YAML还是`.properties`取决于实际需求，简单的配置可以使用`.properties`，而复杂的配置可以选择YAML以获得更多的灵活性和可读性
+
+    ②yaml的语法说明
+        yml为有层次、可继承的配置文件格式（yml和properties配置文件，实现的功能是相同的）
+        yml语法说明：
+            1.数据结构用树形结构呈现，通过[缩进]来表示层级。
+            2.连续的项目（集合）通过减号"-"来表示
+            3.键值结构里面的key/value对用冒号": "来分隔。
+            4.YAML配置文件的扩展名是yaml或yml
+        yml参数的读取：
+            yml的读取方式和properties文件相同，二者均通过 @Value("${key}") 进行依赖注入
+            注意：@Value注解不能读取集合
+
+
+（3）多环境配置和使用
+    在SpringBoot中，可以使用多环境配置来根据不同的运行环境（如开发、测试、生产）加载不同的配置。
+        SpringBoot支持多环境配置让应用程序在不同的环境中使用不同的配置参数，例如数据库连接信息、日志级别、缓存配置等。
+    以下是实现Spring Boot多环境配置的常见方法：
+        1.属性文件分离：将应用程序的配置参数分离到不同的属性文件中，每个环境对应一个属性文件。
+            例如，可以创建`application-dev.properties`、`application-prod.properties`和`application-test.properties`等文件。
+            在这些文件中，可以定义各自环境的配置参数，如数据库连接信息、端口号等。
+            然后，在`application.properties`中通过`spring.profiles.active`属性指定当前使用的环境。SpringBoot会根据该属性来加载对应环境的属性文件，覆盖默认的配置。
+        2.YAML配置文件：与属性文件类似，可以将配置参数分离到不同的YAML文件中，每个环境对应一个文件。
+            例如，可以创建`application-dev.yml`、`application-prod.yml`和`application-test.yml`等文件。
+            在这些文件中，可以使用YAML语法定义各自环境的配置参数。同样，通过`spring.profiles.active`属性指定当前的环境，SpringBoot会加载相应的YAML文件。
+        3.命令行参数(动态)：可以通过命令行参数来指定当前的环境。例如，可以使用`--spring.profiles.active=dev`来指定使用开发环境的配置。
+    通过上述方法，SpringBoot会根据当前指定的环境来加载相应的配置文件或参数，从而实现多环境配置。这样可以简化在不同环境之间的配置切换，并且确保应用程序在不同环境中具有正确的配置。

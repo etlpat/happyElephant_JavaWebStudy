@@ -1,0 +1,2 @@
+配置详情见application.yml配置文件。
+注意：导入druid启动器依赖，并设置druid配置文件后，数据连接池对象会被springBoot自动添加到ioc容器中！

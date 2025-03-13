@@ -1,0 +1,19 @@
+# springMVC中常见的web配置（一般在server包下）
+
+server:
+  port: 8080 # 配置端口号（默认8080）
+  servlet:
+    context-path: / # 设置项目根路径（默认为"/"）
+    encoding:
+      charset: UTF-8 # 配置http请求/响应的字符集，默认为UTF-8
+
+
+spring:
+  mvc:
+    view:
+      # prefix: xxx # 配置视图解析器的前缀
+      suffix: .html # 配置视图解析器的后缀
+  web:
+    resources:
+      static-locations: classpath:/static # 配置静态资源路径
+# 注意：静态资源路径，默认在：【①classpath:/META-INF/resources/ ②classpath:/resources/ ③classpath:/static/ ④classpath:/public/】路径下

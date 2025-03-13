@@ -4,7 +4,7 @@ DROP TABLE `t_emp`;
 
 CREATE TABLE `t_emp`(
   emp_id INT AUTO_INCREMENT,
-  emp_name CHAR(100),
+  emp_name VARCHAR(100),
   emp_salary DOUBLE(10,5),
   PRIMARY KEY(emp_id)
 );
