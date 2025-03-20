@@ -6,4 +6,4 @@ springBoot整合myBatis步骤：
     配置详情见application.yml...
 (3)为springBoot启动的类Main，添加@MapperScan注解。
     @MapperScan：扫描mapper接口所在的包（用于创建mapper接口的代理对象）。
-以上步骤结束后，myBatis相关的组件（如mapper接口的代理对象）会被springBoot自动添加到ioc容器中！
+以上步骤结束后，my为springBoot启动的类Main，添加@MapperScan注解。Batis相关的组件（如mapper接口的代理对象）会被springBoot自动添加到ioc容器中！

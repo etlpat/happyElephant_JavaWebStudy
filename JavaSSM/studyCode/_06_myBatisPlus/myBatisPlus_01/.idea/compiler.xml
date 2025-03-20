@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="_03_wrapper" />
+        <module name="_01_basic" />
+        <module name="_02_mapperCRUDMethod" />
+        <module name="_04_coreAnnotation" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="_01_basic" options="-parameters" />
+      <module name="_02_mapperCRUDMethod" options="-parameters" />
+      <module name="_03_wrapper" options="-parameters" />
+      <module name="_04_coreAnnotation" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,64 @@
+
+（1）条件构造器Wrapper的介绍
+    条件构造器Wrapper对象，用于表示【sql语句中的where条件】！
+        ·使用MyBatis-Plus的条件构造器Wrapper，你可以构建灵活、高效的where查询条件，而不需要手动编写复杂的SQL语句。
+        ·它提供了许多方法来支持各种where条件的操作符，并且可以通过链式调用来组合多个条件。这样可以简化查询的编写过程，并提高开发效率。
+
+
+（2）条件构造器Wrapper的继承结构
+    Wrapper：条件构造抽象类，最顶端父类
+        -AbstractWrapper：用于查询条件封装，生成sql的where条件
+            -【QueryWrapper】：select/delete/update语句的where条件封装
+            -【UpdateWrapper】：update语句的where+set条件封装
+            - AbstractLambdaWrapper：支持使用Lambda语法
+                -【LambdaQueryWrapper】：支持使用Lambda语法的QueryWrapper
+                -【LambdaUpdateWrapper】：支持使用Lambda语法的UpdateWrapper
+
+
+（3）基于QueryWrapper的组装where条件方法
+    注意：以下为QueryWrapper的常用方法列表，且UpdateWrapper、LambdaQueryWrapper、LambdaUpdateWrapper均适用！
+    P.S.以下方法均返回wrapper对象本身，因此支持链式调用。
+    --------------------------------------------------------------------------------------------------------------------
+    函数	        说明	                    例子
+    --------------------------------------------------------------------------------------------------------------------
+    eq	        等于(=)	                queryWrapper.eq(“user_name”, “张三”); //user_name=“张三”
+    ne	        不等于(<>)	            queryWrapper.ne(“user_name”, “张三”); //user_name<>“张三”
+    gt	        大于(>)	                queryWrapper.gt(“level”, 1); //level>1
+    ge	        大于等于(>=)	            queryWrapper.ge(“level”, 1); //level>=1
+    lt	        小于(<)	                queryWrapper.lt(“level”, 1); //level<1
+    le	        小于等于(<=)	            queryWrapper.le(“level”, 1); //level<=1
+    between	    值1和值2之间	            queryWrapper.between(“level”, 1,10); //level>=1 and level <=10
+    notBetween  不在值1和值2之间	        queryWrapper.notBetween(“level”, 1,10); //level<1 or level >10
+    like	    模糊匹配 like %值%	    queryWrapper.like(“user_name”, “张三”); //user_name like “%张三%”
+    notLike	    不模糊匹配 not like %值%	queryWrapper.notLike(“user_name”, “张三”); //user_name not like “%张三%”
+    likeLeft	左模糊匹配 like %值	    queryWrapper.likeLeft(“user_name”, “张三”); //user_name like “%张三”
+    likeRight	右模糊匹配 like 值%	    queryWrapper.likeRight(“user_name”, “张三”); //user_name like “张三%”
+    isNull	    字段 为空	                queryWrapper.isNull(“user_name”); //user_name is null
+    isNotNull	字段 不为空	            queryWrapper.isNotNull(“user_name”); //user_name is not null
+    in	        字段 in (v0，v1，…)	    queryWrapper.in(“user_name”, {“张三”,“李四”,“王五”}); // user_name in （“张三”,“李四”,“王五”）
+    notIn	    字段 not in (v0，vl，…)	queryWrapper.notIn(“user_name”, {“张三”,“李四”,“王五”}); // user_name not in （“张三”,“李四”,“王五”）
+    inSql	    字段 in (sql语句)	        queryWrapper.inSql(“user_name”, “select name from student where age< 23”); // user_name in (select name from student where age< 23)
+    notInSql	字段 not in (sql语句)	    queryWrapper.notInSql(“user_name”, “select name from student where age< 23”); // user_name not in (select name from student where age< 23)
+    groupBy	    分组:GROUP BY 字段	    queryWrapper.groupBy(“user_name”); //group by user_name
+    orderByAsc	排序:ORDER BY 字段 ASC	queryWrapper.orderByAsc(“createTime”); //order by createTime asc
+    orderByDesc	排序:ORDER BY 字段 DESC	queryWrapper.orderByDesc(“createTime”); //order by createTime desc
+    orderBy	    排序:ORDER BY 字段	    queryWrapper.orderBy(true, true, “createTime”); //order by createTime asc
+    or	        拼接 OR                  queryWrapper.eq(“id”, “1”).or().eq(“user_name”, “张三”); //id = 1 or name =‘张三’
+    and	        拼接 AND	【不写默认为AND】  queryWrapper.eq(“id”, “1”).and(i->i.eq(“user_name”, “张三”)); //id = 1 and name =‘张三’
+    --------------------------------------------------------------------------------------------------------------------
+
+
+（4）使用Wrapper作为参数的CRUD方法
+    以下CRUD方法使用wrapper作为参数，用于表示where条件语句：
+        -int delete(@Param(Constants.WRAPPER) Wrapper<T> wrapper);
+        -int update(@Param(Constants.ENTITY) T entity, @Param(Constants.WRAPPER) Wrapper<T> wrapper);
+        -T selectOne(@Param(Constants.WRAPPER) Wrapper<T> wrapper);
+        -List<T> selectList(@Param(Constants.WRAPPER) Wrapper<T> wrapper);
+
+
+（5）wrapper条件拼接的具体应用
+    具体代码案例见：
+        com.etlpat.service._01_QueryWrapperService
+        com.etlpat.service._02_UpdateWrapperService
+        com.etlpat.service._03_LambdaQueryWrapperService
+        com.etlpat.service._04_LambdaUpdateWrapperService

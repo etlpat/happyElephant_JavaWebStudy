@@ -1,0 +1,44 @@
+
+（1）baseMapper接口提供的常见CRUD方法
+    (1)insert方法
+    ①插入一条记录（默认主键生成策略为雪花算法）
+        int insert(T entity);
+
+    (2)delete方法
+    ①根据Wrapper条件，删除记录
+        int delete(@Param(Constants.WRAPPER) Wrapper<T> wrapper);
+    ②根据ID删除
+        int deleteById(Serializable id);
+    ③根据ID批量删除
+        int deleteBatchIds(@Param(Constants.COLLECTION) Collection<? extends Serializable> idList);
+    ④根据Map条件，删除记录（map为<列名,值>）
+        int deleteByMap(@Param(Constants.COLUMN_MAP) Map<String, Object> columnMap);
+
+    (3)update方法
+    ①根据Wrapper条件，更新记录
+        int update(@Param(Constants.ENTITY) T entity, @Param(Constants.WRAPPER) Wrapper<T> wrapper);
+    ②根据ID修改（主键属性不能为null）
+        int updateById(@Param(Constants.ENTITY) T entity);
+    注意：update方法，当属性值为null时，对应列不进行修改
+
+    (4)select方法
+    ①根据Wrapper条件，查询一条记录
+        T selectOne(@Param(Constants.WRAPPER) Wrapper<T> wrapper);
+    ②根据Wrapper条件，查询多条记录
+        List<T> selectList(@Param(Constants.WRAPPER) Wrapper<T> wrapper);
+    ③根据ID查询
+        T selectById(Serializable id);
+    ④根据ID批量查询
+        List<T> selectBatchIds(@Param(Constants.COLLECTION) Collection<? extends Serializable> idList);
+    ⑤根据Map条件查询
+        List<T> selectByMap(@Param(Constants.COLUMN_MAP) Map<String, Object> columnMap);
+    ⑥根据Wrapper条件，查询Map记录
+        List<Map<String, Object>> selectMaps(@Param(Constants.WRAPPER) Wrapper<T> wrapper);
+    ⑦根据Wrapper条件，查询总记录数
+        Integer selectCount(@Param(Constants.WRAPPER) Wrapper<T> wrapper);
+    ⑧根据Wrapper条件，进行分页查询（需要引入分页插件）
+        IPage<T> selectPage(IPage<T> page, @Param(Constants.WRAPPER) Wrapper<T> wrapper);
+
+
+（2）具体方法应用
+    见"com.etlpat.service._01_QueryWrapperService"类中。
