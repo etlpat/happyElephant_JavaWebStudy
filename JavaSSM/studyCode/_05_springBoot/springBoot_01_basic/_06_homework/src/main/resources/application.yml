@@ -1,0 +1,15 @@
+# (1)配置druid数据库连接池
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource # 使用druid连接池
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/mybatis_example
+      username: root
+      password: JMGMKSZ1919810
+
+
+# (2)进行myBatis-plus的配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 配置日志信息

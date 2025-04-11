@@ -9,6 +9,7 @@
         <module name="_01_basic" />
         <module name="_03_springMvcCombination" />
         <module name="_05_myBatisCombination" />
+        <module name="_06_homework" />
         <module name="_02_propertiesAndYaml" />
         <module name="_04_druidDataSourceCombination" />
       </profile>
@@ -21,6 +22,7 @@
       <module name="_03_springMvcCombination" options="-parameters" />
       <module name="_04_druidDataSourceCombination" options="-parameters" />
       <module name="_05_myBatisCombination" options="-parameters" />
+      <module name="_06_homework" options="-parameters" />
     </option>
   </component>
 </project>

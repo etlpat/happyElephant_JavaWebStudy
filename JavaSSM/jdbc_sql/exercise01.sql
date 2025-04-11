@@ -22,6 +22,16 @@ INSERT INTO USER(username, PASSWORD)
 	('吴九', '777');
 	
 
+INSERT INTO USER(username, PASSWORD) 
+	VALUES('alice', '35168'),
+	('bob', '6843'),
+	('car', '684'),
+	('keke', '491'),
+	('elephant', '268'),
+	('lili', '6961'),
+	('otto', '59626');
+	
+
 INSERT INTO USER(username, PASSWORD) VALUES('张三', 123456);
 
 DELETE FROM USER WHERE id = 1;
@@ -31,3 +41,18 @@ UPDATE USER SET username = '李四', PASSWORD = '111' WHERE id = 2;
 SELECT * FROM USER WHERE id = 2;
 
 SELECT * FROM USER;
+
+
+# wrapper测试案例
+
+select * from user where username like '%jim%' and password is not null;
+
+SELECT * FROM USER order by username asc,password desc;
+
+delete from user where username is null;
+
+update user set password='12345678' where username like '%jim%' AND PASSWORD LIKE '%8%' OR PASSWORD IS NULL;
+
+select id,username from user;
+
+update user set password = '111' where username = '张三';
