@@ -61,7 +61,7 @@ DESC article;
 
 -- ==========================================================================================================
 
-DELETE FROM USER;
+
 SELECT * FROM USER;
-
-
+SELECT * FROM category;
+SELECT * FROM article;
