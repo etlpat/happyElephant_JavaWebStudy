@@ -4,6 +4,8 @@ import com.etlpat.utils.JWTUtil;
 import com.etlpat.utils.ThreadLocalUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -26,6 +28,8 @@ import java.util.Map;
 // JWT拦截器：拦截请求方法，并验证其JWT令牌
 @Component
 public class JWTInterceptor implements HandlerInterceptor {// 拦截器方法，必须实现HandlerInterceptor接口
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;
 
 
     // (1)重写preHandle拦截方法（在Controller执行前拦截）
@@ -38,7 +42,15 @@ public class JWTInterceptor implements HandlerInterceptor {// 拦截器方法，
 
         // 验证令牌
         try {
+            // ①验证令牌是否被篡改/过期
             Map<String, Object> userMap = JWTUtil.verifyToken(token);// 验证令牌
+
+            // ②验证令牌是否和Redis中的令牌一致
+            String redisToken = stringRedisTemplate.opsForValue().get("etlpat:bigEvent:token:" + userMap.get("username"));
+            if (redisToken == null || !redisToken.equals(token)) {
+                throw new RuntimeException();
+            }
+
             // 若令牌验证成功，则放行
             ThreadLocalUtil.set(userMap);// 【将本次登录的用户存入ThreadLocal中】
             return true;// 放行

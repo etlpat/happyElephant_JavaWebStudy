@@ -1,0 +1,94 @@
+SpringDataRedis详解
+
+
+
+(1)SpringDataRedis介绍
+    SpringDataRedis是Spring生态系统的一部分，它为Redis键值数据库提供了高级抽象和便捷的访问方式。
+    它构建在Jedis或Lettuce等Redis客户端之上，简化了Redis操作并与Spring框架无缝集成。
+
+    <1>核心特性：
+        ①连接管理：自动管理 Redis 连接工厂
+        ②模板模式：提供 RedisTemplate 和 StringRedisTemplate
+        ③序列化支持：多种序列化方案（JDK、JSON、String等）
+        ④Repository支持：类似 JPA 的 Repository 接口
+        ⑤事务支持：与 Spring 事务管理集成
+        ⑥发布/订阅：支持消息监听容器
+        ⑦集群支持：Redis 集群和哨兵模式
+
+    <2>序列化方案：
+        ①StringRedisSerializer：字符串序列化
+        ②JdkSerializationRedisSerializer：JDK原生序列化
+        ③Jackson2JsonRedisSerializer：JSON序列化
+        ④GenericJackson2JsonRedisSerializer：带类型的JSON序列化
+        ⑤OxmSerializer：XML序列化
+
+    <3>性能优化建议：
+        ①使用Lettuce而非Jedis（Lettuce基于Netty，性能更好，且线程安全）
+        ②选择合适的序列化方案（JSON通常比JDK序列化更高效）
+        ③合理配置连接池参数
+        ④批量操作使用executePipelined
+        ⑤对于大量数据考虑使用SCAN而非KEYS
+
+    总结：
+        SpringDataRedis提供了强大而灵活的Redis访问方式，从低级的键值操作到高级的Repository抽象，能够满足各种复杂度的应用场景。
+        它与Spring生态系统的无缝集成使得在Spring应用中使用Redis变得非常简单高效。
+
+
+
+
+(2)RedisTemplate组件
+    RedisTemplate是SpringDataRedis提供的核心类，它封装了Redis的各种操作。
+    我们可以使用RedisTemplate组件，对Redis数据库进行CRUD操作。
+
+    <1>主要操作方法
+        RedisTemplate按照Redis的不同value类型，将对应的操作封装到了不同的java类中。
+        使用如下不同类型的API，即可对不同类型的Redis数据进行CRUD操作：
+        ————————————————————————————————————————————————————————————————————————————————————
+        | API                               | 返回值类型              | 说明
+        ————————————————————————————————————————————————————————————————————————————————————
+        | redisTemplate.opsForValue()       | ValueOperations       | 操作String类型数据
+        | redisTemplate.opsForHash()        | HashOperations        | 操作Hash类型数据
+        | redisTemplate.opsForList()        | ListOperations        | 操作List类型数据
+        | redisTemplate.opsForSet()         | SetOperations         | 操作Set类型数据
+        | redisTemplate.opsForZSet()        | ZSetOperations        | 操作SortedSet类型数据
+        | redisTemplate                     |                       | 通用的命令
+        ————————————————————————————————————————————————————————————————————————————————————
+
+    <2>对比RedisTemplate和StringRedisTemplate
+        StringRedisTemplate：是RedisTemplate的子类，键和值固定传入String类型，固定使用String序列化。
+        ——————————————————————————————————————————————————————————————————————
+        | 特性	    | RedisTemplate	        | StringRedisTemplate
+        ——————————————————————————————————————————————————————————————————————
+        | 键类型	    | 泛型（可自定义）	        | 固定为 String
+        | 值类型	    | 泛型（可自定义）	        | 固定为 String
+        | 序列化	    | 可配置多种序列化方式	    | 固定使用 String 序列化
+        | 灵活性	    | 高	                | 低
+        | 使用场景	| 复杂对象存储	        | 纯字符串操作
+        | 性能	    | 稍低（涉及序列化）	    | 更高
+        ——————————————————————————————————————————————————————————————————————
+        总结：RedisTemplate提供了更丰富的功能和灵活性，是大多数场景下的首选；
+            而StringRedisTemplate在纯字符串操作时更简单高效。
+
+
+
+
+(3)SpringDataRedis使用步骤
+    【0】引入依赖。
+    【1】在application.yml文件中，配置Redis连接池的连接信息。
+    【2】在java配置类中，配置RedisTemplate的序列化方式。（若不设置默认为JDK原生序列化）
+            注意：若使用StringRedisTemplate，则不需要配置序列化方式。
+    【3】使用RedisTemplate组件（或StringRedisTemplate），对Redis数据库进行CRUD操作。
+
+
+
+
+(4)项目代码
+    ①在java配置类中，配置RedisTemplate的序列化方式。
+        --详细代码见：src/main/java/com/etlpat/config/RedisConfig.java
+
+    ②使用RedisTemplate，对Redis数据库进行CRUD操作。
+        --详细代码见：src/test/java/com/etlpat/RedisTemplateTest.java
+
+    ③使用StringRedisTemplate，对Redis数据库进行CRUD操作。
+        --详细代码见：src/test/java/com/etlpat/StringRedisTemplateTest.java
+

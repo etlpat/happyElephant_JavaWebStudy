@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 // (1)使用Spring Validation框架,对注册接口的请求参数进行合法性校验
@@ -50,6 +52,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
 
     // 用户注册
@@ -85,11 +90,13 @@ public class UserController {
             return Result.error("密码错误");
         }
 
-        // ③登录成功，将该用户的JWT令牌发送给前端
+        // ③登录成功，将该用户的JWT令牌发送给前端以及Redis
         HashMap<String, Object> userMap = new HashMap<>();// JWT令牌的有效载荷
         userMap.put("id", user.getId());
         userMap.put("username", user.getUsername());
         String token = JWTUtil.createToken(userMap);// 获取该用户的JWT令牌
+        stringRedisTemplate.opsForValue().set("etlpat:bigEvent:token:" + user.getUsername()
+                , token, 7, TimeUnit.DAYS);// 将JWT令牌存入Redis中
         return Result.success(token);// 将令牌作为响应数据，发送给前端
     }
 
@@ -163,8 +170,9 @@ public class UserController {
             return Result.error("两次新密码填写不一致");
         }
 
-        // 验证全部正确，更新密码
+        // 验证全部正确，更新密码，并删除该用户原本在Redis中的JWT令牌
         userService.updatePasswordById(id, newPwd);
+        stringRedisTemplate.delete("etlpat:bigEvent:token:" + username);// 删除Redis中的令牌
         return Result.success();
     }
 

@@ -39,7 +39,7 @@ import java.util.Enumeration;
 //      ②String getInitParameter(String name);   获取参数名对应的参数值
 //
 //
-//  <2>应用域属性的CRUT
+//  <2>应用域属性的CRUD
 //  域对象：
 //      域对象是用于存储和传输数据的对象，根据传递范围不同，分为不同的域。
 //      webapp中存在3大域对象，范围从大到小分别是--应用域、会话域、请求域。

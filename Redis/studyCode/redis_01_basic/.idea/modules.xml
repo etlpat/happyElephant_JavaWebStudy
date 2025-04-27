@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/_01_redisCommand/_01_redisCommand.iml" filepath="$PROJECT_DIR$/_01_redisCommand/_01_redisCommand.iml" />
+      <module fileurl="file://$PROJECT_DIR$/redis_01_basic.iml" filepath="$PROJECT_DIR$/redis_01_basic.iml" />
+    </modules>
+  </component>
+</project>
