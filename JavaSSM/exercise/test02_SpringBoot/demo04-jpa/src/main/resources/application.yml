@@ -1,0 +1,12 @@
+# (1)配置数据库连接信息
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis_example
+    username: root
+    password: JMGMKSZ1919810
+
+
+  # (2)配置JPA的信息
+  jpa:
+    show-sql: true # 展示执行的sql语句

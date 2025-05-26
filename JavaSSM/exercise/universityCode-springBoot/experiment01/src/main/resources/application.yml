@@ -1,0 +1,7 @@
+student:
+  stdId: 114514
+  stdName: Jimmy
+  hobby:
+    - 吃饭
+    - 睡觉
+    - 吹竖笛

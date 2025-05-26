@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>test03</title>
+</head>
+<body>
+<!-- th:if，若为true则显示标签，若为false则不显示标签 -->
+<h1>显示内容：<span th:if="${flag}">你好</span></h1>
+<h1>不显示内容：<span th:if="${!flag}">你好</span></h1>
+</body>
+</html>

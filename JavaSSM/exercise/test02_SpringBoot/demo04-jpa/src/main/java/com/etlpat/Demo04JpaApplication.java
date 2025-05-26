@@ -1,0 +1,13 @@
+package com.etlpat;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Demo04JpaApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Demo04JpaApplication.class, args);
+    }
+
+}

@@ -1,0 +1,42 @@
+# 用于激活指定的profile
+spring:
+  profiles:
+    active: t4
+
+user: # 对象类型
+  username: zhangsan
+  age: 18
+  password: 123456
+  map: # Map类型
+    k1: v1
+    k2: v2
+    k3: v3
+  list: # 数组/List类型
+    - cat
+    - dog
+    - pig
+
+
+---
+
+# 定义分块profiles
+spring:
+  config:
+    activate:
+      on-profile: t3
+
+server:
+  port: 8083
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: t4
+
+server:
+  port: 8084
+
+

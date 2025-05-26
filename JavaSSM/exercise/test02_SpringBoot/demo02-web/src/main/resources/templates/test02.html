@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>test02</title>
+</head>
+<body>
+<h1>图片1</h1>
+<img src="1.jpg" style="width: 200px"/>
+<br/>
+
+<h1>图片2</h1>
+<!-- th:属性，用于动态的指定标签的属性，可获取从后端Model中传来的属性值-->
+<img th:src="${url}" style="width: 200px"/>
+<br/>
+
+<h1>图片3</h1>
+<!-- th:attr，用于动态的批量设置属性 -->
+<img th:attr="src=${url},style=${style}">
+</body>
+</html>

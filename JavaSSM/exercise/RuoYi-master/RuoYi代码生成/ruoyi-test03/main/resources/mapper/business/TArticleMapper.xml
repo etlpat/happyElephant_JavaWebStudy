@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.business.mapper.TArticleMapper">
+    
+    <resultMap type="TArticle" id="TArticleResult">
+        <result property="id"    column="id"    />
+        <result property="title"    column="title"    />
+        <result property="content"    column="content"    />
+    </resultMap>
+
+    <resultMap id="TArticleTCommentResult" type="TArticle" extends="TArticleResult">
+        <collection property="tCommentList" ofType="TComment" column="id" select="selectTCommentList" />
+    </resultMap>
+
+    <resultMap type="TComment" id="TCommentResult">
+        <result property="id"    column="id"    />
+        <result property="content"    column="content"    />
+        <result property="author"    column="author"    />
+        <result property="aId"    column="a_id"    />
+    </resultMap>
+
+    <sql id="selectTArticleVo">
+        select id, title, content from t_article
+    </sql>
+
+    <select id="selectTArticleList" parameterType="TArticle" resultMap="TArticleResult">
+        <include refid="selectTArticleVo"/>
+        <where>  
+            <if test="title != null  and title != ''"> and title = #{title}</if>
+            <if test="content != null  and content != ''"> and content like concat('%', #{content}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectTArticleById" parameterType="Long" resultMap="TArticleTCommentResult">
+        select id, title, content
+        from t_article
+        where id = #{id}
+    </select>
+
+    <select id="selectTCommentList" resultMap="TCommentResult">
+        select id, content, author, a_id
+        from t_comment
+        where a_id = #{a_id}
+    </select>
+
+    <insert id="insertTArticle" parameterType="TArticle" useGeneratedKeys="true" keyProperty="id">
+        insert into t_article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="title != null">title,</if>
+            <if test="content != null">content,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="title != null">#{title},</if>
+            <if test="content != null">#{content},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTArticle" parameterType="TArticle">
+        update t_article
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="title != null">title = #{title},</if>
+            <if test="content != null">content = #{content},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTArticleById" parameterType="Long">
+        delete from t_article where id = #{id}
+    </delete>
+
+    <delete id="deleteTArticleByIds" parameterType="String">
+        delete from t_article where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+    <delete id="deleteTCommentByAIds" parameterType="String">
+        delete from t_comment where a_id in 
+        <foreach item="aId" collection="array" open="(" separator="," close=")">
+            #{aId}
+        </foreach>
+    </delete>
+
+    <delete id="deleteTCommentByAId" parameterType="Long">
+        delete from t_comment where a_id = #{aId}
+    </delete>
+
+    <insert id="batchTComment">
+        insert into t_comment( id, content, author, a_id) values
+        <foreach item="item" index="index" collection="list" separator=",">
+            ( #{item.id}, #{item.content}, #{item.author}, #{item.aId})
+        </foreach>
+    </insert>
+
+</mapper>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>test05</title>
+</head>
+<body>
+
+<table border="1px" style="width: 600px" align="center">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>邮箱</th>
+        <th>角色</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- th:each遍历集合 -->
+    <tr th:each="user:${users}"><!--从users集合中获取user对象-->
+        <td th:text="${user.id}"></td><!--从user对象中获取属性-->
+        <td th:text="${user.name}"></td>
+        <td th:text="|${user.age}-(${user.age>=18?'成年':'未成年'})|"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <span th:if="${user.role=='admin'}">管理员</span>
+            <span th:if="${user.role=='pm'}">项目经理</span>
+            <span th:if="${user.role=='hr'}">人事</span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

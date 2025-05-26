@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>articleDetail</title>
+</head>
+<body>
+<div>
+    <table border="1px" width="600px" align="center">
+        <tr>
+            <td colspan="3">
+                <h4 style="text-align: center">文章详细信息</h4>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="text-align: center; font-weight: bold">id</div>
+            </td>
+            <td th:text="${article.id}" colspan="2"></td>
+        </tr>
+        <tr>
+            <td>
+                <div style="text-align: center; font-weight: bold">标题</div>
+            </td>
+            <td th:text="${article.title}" colspan="2"></td>
+        </tr>
+        <tr>
+            <td>
+                <div style="text-align: center; font-weight: bold">作者</div>
+            </td>
+            <td th:text="${article.content}" colspan="2"></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <h4 style="text-align: center">用户评论</h4>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="text-align: center; font-weight: bold">id</div>
+            </td>
+            <td>
+                <div style="text-align: center; font-weight: bold">内容</div>
+            </td>
+            <td>
+                <div style="text-align: center; font-weight: bold">作者</div>
+            </td>
+        </tr>
+        <tr th:each="comment:${article.commentList}">
+            <td th:text="${comment.id}"></td>
+            <td th:text="${comment.content}"></td>
+            <td th:text="${comment.author}"></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <a th:href="@{/article/findAll}" class="back-link">返回文章列表</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
