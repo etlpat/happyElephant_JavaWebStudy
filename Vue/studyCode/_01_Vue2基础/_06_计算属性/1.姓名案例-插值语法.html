@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>姓名案例</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+    <!-- 设置为 false 以阻止 vue 在启动时生成生产提示。 -->
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+    </script>
+</head>
+
+<body>
+    <div id="root">
+        姓：<input type="text" v-model:value="firstName">
+        <br>
+        名：<input type="text" v-model:value="lastName">
+        <br>
+        <!-- 注意：在{{}}中调用方法，方法名后必须添加()，才能显示方法的返回值 -->
+        姓名：{{fullName()}}
+    </div>
+
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: "#root",
+            data() {
+                return {
+                    firstName: '张',
+                    lastName: '三',
+                }
+            },
+            methods: {
+                fullName() {
+                    // 注意：调用data值，必须添加"this."
+                    return this.firstName + '-' + this.lastName
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

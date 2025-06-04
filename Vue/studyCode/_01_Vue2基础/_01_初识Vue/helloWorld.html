@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>helloWorld</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+    <!-- 设置为 false 以阻止 vue 在启动时生成生产提示。 -->
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+    </script>
+</head>
+
+<body>
+    <!--
+        初识Vue:
+            1.想让Vue工作,就必须创建一个Vue实例,且要传入一个配置对象;
+            2.root容器里的代码依然符合html规范,只不过混入了一些特殊的Vue语法;
+            3.root容器里的代码被称为【Vue模板】;
+            ---
+            4.Vue实例和容器是一一对应的;
+            5.真实开发中只有一个Vue实例,并且会配合着组件一起使用;
+            6.{{xxx}}中的xxx要写js表达式,且xxx可以自动读取到data中的所有属性;
+            7.一旦data中的数据发生改变,那么页面中用到该数据的地方也会自动更新;
+    -->
+
+
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <!-- 使用插值语法：{{key}}，引入vue中定义的数据！ -->
+        <h1>hello, {{age}}岁的{{name}}</h1>
+    </div>
+
+
+    <script type="text/javascript">
+        // 创建vue实例
+        const v = new Vue({
+            // element选择器，指定vue为上方id="root"的容器div提供服务！（值通常为CSS选择器字符串）
+            el: '#root',
+
+            // data定义vue对象中的数据（供el指定的容器使用）
+            data: {
+                name: '张三',
+                age: "17"
+            }
+        });
+    </script>
+
+</body>
+
+</html>

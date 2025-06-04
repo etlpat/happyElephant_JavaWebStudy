@@ -1,2 +1,2 @@
-CREATE DATABASE ry-vue;
-USE ry-vue;
+CREATE DATABASE `ry-vue`;
+USE `ry-vue`;

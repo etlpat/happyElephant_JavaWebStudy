@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+    <!-- 设置为 false 以阻止 vue 在启动时生成生产提示。 -->
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+    </script>
+</head>
+
+<body>
+    <!--
+        事件的基本使用:
+            1.使用v-on:xxx 或@xxx 绑定事件,其中xxx是事件名;
+            2.事件的回调需要配置在methods对象中,最终会在vm上;
+            3.methods中配置的函数,不要用箭头函数!否则this就不是vm了;
+            4.methods中配置的函数,都是被Vue所管理的函数,this的指向是vm或 组件实例对象;
+            5.@click="demo"和@click="demo($event)"效果一致,但后者可以传参;
+    -->
+
+
+    <div id="root">
+        <button v-on:click="show1">点我提示信息1</button>
+        <br />
+        <!-- v-on:click ===简写===> @click -->
+        <button @click="show2(666)">点我提示信息2</button><!-- 调用show2时传参666 -->
+    </div>
+
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: "#root",
+            methods: {// 配置vue对象的方法
+                show1() {
+                    alert("你好1！")
+                },
+                show2(num) {// 接收传来的参数
+                    alert("你好2！" + num)
+                }
+            },
+        })
+    </script>
+
+
+    <!--
+        补充：Vue中的事件修饰符:
+        （调用方法时，“func().修饰符”，即可使修饰符生效！）
+            1.prevent:阻止默认事件(常用);
+            2.stop:阻止事件冒泡(常用);
+            3.once:事件只触发一次(常用);
+            4.capture:使用事件的捕获模式;
+            5.self:只有event.target是当前操作的元素是才触发事件;
+            6.passive:事件的默认行为立即执行,无需等待事件回调执行完毕;
+    -->
+
+</body>
+
+</html>

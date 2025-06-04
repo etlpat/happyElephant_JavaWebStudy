@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>数据绑定</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+    <!-- 设置为 false 以阻止 vue 在启动时生成生产提示。 -->
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+    </script>
+</head>
+
+<body>
+    <!--
+        Vue中有2种数据绑定的方式:
+            1.单向绑定(v-bind):数据只能从data流向页面。
+            2.双向绑定(v-mode1):数据不仅能从data流向页面,还可以从页面流向data。
+        备注:
+            1.双向绑定一般都应用在表单类元素上(如:input、select等)
+            2.v-model:value 可以简写为 v-model,因为v-model默认收集的就是value值。
+    -->
+    <div id="root">
+        单向数据绑定：<input type="text" v-bind:value="name1" />
+        <br />
+        双向数据绑定：<input type="text" v-model:value="name2" />
+    </div>
+
+
+    <!--
+        补充：data与el的2种写法
+            1.e1有2种写法
+                (1).new Vue时候配置e1属性。
+                (2).先创建Vue实例,随后再通过v.$mount('#root')指定el的值。
+            2.data有2种写法
+                (1).对象式
+                (2).函数式
+                如何选择:目前哪种写法都可以,以后学习到组件时,data必须使用函数式,否则会报错。
+            3.一个重要的原则:
+                由Vue管理的函数,一定不要写箭头函数,一旦写了箭头函数,this就不再是Vue实例了。
+    -->
+    <script type="text/javascript">
+        const v = new Vue({
+            // el: '#root',
+            // data: {
+            //     name1: "张三",
+            //     name2: "李四"
+            // }
+            data() {// 函数方式定义data
+                return {
+                    name1: "张三",
+                    name2: "李四"
+                }
+            }
+        })
+        v.$mount('#root')// 使用方法指定el属性
+    </script>
+</body>
+
+</html>
